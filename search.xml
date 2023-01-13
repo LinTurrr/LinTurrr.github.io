@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>简介</title>
+    <url>/2023/01/13/%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<p><b>欢迎！</b><br>这里是林涂！很高心认识你！<br>本人间歇性发疯中。。。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>第一篇博客test</title>
     <url>/2023/01/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2test/</url>
     <content><![CDATA[<p>发疯</p>
@@ -11,17 +17,5 @@
       <tags>
         <tag>CTF</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>简介</title>
-    <url>/2023/01/13/%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<p><b>欢迎！</b><br>这里是林涂！很高心认识你！<br>本人间歇性发疯中。。。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>置顶test</title>
-    <url>/2023/01/13/%E7%BD%AE%E9%A1%B6test/</url>
-    <content><![CDATA[<p>测试一下刚刚发的简介是不是置顶了捏</p>
-]]></content>
   </entry>
 </search>
