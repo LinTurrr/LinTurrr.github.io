@@ -7,6 +7,145 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ROIS2023冬令营第一周学习记录</title>
+    <url>/2023/01/14/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>🐏了使人大脑晕眩。。若有错误还请见谅。。（此处意念上表情包：没读过书很抱歉.jpg<br>正在研究给blog加留言区的方法。。</p>
+<span id="more"></span>
+
+<p>1.11-1.12安装了VMware和Ubuntu，本来想要等博客搭建好了就记录安装过程出现中的小问题，万万没想到博客搭建了两天😅。。现在不太记得安装细节了，有缘再补吧</p>
+<p>btw，为了写这篇blog还学了但MarkDown语法，虽然md走简洁风语法不多，然而本人本就不富裕的脑容量还是雪上加霜了orz。</p>
+<p>再次btw，虽然是学习日记但是跟个人吐槽区别不大啦其实🤣都不知道在写什么</p>
+<h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><h2 id="前端三件套HTML-x2F-CSS-x2F-JavaScript关系："><a href="#前端三件套HTML-x2F-CSS-x2F-JavaScript关系：" class="headerlink" title="前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系："></a>前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系：</h2><p>（引用自：<a href="https://zhuanlan.zhihu.com/p/86270957">https://zhuanlan.zhihu.com/p/86270957</a>）</p>
+<blockquote>
+<p><strong>HTML是用来标记内容的（重在内容组织上）</strong></p>
+</blockquote>
+<blockquote>
+<p>HTML是超文本标记语言的简称，它是一种不严谨的、简单的标识性语言。它用各种标签将页面中的元素组织起来，告诉浏览器该如何显示其中的内容。</p>
+</blockquote>
+<blockquote>
+<p>为什么说HTML是不严谨的呢？因为HTML标签即使不闭合，也并不会影响页面内容的组织。</p>
+</blockquote>
+<blockquote>
+<p><strong>CSS是用来修饰内容样式的（重在内容样式美化展示上）</strong></p>
+</blockquote>
+<blockquote>
+<p>CSS是层叠样式表的简称，它用来表现HTML文件样式的，简单说就是负责HTML页面中元素的展现及排版。</p>
+</blockquote>
+<blockquote>
+<p><strong>JavaScript是用来做交互的</strong></p>
+</blockquote>
+<blockquote>
+<p>JavaScript是一种脚本语言，即可以运行在客户端也能运行在服务器端。JavaScript的解释器就是JS引擎，JS引擎是浏览器的一部分。而JavaScript主要是用来扩展文档交互能力的，使静态的HTML具有一定的交互行为（比如表单提交、动画特效、弹窗等）。</p>
+</blockquote>
+<p>看到有人说：HTML是骨架，CSS是皮肤，JS是肌肉。确实很形象。。</p>
+<h2 id="HTML-x2F-CSS-x2F-JavaScript学习"><a href="#HTML-x2F-CSS-x2F-JavaScript学习" class="headerlink" title="HTML&#x2F;CSS&#x2F;JavaScript学习"></a>HTML&#x2F;CSS&#x2F;JavaScript学习</h2><p>啊发现HTML的排版格式在MarkDown里也可以用。。<br>belike：<br><a href="https://linturrr.github.io/" style="text-decoration:none"><br>首页<br></a><br>↑这个链接就是用HTML的&lt; a &gt;链接语法写的（应该能显示出来吧</p>
+<p>看完HTML部分，我有个严峻的问题。。怎么做到记住怎么多用法的，用一次查一次参考手册吗</p>
+<h2 id="编写一个主页！"><a href="#编写一个主页！" class="headerlink" title="编写一个主页！"></a>编写一个主页！</h2><p>熟话说好记性不如烂笔头，再多的知识不如自己用一用</p>
+<p>本来打算下载vscode的，然而很不幸本人刚好有Sublime Text3，能凑合着用就不下了</p>
+<ol>
+<li>首先CTRL N创建一个新文件，然后CTRL S命名并且以html后缀保存</li>
+<li>输入&lt;h 然后选html的那个，Sublime就会自动把html的框架补全</li>
+<li>然后在tltle里填上标题，再补充一点花里胡哨的，一个全新的赛博垃圾就铛铛出炉！它跟别的垃圾不一样。。它是本人亲手创造的垃圾。。是垃圾中的垃圾。。。。。。。。。。。。。</li>
+<li>做了一个按钮配了一点阴影和鼠标上去会出字的效果。。</li>
+<li>过程中遇到问题：我的背景是渐变色45deg，结果我渐变色铺不满。。后来换成90deg铺满了。。</li>
+</ol>
+<p>放一下代码吧。。。好简陋emmmmmm</p>
+<p><strong>HTML</strong></p>
+<pre><code>    &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;!--这玩意是控制网页的编码格式 utf-8 国际性编码--&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style2.css&quot;&gt;
+&lt;!--这里要来个css修饰一下主页！！！用link--&gt;
+    &lt;title&gt;一个赛博垃圾&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;header&quot;&gt;
+        &lt;font size=&quot;7&quot;&gt;Welcome！&lt;/font&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;passage&quot;&gt;
+        &lt;font size=&quot;5&quot;&gt;这里是林涂！&lt;/font&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;a href=&quot;https://linturrr.github.io/&quot; class=&quot;button&quot;&gt;Blog&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ff&quot;&gt;
+        &lt;p&gt;拳打脚踢！飞来飞去！&lt;/p&gt;
+        &lt;p&gt;蹦蹦跳跳！蹦蹦跳跳！&lt;/p&gt;
+        &lt;p&gt;飞翔！自由飞翔！&lt;/p&gt;
+        &lt;p&gt;飞累了！&lt;/p&gt;
+        &lt;p&gt;吃饭！躺下！&lt;/p&gt;
+        &lt;p&gt;休息好了！&lt;/p&gt;
+        &lt;p&gt;继续发疯！&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>CSS</strong></p>
+<pre><code>    body&#123;
+    text-align: center;/*居中*/
+    background: linear-gradient(90deg,#9370D8,#FFC0CB,#E0FFFF,#7FFFD4);/*来点渐变色*/
+&#125;
+
+.header&#123;
+        padding-bottom: 75px;/*底部填充*/
+        padding-top: 50px;/*顶部填充*/
+    &#125;
+.passage&#123;
+        padding-bottom: 20px;
+        padding-top: 25px;
+    &#125;
+.button &#123;
+    background: linear-gradient(45deg,#FFC0CB,#B0E0E6,	#F5F5DC);
+    color: teal;
+    border: none;
+    padding: 3px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);/*阴影*/
+&#125;
+.button &#123;
+    transition: all 0.3s ease;
+&#125;
+
+.button:hover &#123;
+    transform: rotate(360deg);
+&#125;
+.button:hover:after &#123;
+    text-align: center;
+    content: &quot;间歇性发疯！&quot;;
+    position: absolute;
+    top: 50;
+    left: 50;
+    width: 100%;
+    height: 50%;
+    color: black;
+    background:(45deg,#FFC0CB,#B0E0E6,	#F5F5DC);
+&#125;
+.ff&#123;
+    color: maroon;
+&#125;
+</code></pre>
+<p>真的很简陋。。。。。但是有努力过的。。</p>
+<p>放一下我做的两个文件。。感兴趣的可以去下载来看看（真的会有人想看垃圾吗。。<br><a href="https://github.com/LinTurrr/A_Useless_Thing.git">一个垃圾捏。。</a></p>
+<p>今天先写到这里。。明天再见。。</p>
+]]></content>
+      <categories>
+        <category>学习日记</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第一篇博客test</title>
     <url>/2023/01/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2test/</url>
     <content><![CDATA[<p>发疯</p>
