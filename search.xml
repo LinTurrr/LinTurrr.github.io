@@ -7,6 +7,96 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Introduction to CryptoHack部分Write Up</title>
+    <url>/2023/01/15/Introduction-to-CryptoHack%E9%83%A8%E5%88%86Write-Up/</url>
+    <content><![CDATA[<p>CryptoHack的Introduction to CryptoHack部分Write_Up</p>
+<span id="more"></span>
+<p>大于等于10分的题不能直接放。。<br>我在研究怎么设置访问限制。。上次试了设密码不知道为什么不成功。。先写几个小于等于10分的题</p>
+<h3 id="Finding-Flags"><a href="#Finding-Flags" class="headerlink" title="Finding Flags"></a>Finding Flags</h3><p>CTRL CV</p>
+<h3 id="Great-Snakes"><a href="#Great-Snakes" class="headerlink" title="Great Snakes"></a>Great Snakes</h3><p>运行</p>
+<h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">b= [<span class="number">99</span>, <span class="number">114</span>, <span class="number">121</span>, <span class="number">112</span>, <span class="number">116</span>, <span class="number">111</span>, <span class="number">123</span>, <span class="number">65</span>, <span class="number">83</span>, <span class="number">67</span>, <span class="number">73</span>, <span class="number">73</span>, <span class="number">95</span>, <span class="number">112</span>, <span class="number">114</span>, <span class="number">49</span>, <span class="number">110</span>, <span class="number">116</span>, <span class="number">52</span>, <span class="number">98</span>, <span class="number">108</span>, <span class="number">51</span>, <span class="number">125</span>]</span><br><span class="line">c= [<span class="built_in">chr</span>(d) <span class="keyword">for</span> d <span class="keyword">in</span> b]</span><br><span class="line">a= <span class="string">&#x27;&#x27;</span>.join(c)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment">#得出结果</span></span><br><span class="line">f=[<span class="built_in">ord</span>(d) <span class="keyword">for</span> d <span class="keyword">in</span> a]</span><br><span class="line"><span class="built_in">print</span>(f)</span><br><span class="line"><span class="comment">#反函数运用</span></span><br></pre></td></tr></table></figure>
+<h3 id="Hex"><a href="#Hex" class="headerlink" title="Hex"></a>Hex</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">&#x27;63727970746f7b596f755f77696c6c5f62655f776f726b696e675f776974685f6865785f737472696e67735f615f6c6f747d&#x27;</span></span><br><span class="line">b = <span class="built_in">bytes</span>.fromhex(a)</span><br><span class="line"><span class="built_in">print</span> (b)</span><br><span class="line"><span class="comment">#得出结果</span></span><br><span class="line">c = <span class="built_in">bytes</span>.<span class="built_in">hex</span>(b)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"><span class="comment">#反函数</span></span><br></pre></td></tr></table></figure>
+<h3 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h3><p>这题居然是编码。。。。好震撼</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">a = <span class="string">&#x27;72bca9b68fc16ac7beeb8f849dca1d8a783e8acf9679bf9269f7bf&#x27;</span></span><br><span class="line">b = <span class="built_in">bytes</span>.fromhex(a)</span><br><span class="line"><span class="built_in">print</span> (b)</span><br><span class="line">c = base64.b64encode(b)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br></pre></td></tr></table></figure>
+<h3 id="Bytes-and-Big-Integers"><a href="#Bytes-and-Big-Integers" class="headerlink" title="Bytes and Big Integers"></a>Bytes and Big Integers</h3><p>我之前装过PyCryptodome，结果差点不知道放在哪里了。。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> bytes_to_long</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"></span><br><span class="line">a = <span class="number">11515195063862318899931685488813747395775516287289682636499965282714637259206269</span></span><br><span class="line"></span><br><span class="line">b = long_to_bytes(a)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
+<h3 id="XOR-Starter0"><a href="#XOR-Starter0" class="headerlink" title="XOR Starter0"></a>XOR Starter0</h3><p>看不懂啊。。。怎么连翻译都看不懂😰。。救救文盲。。救救文盲。。。。。</p>
+<p>我捋捋。。。首先。。把字符串每个字符转换成ASCII。。<br>然后逐个和给定数值异或。。？</p>
+<p>我捋不明白啊能说中文吗我是文盲啊SOS。。文盲也要读书，文盲也有梦想。。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">&#x27;label&#x27;</span></span><br><span class="line">b = <span class="number">13</span></span><br><span class="line">c = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    c += <span class="built_in">chr</span>(<span class="built_in">ord</span>(i) ^ b)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(c)</span><br></pre></td></tr></table></figure>
+<p>文盲做出来了。。文盲真不错。。</p>
+<p>好啦接下来的题都是大于十分的。。让我研究一下访问限制。。明天再来。。</p>
+]]></content>
+      <categories>
+        <category>做题记录</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROIS冬令营第一周Write_Up</title>
+    <url>/2023/01/14/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8Write-Up/</url>
+    <content><![CDATA[<p>ROIS冬令营第一周Write Up</p>
+<span id="more"></span>
+<p>废话很多。。</p>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Week1-HTTPtest"><a href="#Week1-HTTPtest" class="headerlink" title="[Week1]HTTPtest"></a>[Week1]HTTPtest</h3><ol>
+<li>这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！</li>
+<li>Response里面可以看到：flag: I can only give you flag with the browser of <code>ROIS_browser</code></li>
+<li>由题意得，把Request的User-Agent改改</li>
+</ol>
+<h3 id="Week1-ViewSource"><a href="#Week1-ViewSource" class="headerlink" title="[Week1]ViewSource"></a>[Week1]ViewSource</h3><p>view-source是一种协议，可以查看网页源代码</p>
+<ol>
+<li>在浏览器地址栏前面加上view-source:<br><del>btw其实我是上一题刚做完顺手在bp抓的</del></li>
+<li>可以从源代码看出来，它大概的意思是它用一串函数复合表达了my_flag，但是没有明确打出来它完整的样子</li>
+<li>在&lt; script&gt;里面&lt; &#x2F;script&gt;给它加个JavaScript的输出函数alert()<br><del>alert(my_flag)</del></li>
+<li>🤗🤗🤗🤗</li>
+</ol>
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="Week1-0-amp-1"><a href="#Week1-0-amp-1" class="headerlink" title="[Week1] 0&amp;1"></a>[Week1] 0&amp;1</h3><p>因为没学过python，所以不知道有没有简单的方式，我是最基础的思路</p>
+<ol>
+<li><p>首先，先把二进制八位八位的分开，每八个转一次十进制再转成相应的ASCII码</p>
+</li>
+<li><p>显然易得，出来的是十六进制，hex解一下</p>
+</li>
+<li><p>然后可以看出来这一层是base64加密，再解一下</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">   <span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">bin</span> = <span class="string">&#x27;00110101001101010011011001100010001100110011100100110100011000010011010100110101001100110011001100110111001101000011011000111001001101010011100100110101001110000011010001100101001101100110001100110100011001010011011001100001001101010011001000110110001101100011011000110001001101000011011100110101001101100011001100110100001101010011100000110011001100100011010001100001001101110011000000110110001100100011011001100100001101000011011000110111001110010011011000110101001101010011100000110011001100000011001101100100&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bins = [<span class="built_in">bin</span>[i:i+<span class="number">8</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(<span class="built_in">bin</span>), <span class="number">8</span>)]</span><br><span class="line"><span class="comment"># 将字符串每八位分割</span></span><br><span class="line"></span><br><span class="line">decs = [<span class="built_in">int</span>(b, <span class="number">2</span>) <span class="keyword">for</span> b <span class="keyword">in</span> bins]</span><br><span class="line"><span class="comment"># 将每八位二进制转换为十进制</span></span><br><span class="line"></span><br><span class="line">ascs = [<span class="built_in">chr</span>(d) <span class="keyword">for</span> d <span class="keyword">in</span> decs]</span><br><span class="line"><span class="comment"># 将每个十进制数字转换为相应的ASCII码</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span>=<span class="string">&#x27;&#x27;</span>.join(ascs)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="comment"># 输出第一次解密结果</span></span><br><span class="line"></span><br><span class="line">hex_str = binascii.unhexlify(<span class="built_in">str</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># hex解密</span></span><br><span class="line"><span class="built_in">print</span>(hex_str)</span><br><span class="line"><span class="comment"># 输出第二次解密结果</span></span><br><span class="line"></span><br><span class="line">b64_str = base64.b64decode(hex_str)</span><br><span class="line"><span class="comment"># base64解密</span></span><br><span class="line"><span class="built_in">print</span>(b64_str)</span><br><span class="line"><span class="comment"># 输出最后结果</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>btw，不写代码的方式：<br>二进制转ASCII<br><a href="https://www.lddgo.net/convert/string-binary">https://www.lddgo.net/convert/string-binary</a><br>hex解码<br><a href="http://tool.geekapp.cn/hex.php">http://tool.geekapp.cn/hex.php</a><br>base64解码<br><a href="https://base64.us/">https://base64.us/</a></p>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="Two-Dimensional"><a href="#Two-Dimensional" class="headerlink" title="Two Dimensional"></a>Two Dimensional</h3><ol>
+<li>一团乱码，看起来像base64，随便找个网站解一下字符串，看到前边开头是PNG。。害这玩意我可太熟了。。我不会说有段时间我得了看到PNG文件就往Winhex里面导的习惯。。<br>2.啊废话太多了，反正就是找个base64转十六进制的网站<br>belike：<br><a href="https://tool.hiofd.com/base64-convert-hex-online/">https://tool.hiofd.com/base64-convert-hex-online/</a></li>
+<li>把结果导到winhex里面保存为.png后缀的文件</li>
+<li>打开一看是个缺了一角的二维码，补齐就好了<br><del>我不会说我ps没使明白最后是开画板画上那个角的。。</del></li>
+<li>找个扫二维码的网站<br>belike：<br><a href="https://cli.im/deqr">https://cli.im/deqr</a><br>其实我有QR_Research。。但是我从来不用，都是网上现找的网站。。</li>
+</ol>
+<h3 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h3><ol>
+<li>解压zip（啊这是废话</li>
+<li>由题意可知这是lsb隐写（啊这也是废话</li>
+<li>用Stegsolve打开，Data Extract打开，勾选Red0&#x2F;Green0&#x2F;Blue0还有LSB First</li>
+<li>Save Bin保存为txt文件</li>
+<li>啊神奇的事情发生了</li>
+</ol>
+<h3 id="misc套娃"><a href="#misc套娃" class="headerlink" title="misc套娃"></a>misc套娃</h3><p>base16转字符串<br><a href="http://www.hiencode.com/base64.html">http://www.hiencode.com/base64.html</a><br>base64转字符串<br><a href="https://c.runoob.com/front-end/693/">https://c.runoob.com/front-end/693/</a><br><a href="https://base64.us/">https://base64.us/</a><br>八进制（octal）转字符串<br><a href="https://photo333.com/octal-to-text-zh.php">https://photo333.com/octal-to-text-zh.php</a><br>hex转字符串<br><a href="https://www.lddgo.net/string/hex">https://www.lddgo.net/string/hex</a><br>凯撒密码（Caesar）解密<br><del>本题位移是10</del><br><a href="https://www.qqxiuzi.cn/bianma/kaisamima.php">https://www.qqxiuzi.cn/bianma/kaisamima.php</a><br>Base32转字符串<br><del>我不会说第一个链接可以用但是这是事实</del><br>摩斯密码（morse）<br><a href="https://www.lddgo.net/encrypt/morse">https://www.lddgo.net/encrypt/morse</a><br>Base32转字符串<br><del>又是一个base32</del><br>10进制ASCII转字符串<br><a href="https://www.asciim.cn/m/tools/convert_ascii_to_string.html">https://www.asciim.cn/m/tools/convert_ascii_to_string.html</a><br>阿特巴希密码（atbash）<br><a href="http://www.metools.info/code/atbash209.html">http://www.metools.info/code/atbash209.html</a><br>字母大小写转换<br><a href="https://www.iamwawa.cn/daxiaoxie.html">https://www.iamwawa.cn/daxiaoxie.html</a></p>
+<h3 id="鼠鼠的假期"><a href="#鼠鼠的假期" class="headerlink" title="鼠鼠的假期"></a>鼠鼠的假期</h3><ol>
+<li>zip文件打开</li>
+<li>把里面的图片拉去百度识图</li>
+<li>出来一个北京BAMN coffee的和一个厦门HOUSE OF RA</li>
+<li>搜索上面这两个的地址</li>
+<li>提交试一试</li>
+<li>哇！太神奇了</li>
+</ol>
+]]></content>
+      <categories>
+        <category>做题记录</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>crypto</tag>
+        <tag>web</tag>
+        <tag>misc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ROIS2023冬令营第一周学习记录</title>
     <url>/2023/01/14/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>🐏了使人大脑晕眩。。若有错误还请见谅。。（此处意念上表情包：没读过书很抱歉.jpg<br>正在研究给blog加留言区的方法。。</p>
@@ -15,7 +105,7 @@
 <p>1.11-1.12安装了VMware和Ubuntu，本来想要等博客搭建好了就记录安装过程出现中的小问题，万万没想到博客搭建了两天😅。。现在不太记得安装细节了，有缘再补吧</p>
 <p>btw，为了写这篇blog还学了但MarkDown语法，虽然md走简洁风语法不多，然而本人本就不富裕的脑容量还是雪上加霜了orz。</p>
 <p>再次btw，虽然是学习日记但是跟个人吐槽区别不大啦其实🤣都不知道在写什么</p>
-<h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><h2 id="前端三件套HTML-x2F-CSS-x2F-JavaScript关系："><a href="#前端三件套HTML-x2F-CSS-x2F-JavaScript关系：" class="headerlink" title="前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系："></a>前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系：</h2><p>（引用自：<a href="https://zhuanlan.zhihu.com/p/86270957">https://zhuanlan.zhihu.com/p/86270957</a>）</p>
+<h1 id="2023-x2F-01-x2F-14"><a href="#2023-x2F-01-x2F-14" class="headerlink" title="2023&#x2F;01&#x2F;14"></a>2023&#x2F;01&#x2F;14</h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="前端三件套HTML-x2F-CSS-x2F-JavaScript关系："><a href="#前端三件套HTML-x2F-CSS-x2F-JavaScript关系：" class="headerlink" title="前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系："></a>前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系：</h3><p>（引用自：<a href="https://zhuanlan.zhihu.com/p/86270957">https://zhuanlan.zhihu.com/p/86270957</a>）</p>
 <blockquote>
 <p><strong>HTML是用来标记内容的（重在内容组织上）</strong></p>
 </blockquote>
@@ -38,9 +128,9 @@
 <p>JavaScript是一种脚本语言，即可以运行在客户端也能运行在服务器端。JavaScript的解释器就是JS引擎，JS引擎是浏览器的一部分。而JavaScript主要是用来扩展文档交互能力的，使静态的HTML具有一定的交互行为（比如表单提交、动画特效、弹窗等）。</p>
 </blockquote>
 <p>看到有人说：HTML是骨架，CSS是皮肤，JS是肌肉。确实很形象。。</p>
-<h2 id="HTML-x2F-CSS-x2F-JavaScript学习"><a href="#HTML-x2F-CSS-x2F-JavaScript学习" class="headerlink" title="HTML&#x2F;CSS&#x2F;JavaScript学习"></a>HTML&#x2F;CSS&#x2F;JavaScript学习</h2><p>啊发现HTML的排版格式在MarkDown里也可以用。。<br>belike：<br><a href="https://linturrr.github.io/" style="text-decoration:none"><br>首页<br></a><br>↑这个链接就是用HTML的&lt; a &gt;链接语法写的（应该能显示出来吧</p>
+<h3 id="HTML-x2F-CSS-x2F-JavaScript学习"><a href="#HTML-x2F-CSS-x2F-JavaScript学习" class="headerlink" title="HTML&#x2F;CSS&#x2F;JavaScript学习"></a>HTML&#x2F;CSS&#x2F;JavaScript学习</h3><p>啊发现HTML的排版格式在MarkDown里也可以用。。<br>belike：<br><a href="https://linturrr.github.io/" style="text-decoration:none"><br>首页<br></a><br>↑这个链接就是用HTML的&lt; a &gt;链接语法写的（应该能显示出来吧</p>
 <p>看完HTML部分，我有个严峻的问题。。怎么做到记住怎么多用法的，用一次查一次参考手册吗</p>
-<h2 id="编写一个主页！"><a href="#编写一个主页！" class="headerlink" title="编写一个主页！"></a>编写一个主页！</h2><p>熟话说好记性不如烂笔头，再多的知识不如自己用一用</p>
+<h3 id="编写一个主页！"><a href="#编写一个主页！" class="headerlink" title="编写一个主页！"></a>编写一个主页！</h3><p>熟话说好记性不如烂笔头，再多的知识不如自己用一用</p>
 <p>本来打算下载vscode的，然而很不幸本人刚好有Sublime Text3，能凑合着用就不下了</p>
 <ol>
 <li>首先CTRL N创建一个新文件，然后CTRL S命名并且以html后缀保存</li>
@@ -57,6 +147,7 @@
     &lt;meta charset=&quot;UTF-8&quot;&gt;
 &lt;!--这玩意是控制网页的编码格式 utf-8 国际性编码--&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style2.css&quot;&gt;
 &lt;!--这里要来个css修饰一下主页！！！用link--&gt;
     &lt;title&gt;一个赛博垃圾&lt;/title&gt;
 &lt;/head&gt;
@@ -134,7 +225,9 @@
 </code></pre>
 <p>真的很简陋。。。。。但是有努力过的。。</p>
 <p>放一下我做的两个文件。。感兴趣的可以去下载来看看（真的会有人想看垃圾吗。。<br><a href="https://github.com/LinTurrr/A_Useless_Thing.git">一个垃圾捏。。</a></p>
-<p>今天先写到这里。。明天再见。。</p>
+<h1 id="2023-x2F-01-x2F-15"><a href="#2023-x2F-01-x2F-15" class="headerlink" title="2023&#x2F;01&#x2F;15"></a>2023&#x2F;01&#x2F;15</h1><p>早上起来一看主队又在梦游了，苦中作乐安慰自己起码没有和隔壁一起惨剧🙏<br>联赛有机会？无所谓，我会出手👊👊👊</p>
+<p>今天写完了wp，打算去做CryptoHack的题，打开一看页面分外熟悉，才想起来我曾经三进三出CryptoHack。。<br><del>原因是因为看不懂英语</del><br><del>救救文盲！！！</del></p>
+<p>wp写隔壁了。。</p>
 ]]></content>
       <categories>
         <category>学习日记</category>
