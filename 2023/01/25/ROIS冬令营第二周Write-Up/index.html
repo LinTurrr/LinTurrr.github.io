@@ -28,11 +28,11 @@
 <meta property="og:description" content="ROIS冬令营第二周Write Up">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-25T03:00:48.249Z">
-<meta property="article:modified_time" content="2023-01-25T06:17:30.185Z">
+<meta property="article:modified_time" content="2023-01-25T14:26:53.477Z">
 <meta property="article:author" content="林涂">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="web">
 <meta property="article:tag" content="misc">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2023/01/25/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8Write-Up/">
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-01-25 11:00:48 / 修改时间：14:17:30" itemprop="dateCreated datePublished" datetime="2023-01-25T11:00:48+08:00">2023-01-25</time>
+              <time title="创建时间：2023-01-25 11:00:48 / 修改时间：22:26:53" itemprop="dateCreated datePublished" datetime="2023-01-25T11:00:48+08:00">2023-01-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -337,7 +337,8 @@
 <blockquote>
 <p><strong>压缩源文件目录结束标志：</strong><br>50 4B 05 06 目录结束标记 </p>
 </blockquote>
-<h3 id="Week2-guess"><a href="#Week2-guess" class="headerlink" title="[Week2]guess"></a>[Week2]guess</h3><p>我觉得根据题意显然是爆破，但是。。。。我爆破了三天，用了各种组合（belike：6位内所有字符；8位内大小写字母，7位内大小写字母加数字等等等等等等等）出来了三个密码，输进去打开文件全是乱码，第四天电脑趁我挂机偷偷更新，重启打开都不知道爆破到哪里去了，遂作罢。</p>
+<h3 id="Week2-guess"><a href="#Week2-guess" class="headerlink" title="[Week2]guess"></a>[Week2]guess</h3><p>我觉得根据题意显然是爆破，但是。。。。我爆破了三天，用了各种组合（belike：6位内所有字符；8位内大小写字母，7位内大小写字母加数字，10位数字等等等等等等等）出来了三个密码，输进去打开文件全是乱码，第四天电脑趁我挂机偷偷更新，重启打开都不知道爆破到哪里去了，遂作罢。</p>
+<p>（2023年1月25日22点23分：吗吖怎么真靠猜啊。。第一排字母。。确实是很简单。。理是这个理没错。。但是。。但是。。<br>（2023年1月25日22点26分：说起来我怎么没想到用十位小写字母爆破一下，没准爆个两天也爆出来了呢（在口嗨</p>
 <h3 id="Week2-透视"><a href="#Week2-透视" class="headerlink" title="[Week2]透视?"></a>[Week2]透视?</h3><p>打开压缩包发现5个TXT文件大小分别为16，15，18，16，17字节刚好满足crc32暴破的条件（小于等于18）。<br>遂采用crc32爆破</p>
 <p>很不巧本人还不会用python写脚本爆破，上网找了个CRC32爆破工具<br><a target="_blank" rel="noopener" href="https://github.com/theonlypwner/crc32">https://github.com/theonlypwner/crc32</a><br>使用方法：<code>python crc32.py reverse 0x（crc32密文）</code><br>这个工具可以解4字节和6字节的字符串，然而不幸的事情又发生了，这玩意儿里面还有一个3字节和一个5字节，网上找了个别人的代码<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/WFC1006848997/article/details/110295708">CRC32碰撞脚本（1-5字节）</a><br>5字节有点慢，不过能凑合着用。</p>
 <p>最后一个个解出来拼在一起，即为flag。</p>
@@ -351,8 +352,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
-              <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
               <a href="/tags/misc/" rel="tag"><i class="fa fa-tag"></i> misc</a>
+              <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
           </div>
 
         
