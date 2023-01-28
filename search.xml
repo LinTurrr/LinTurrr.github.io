@@ -1,25 +1,318 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>简介</title>
-    <url>/2023/01/13/%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<p><b>欢迎！</b><br>这里是林涂！很高兴认识你！<br>本人间歇性发疯中。。。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ROIS2023冬令营第二周学习记录</title>
-    <url>/2023/01/27/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>学了个寂寞😅</p>
+    <title>ROIS2023冬令营第一周学习记录</title>
+    <url>/2023/01/14/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>🐏了使人大脑晕眩。。若有错误还请见谅。。（此处意念上表情包：没读过书很抱歉.jpg<br>正在研究给blog加留言区的方法（已完成）<br>正在研究给blog加访问限制的方法（已完成）</p>
 <span id="more"></span>
-<p>CryptoHack更了一点点<br><a href="https://linturrr.github.io/2023/01/15/Introduction-to-CryptoHack%E9%83%A8%E5%88%86Write-Up/">CryptoHack部分wp</a><br>这次的题用到的gmpy2库里的函数比较多，放一下搜到的<br><a href="https://blog.csdn.net/weixin_43790779/article/details/108473984">gmpy2常见函数使用</a></p>
-<p>学习记录还在写😅跟没学似的有时候觉得自己😅真服了</p>
+
+<p>1.11-1.12安装了VMware和Ubuntu，本来想要等博客搭建好了就记录安装过程出现中的小问题，万万没想到博客搭建了两天😅。。现在不太记得安装细节了，有缘再补吧</p>
+<p>btw，为了写这篇blog还学了但MarkDown语法，虽然md走简洁风语法不多，然而本人本就不富裕的脑容量还是雪上加霜了orz。</p>
+<p>再次btw，虽然是学习日记但是跟个人吐槽区别不大啦其实🤣都不知道在写什么</p>
+<h1 id="2023-x2F-01-x2F-14"><a href="#2023-x2F-01-x2F-14" class="headerlink" title="2023&#x2F;01&#x2F;14"></a>2023&#x2F;01&#x2F;14</h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="前端三件套HTML-x2F-CSS-x2F-JavaScript关系："><a href="#前端三件套HTML-x2F-CSS-x2F-JavaScript关系：" class="headerlink" title="前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系："></a>前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系：</h3><p>（引用自：<a href="https://zhuanlan.zhihu.com/p/86270957">https://zhuanlan.zhihu.com/p/86270957</a>）</p>
+<blockquote>
+<p><strong>HTML是用来标记内容的（重在内容组织上）</strong></p>
+</blockquote>
+<blockquote>
+<p>HTML是超文本标记语言的简称，它是一种不严谨的、简单的标识性语言。它用各种标签将页面中的元素组织起来，告诉浏览器该如何显示其中的内容。</p>
+</blockquote>
+<blockquote>
+<p>为什么说HTML是不严谨的呢？因为HTML标签即使不闭合，也并不会影响页面内容的组织。</p>
+</blockquote>
+<blockquote>
+<p><strong>CSS是用来修饰内容样式的（重在内容样式美化展示上）</strong></p>
+</blockquote>
+<blockquote>
+<p>CSS是层叠样式表的简称，它用来表现HTML文件样式的，简单说就是负责HTML页面中元素的展现及排版。</p>
+</blockquote>
+<blockquote>
+<p><strong>JavaScript是用来做交互的</strong></p>
+</blockquote>
+<blockquote>
+<p>JavaScript是一种脚本语言，即可以运行在客户端也能运行在服务器端。JavaScript的解释器就是JS引擎，JS引擎是浏览器的一部分。而JavaScript主要是用来扩展文档交互能力的，使静态的HTML具有一定的交互行为（比如表单提交、动画特效、弹窗等）。</p>
+</blockquote>
+<p>看到有人说：HTML是骨架，CSS是皮肤，JS是肌肉。确实很形象。。</p>
+<h3 id="HTML-x2F-CSS-x2F-JavaScript学习"><a href="#HTML-x2F-CSS-x2F-JavaScript学习" class="headerlink" title="HTML&#x2F;CSS&#x2F;JavaScript学习"></a>HTML&#x2F;CSS&#x2F;JavaScript学习</h3><p>啊发现HTML的排版格式在MarkDown里也可以用。。<br>belike：<br><a href="https://linturrr.github.io/" style="text-decoration:none"><br>首页<br></a><br>↑这个链接就是用HTML的&lt; a &gt;链接语法写的（应该能显示出来吧</p>
+<p>看完HTML部分，我有个严峻的问题。。怎么做到记住怎么多用法的，用一次查一次参考手册吗</p>
+<h3 id="编写一个主页！"><a href="#编写一个主页！" class="headerlink" title="编写一个主页！"></a>编写一个主页！</h3><p>熟话说好记性不如烂笔头，再多的知识不如自己用一用</p>
+<p>本来打算下载vscode的，然而很不幸本人刚好有Sublime Text3，能凑合着用就不下了</p>
+<ol>
+<li>首先CTRL N创建一个新文件，然后CTRL S命名并且以html后缀保存</li>
+<li>输入&lt;h 然后选html的那个，Sublime就会自动把html的框架补全</li>
+<li>然后在tltle里填上标题，再补充一点花里胡哨的，一个全新的赛博垃圾就铛铛出炉！它跟别的垃圾不一样。。它是本人亲手创造的垃圾。。是垃圾中的垃圾。。。。。。。。。。。。。</li>
+<li>做了一个按钮配了一点阴影和鼠标上去会出字的效果。。</li>
+<li>过程中遇到问题：我的背景是渐变色45deg，结果我渐变色铺不满。。后来换成90deg铺满了。。</li>
+</ol>
+<p>放一下代码吧。。。好简陋emmmmmm</p>
+<p><strong>HTML</strong></p>
+<pre><code>    &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;!--这玩意是控制网页的编码格式 utf-8 国际性编码--&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style2.css&quot;&gt;
+&lt;!--这里要来个css修饰一下主页！！！用link--&gt;
+    &lt;title&gt;一个赛博垃圾&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;header&quot;&gt;
+        &lt;font size=&quot;7&quot;&gt;Welcome！&lt;/font&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;passage&quot;&gt;
+        &lt;font size=&quot;5&quot;&gt;这里是林涂！&lt;/font&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;a href=&quot;https://linturrr.github.io/&quot; class=&quot;button&quot;&gt;Blog&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ff&quot;&gt;
+        &lt;p&gt;拳打脚踢！飞来飞去！&lt;/p&gt;
+        &lt;p&gt;蹦蹦跳跳！蹦蹦跳跳！&lt;/p&gt;
+        &lt;p&gt;飞翔！自由飞翔！&lt;/p&gt;
+        &lt;p&gt;飞累了！&lt;/p&gt;
+        &lt;p&gt;吃饭！躺下！&lt;/p&gt;
+        &lt;p&gt;休息好了！&lt;/p&gt;
+        &lt;p&gt;继续发疯！&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>CSS</strong></p>
+<pre><code>    body&#123;
+    text-align: center;/*居中*/
+    background: linear-gradient(90deg,#9370D8,#FFC0CB,#E0FFFF,#7FFFD4);/*来点渐变色*/
+&#125;
+
+.header&#123;
+        padding-bottom: 75px;/*底部填充*/
+        padding-top: 50px;/*顶部填充*/
+    &#125;
+.passage&#123;
+        padding-bottom: 20px;
+        padding-top: 25px;
+    &#125;
+.button &#123;
+    background: linear-gradient(45deg,#FFC0CB,#B0E0E6,	#F5F5DC);
+    color: teal;
+    border: none;
+    padding: 3px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);/*阴影*/
+&#125;
+.button &#123;
+    transition: all 0.3s ease;
+&#125;
+
+.button:hover &#123;
+    transform: rotate(360deg);
+&#125;
+.button:hover:after &#123;
+    text-align: center;
+    content: &quot;间歇性发疯！&quot;;
+    position: absolute;
+    top: 50;
+    left: 50;
+    width: 100%;
+    height: 50%;
+    color: black;
+    background:(45deg,#FFC0CB,#B0E0E6,	#F5F5DC);
+&#125;
+.ff&#123;
+    color: maroon;
+&#125;
+</code></pre>
+<p>真的很简陋。。。。。但是有努力过的。。</p>
+<p>放一下我做的两个文件。。感兴趣的可以去下载来看看（真的会有人想看垃圾吗。。<br><a href="https://github.com/LinTurrr/A_Useless_Thing.git">一个垃圾捏。。</a></p>
+<h1 id="2023-x2F-01-x2F-15"><a href="#2023-x2F-01-x2F-15" class="headerlink" title="2023&#x2F;01&#x2F;15"></a>2023&#x2F;01&#x2F;15</h1><p>早上起来一看主队又在梦游了，苦中作乐安慰自己起码没有和隔壁一起惨剧🙏<br>联赛有机会？无所谓，我会出手👊👊👊</p>
+<p>今天写完了wp，打算去做CryptoHack的题，打开一看页面分外熟悉，才想起来我曾经三进三出CryptoHack。。<br><del>原因是因为看不懂英语</del><br><del>救救文盲！！！</del></p>
+<p>wp写隔壁了。。</p>
+<hr>
+<p>研究添加blog评论区ing…</p>
+<ol>
+<li>首先先注册一个LearnCloud账号</li>
+<li>应用&gt;创建应用&gt;开发版，不花钱&gt;设置&gt;安全中心绑定域名&gt;应用凭证记下AppID和AppKey</li>
+<li>打开主题配置文件，找到comments栏目并开启valine（enable: false改成true）。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Valine</span><br><span class="line"># For more information: https://valine.js.org, https://github.com/xCss/Valine</span><br><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appid: # 输入你的 appid</span><br><span class="line">  appkey: # 输入你的 appkey</span><br><span class="line">  notify: true # Mail notifier</span><br><span class="line">  verify: false # Verification code</span><br><span class="line">  placeholder: 输入你的评论\n昵称为必填项目 # Comment box placeholder</span><br><span class="line">  avatar: mm # Gravatar style</span><br><span class="line">  guest_info: nick,mail,link # Custom comment header</span><br><span class="line">  pageSize: 3 # Pagination size</span><br><span class="line">  language:  zh-cn</span><br><span class="line">  visitor: true # Article reading statistic</span><br><span class="line">  comment_count: true # If false, comment count will only be displayed in post page, not in home page</span><br><span class="line">  recordIP: true # Whether to record the commenter IP</span><br><span class="line">  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)</span><br></pre></td></tr></table></figure></li>
+<li><code>$ hexo new page guestbook</code>添加一个新的页面</li>
+<li>进入 source&#x2F;guestbook&#x2F;index.md。加入你想显示的内容，如：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: guestbook</span><br><span class="line">date: 2023-01-15 20:34:53</span><br><span class="line">---</span><br><span class="line"># Welcome！</span><br><span class="line"></span><br><span class="line">&gt; 欢迎在这里留言！</span><br></pre></td></tr></table></figure></li>
+<li>打开主题配置文件，找到menu栏目，添加留言板功能：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: /guestbook/ || fa fa-book</span><br></pre></td></tr></table></figure></li>
+<li>更改 themes&#x2F;next&#x2F;languages 下对应语言的翻译。例如中文的<code>zh-CN.yml</code>文件：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: 留言板</span><br></pre></td></tr></table></figure></li>
+<li><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code></li>
+</ol>
+<h1 id="2023-x2F-01-x2F-17"><a href="#2023-x2F-01-x2F-17" class="headerlink" title="2023&#x2F;01&#x2F;17"></a>2023&#x2F;01&#x2F;17</h1><p>昨天没读书。。就解了[Week1]Aniely。。听说凌晨法甲比赛有乐子下午在乐颠颠补，晚上在看京城大师赛，今早在给我cp写同人。。整天总结：比王宝宝悍跳更依托答辩的是psg的比赛，比psg更依托答辩的是本人的python水平😇</p>
+<h3 id="给博客加密方式"><a href="#给博客加密方式" class="headerlink" title="给博客加密方式"></a>给博客加密方式</h3><p>首先，安装插件<br>npm install hexo-blog-encrypt</p>
+<p>然后再在需要加密的文章信息头处加上<br><code>password: hello</code><br>复杂一点的可以是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">password: 密码</span><br><span class="line">abstract: 摘要捏</span><br><span class="line">message: 密码在这里输捏</span><br><span class="line">wrong_pass_message: 不会吧不会吧不会这都不对吧</span><br></pre></td></tr></table></figure>
+<hr>
+<p>今天去做Introduction to CryptoHack的剩下三题了，wp写隔壁</p>
+<hr>
+<p>在读Modern Cryptanalysis，很不幸本人是个文盲看不懂英文，不过碰巧年前我为了看洋妞同人充了彩云小译的VIP。。虽然翻得很烂但是还是可以凑合用用。。先翻了一部分（目录至第76页），如果有需要的可以来找我要。。。</p>
+<h1 id="2023-x2F-01-x2F-18"><a href="#2023-x2F-01-x2F-18" class="headerlink" title="2023&#x2F;01&#x2F;18"></a>2023&#x2F;01&#x2F;18</h1><p>xss，没学过，不会做，找点题来练练手<br>闯关网址<a href="http://test.xss.tv/">http://test.xss.tv</a><br>wp写隔壁了</p>
+<blockquote>
+<p>在测试过程中，有哪些东西是我们可以利用来猜测与判断的：</p>
+</blockquote>
+<blockquote>
+<p>网页页面的变化；<br>审查网页元素；<br>查看网页源码；<br>如果是白盒测试，还可以进行代码审计。</p>
+</blockquote>
+<blockquote>
+<p>一个好用的xss测试代码：&lt;script “ ‘Oonn&gt;，方便我们测试网页后台对输入语句的过滤规则。利用该语句输入后，审查源码，猜测是否过滤以及过滤规则是什么。</p>
+</blockquote>
+<p>抄了个别人的解题思路，测试语句<code>&lt;script &quot; &#39;Oonn&gt;</code></p>
+<p>一、通过测试语句执行情况、网页源码等，进行如下判断：</p>
+<ol>
+<li>判断大小于号是否过滤与转义；</li>
+<li>判断单双引号是否过滤与转义；</li>
+<li>判断关键字是否过滤与转义；</li>
+<li>判断大小写是否转化；</li>
+<li>判断语句闭合方式。</li>
+</ol>
+<p>二、额外地，可以分析是否存在其他注入点。<br>三、根据判断结果，灵活构造语句与利用绕过规则。</p>
+<p>明天凌晨要看球，早上要大扫除，明天下午见！</p>
 ]]></content>
       <categories>
         <category>学习日记</category>
       </categories>
       <tags>
         <tag>CTF</tag>
+        <tag>web</tag>
         <tag>crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xss学习做题wp</title>
+    <url>/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/</url>
+    <content><![CDATA[<p>xss，没学过，不会做，找点题来练练手<br>闯关网址<a href="http://test.xss.tv/">http://test.xss.tv</a></p>
+<span id="more"></span>
+<p>上网看到有个测试神句<code>&lt;script &quot; &#39;Oonn&gt;</code>但是我还不怎么会用</p>
+<h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>经典代码<br><code>&lt;script&gt;alert()&lt;/script&gt;</code></p>
+<h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>用用那个什么<code>&lt;script &quot; &#39;Oonn&gt;</code>神句看看<br>搜索框里只出现了<code>&lt;script </code>猜测可以用双引号绕过<br>闭合绕过<br><code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;</code></p>
+<h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code><br>搜索框里只出现了<code>&lt;script &quot; </code>猜测可以用单引号绕过<br><code>&#39;&gt; &lt;script&gt;alert()&lt;/script&gt; &lt;&#39;</code><br>左边一个&gt;闭合，右边一个&lt;和末端的&gt;闭合<br>什么单引号也不行？！右键源代码一探究竟<br>看到<code>value=&#39;&amp;lt;script &amp;quot; &#39;Oonn&amp;gt;&#39;</code><br>OMG原来大于小于被转义了！好悲伤的一道题<br>浅浅网上随便找个不用大于小于的<br><code>&#39;onmouseover=&#39;alert()</code>然后点击搜索</p>
+<h3 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里只剩<code>script</code><br>源代码<code>value=&quot;script &quot; &#39;Oonn&quot;</code><br>卡在双引号，大于小于不能用因为被过滤了<br>那不和上一题一样只是单引变双引嘛<br><code>&quot;onmouseover=&quot;alert()</code></p>
+<h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里变成<code>&lt;scr_ipt </code><br>源代码<code>value=&quot;&lt;scr_ipt &quot; &#39;oo_nn&gt;&quot;</code>介个似协模意思捏。。<br>首先哈，大于小于没被转义也没被过滤，然后哈，应该是双引号闭合<br>输<code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;&quot;</code>源代码是<code>value=&quot;&quot;&gt;&lt;scr_ipt&gt;alert()&lt;/script&gt;&lt;&quot;&quot;</code><br>输<code>&quot;onmouseover=&quot;alert()</code>源代码是<code>value=&quot;&quot;o_nmouseover=&quot;alert()&quot;</code><br>但是试了<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>可以发现是可行的<br>构建，先双引号<code>&quot;</code>然后<code>&gt;</code>和左边闭合，然后<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>，<code>&lt;</code>和右边闭合<br><code>&quot;&gt;&lt;a href=&quot;javascript:alert()&quot;&gt;&lt;</code>铛铛出炉</p>
+<p>先做到这，明天继续</p>
+]]></content>
+      <categories>
+        <category>做题记录</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROIS2023冬令营第二周学习记录</title>
+    <url>/2023/01/27/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>学了个寂寞😅</p>
+<span id="more"></span>
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><p>CryptoHack更了一点点<br><a href="https://linturrr.github.io/2023/01/15/Introduction-to-CryptoHack%E9%83%A8%E5%88%86Write-Up/">CryptoHack部分wp</a><br>这次的题用到的gmpy2库里的函数比较多，放一下搜到的<br><a href="https://blog.csdn.net/weixin_43790779/article/details/108473984">gmpy2常见函数使用</a><br>把《图解密码技术》读书笔记搬了一点上来。。。</p>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><p>学习记录还在写😅跟没学似的有时候觉得自己😅真服了</p>
+]]></content>
+      <categories>
+        <category>学习日记</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>web</tag>
+        <tag>crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROIS冬令营第一周WriteUp</title>
+    <url>/2023/01/14/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8Write-Up/</url>
+    <content><![CDATA[<p>（1.16有更新）ROIS冬令营第一周Write Up</p>
+<span id="more"></span>
+<p>废话很多。。</p>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Week1-HTTPtest"><a href="#Week1-HTTPtest" class="headerlink" title="[Week1]HTTPtest"></a>[Week1]HTTPtest</h3><ol>
+<li>这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！</li>
+<li>Response里面可以看到：flag: I can only give you flag with the browser of <code>ROIS_browser</code></li>
+<li>由题意得，把Request的User-Agent改改</li>
+</ol>
+<h3 id="Week1-ViewSource"><a href="#Week1-ViewSource" class="headerlink" title="[Week1]ViewSource"></a>[Week1]ViewSource</h3><p>view-source是一种协议，可以查看网页源代码</p>
+<ol>
+<li>在浏览器地址栏前面加上view-source:<br><del>btw其实我是上一题刚做完顺手在bp抓的</del></li>
+<li>可以从源代码看出来，它大概的意思是它用一串函数复合表达了my_flag，但是没有明确打出来它完整的样子</li>
+<li>在&lt; script&gt;里面&lt; &#x2F;script&gt;给它加个JavaScript的输出函数alert()<br><del>alert(my_flag)</del></li>
+<li>🤗🤗🤗🤗</li>
+</ol>
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="Week1-0-amp-1"><a href="#Week1-0-amp-1" class="headerlink" title="[Week1] 0&amp;1"></a>[Week1] 0&amp;1</h3><p>因为没学过python，所以不知道有没有简单的方式，我是最基础的思路</p>
+<ol>
+<li><p>首先，先把二进制八位八位的分开，每八个转一次十进制再转成相应的ASCII码</p>
+</li>
+<li><p>显然易得，出来的是十六进制，hex解一下</p>
+</li>
+<li><p>然后可以看出来这一层是base64加密，再解一下</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">   <span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">bin</span> = <span class="string">&#x27;00110101001101010011011001100010001100110011100100110100011000010011010100110101001100110011001100110111001101000011011000111001001101010011100100110101001110000011010001100101001101100110001100110100011001010011011001100001001101010011001000110110001101100011011000110001001101000011011100110101001101100011001100110100001101010011100000110011001100100011010001100001001101110011000000110110001100100011011001100100001101000011011000110111001110010011011000110101001101010011100000110011001100000011001101100100&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bins = [<span class="built_in">bin</span>[i:i+<span class="number">8</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(<span class="built_in">bin</span>), <span class="number">8</span>)]</span><br><span class="line"><span class="comment"># 将字符串每八位分割</span></span><br><span class="line"></span><br><span class="line">decs = [<span class="built_in">int</span>(b, <span class="number">2</span>) <span class="keyword">for</span> b <span class="keyword">in</span> bins]</span><br><span class="line"><span class="comment"># 将每八位二进制转换为十进制</span></span><br><span class="line"></span><br><span class="line">ascs = [<span class="built_in">chr</span>(d) <span class="keyword">for</span> d <span class="keyword">in</span> decs]</span><br><span class="line"><span class="comment"># 将每个十进制数字转换为相应的ASCII码</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span>=<span class="string">&#x27;&#x27;</span>.join(ascs)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="comment"># 输出第一次解密结果</span></span><br><span class="line"></span><br><span class="line">hex_str = binascii.unhexlify(<span class="built_in">str</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># hex解密</span></span><br><span class="line"><span class="built_in">print</span>(hex_str)</span><br><span class="line"><span class="comment"># 输出第二次解密结果</span></span><br><span class="line"></span><br><span class="line">b64_str = base64.b64decode(hex_str)</span><br><span class="line"><span class="comment"># base64解密</span></span><br><span class="line"><span class="built_in">print</span>(b64_str)</span><br><span class="line"><span class="comment"># 输出最后结果</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>btw，不写代码的方式：<br>二进制转ASCII<br><a href="https://www.lddgo.net/convert/string-binary">https://www.lddgo.net/convert/string-binary</a><br>hex解码<br><a href="http://tool.geekapp.cn/hex.php">http://tool.geekapp.cn/hex.php</a><br>base64解码<br><a href="https://base64.us/">https://base64.us/</a></p>
+<h3 id="Week1-Aniely"><a href="#Week1-Aniely" class="headerlink" title="[Week1]Aniely"></a>[Week1]Aniely</h3><p>这题我捋了一下题干，感觉应该是</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> struct <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#from secret import passphrase, flag</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#我完全没学过的知识告诉我。。呃啊完全看不懂啊救救孩子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#这段应该是将passphrase加密</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aniely_stream</span>(<span class="params">passphrase</span>):</span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">mixer</span>(<span class="params">u, v</span>):</span><br><span class="line">		<span class="keyword">return</span> ((u &lt;&lt; v) &amp; <span class="number">0xffffffff</span>) | u &gt;&gt; (<span class="number">32</span> - v)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">forge</span>(<span class="params">w, a, b, c, d</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">			w[a] = (w[a] + w[b]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[d] = mixer(w[a] ^ w[d], <span class="number">16</span> // (i + <span class="number">1</span>))</span><br><span class="line">			w[c] = (w[c] + w[d]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[b] = mixer(w[b] ^ w[c], (<span class="number">12</span> + <span class="number">2</span>*i) // (i + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">	bring = [<span class="number">0</span>] * <span class="number">16</span></span><br><span class="line">	bring[:<span class="number">4</span>] = [<span class="number">0x61707865</span>, <span class="number">0x3320646e</span>, <span class="number">0x79622d32</span>, <span class="number">0x6b206574</span>]</span><br><span class="line">	bring[<span class="number">4</span>:<span class="number">12</span>] = unpack(<span class="string">&#x27;&lt;8L&#x27;</span>, passphrase)</span><br><span class="line">	bring[<span class="number">12</span>] = bring[<span class="number">13</span>] = <span class="number">0x0</span></span><br><span class="line">	bring[<span class="number">14</span>:] = [<span class="number">0</span>] * <span class="number">2</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		w = <span class="built_in">list</span>(bring)</span><br><span class="line">		<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x4</span>, <span class="number">0x8</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x5</span>, <span class="number">0x9</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x6</span>, <span class="number">0xa</span>, <span class="number">0xe</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x7</span>, <span class="number">0xb</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x5</span>, <span class="number">0xa</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x6</span>, <span class="number">0xb</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x7</span>, <span class="number">0x8</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x4</span>, <span class="number">0x9</span>, <span class="number">0xe</span>)</span><br><span class="line">		<span class="keyword">for</span> c <span class="keyword">in</span> pack(<span class="string">&#x27;&lt;16L&#x27;</span>, *((w[_] + bring[_]) &amp; <span class="number">0xffffffff</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>))):</span><br><span class="line">			<span class="keyword">yield</span> c</span><br><span class="line">		bring[<span class="number">12</span>] = (bring[<span class="number">12</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">		<span class="keyword">if</span> bring[<span class="number">12</span>] == <span class="number">0</span>:</span><br><span class="line">			bring[<span class="number">13</span>] = (bring[<span class="number">13</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aniely_encrypt</span>(<span class="params">msg, passphrase</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(passphrase) &lt; <span class="number">32</span>:</span><br><span class="line">		<span class="comment">#如果passphrase长度小于32</span></span><br><span class="line">		passphrase = (passphrase * (<span class="number">32</span> // <span class="built_in">len</span>(passphrase) + <span class="number">1</span>))[:<span class="number">32</span>]</span><br><span class="line">		<span class="comment">#则将passphrase字符串重复多次</span></span><br><span class="line">		<span class="comment">#直到它的长度达到32，然后取前32个字符</span></span><br><span class="line">		<span class="comment">#最终将passphrase字符串变成32位长度的字符串</span></span><br><span class="line">	rand = urandom(<span class="number">2</span>) * <span class="number">16</span></span><br><span class="line">	<span class="comment">#urandom(2)是生成2个字节的随机数，乘以16获得一个范围在0到32之间的随机数（大概？</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">bytes</span>(a ^ b ^ c <span class="keyword">for</span> a, b, c <span class="keyword">in</span> <span class="built_in">zip</span>(msg, aniely_stream(passphrase), rand))</span><br><span class="line">	<span class="comment">#使用zip函数将msg，aniely_stream（passphrase）和rand三个参数进行拉链</span></span><br><span class="line">	<span class="comment">#然后使用异或运算对拉链中的每个元素进行运算</span></span><br><span class="line">	<span class="comment">#最后将运算结果以字节形式返回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这里有百度：</span></span><br><span class="line"><span class="comment">#密钥流是一种加密技术，它使用一个密钥流来加密和解密数据。</span></span><br><span class="line"><span class="comment">#其原理是，它将一个随机生成的密钥流与要加密的数据进行异或运算，以生成加密后的数据。</span></span><br><span class="line"><span class="comment">#解密时，只要将加密后的数据与密钥流再次进行异或运算，就可以得到原始数据。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">key = <span class="built_in">bytes</span>(a ^ b <span class="keyword">for</span> a, b <span class="keyword">in</span> <span class="built_in">zip</span>(passphrase, flag))</span><br><span class="line"><span class="comment">#zip函数将passphrase和flag这两个对应的元素打包成元组</span></span><br><span class="line"><span class="comment">#然后使用列表推导式将元组中的元素进行异或运算，并将结果转换为字节形式，赋值给key</span></span><br><span class="line">enc = aniely_encrypt(passphrase, key)</span><br><span class="line"><span class="comment">#用aniely_encrypt将passphrase和flag加密后赋给enc</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;key = <span class="subst">&#123;key.<span class="built_in">hex</span>()&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;enc = <span class="subst">&#123;enc.<span class="built_in">hex</span>()&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#hex加密一下print出来</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;4dcceb8802ae3c45fe80ccb364c8de19f2d39aa8ebbfb0621623e67aba8ed5bc&#x27;</span></span><br><span class="line">enc = <span class="string">&#x27;e67a67efee3a80b66af0c33260f96b38e4142cd5d9426f6f156839f2e2a8efe8&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>首先有两个东西，一个叫passphrase一个叫flag，但咱现在不知道，是咱现在要求的<br>咱只知道key和enc<br>key是：</p>
+<ol>
+<li>用zip函数将passphrase和flag这两个对应的元素打包成元组</li>
+<li>然后使用列表推导式将元组中的元素进行异或运算</li>
+<li>并将结果转换为字节形式，赋值给key</li>
+</ol>
+<p>enc就复杂了，enc是：</p>
+<ol>
+<li>判断得到的key长度是否小于32，若小于则将字符串重复多次，直至字符串大于等于32，取前面32位</li>
+<li>用上面定义的aniely_stream加密key（咋加密还在理解</li>
+<li>生成一个随机数rand</li>
+<li>将用zip函数将（passphrase，加密后的key，rand）拉链，异或运算对拉链中的每个元素进行运算</li>
+<li>返回的值即为enc</li>
+</ol>
+<p>我的思路：</p>
+<ol>
+<li>key和enc解一下hex</li>
+<li>判断得到的key长度是否小于32，若小于则将字符串重复多次，直至字符串大于等于32，取前面32位</li>
+<li>用上面定义的aniely_stream加密key（咋加密的应该不用理解太仔细吧（是的我没理解</li>
+<li>enc&#x3D;(aniely_stream加密后的key)^passphrase^rand</li>
+<li>所以passphrase&#x3D;enc^(aniely_stream加密后的key)^rand</li>
+<li>因为key&#x3D;passphrase^flag，所以把求出来的passphrase^key即为所求flag</li>
+<li>很不幸里面的rand是随机数所以我们需要爆破一下</li>
+<li>大概是：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">passphrase = bytes(a ^ b ^ c for a, b, c in zip(enc, aniely_stream(key), rand))</span><br><span class="line">flag = bytes(a ^ b for a, b in zip(passphrase, key))</span><br></pre></td></tr></table></figure></li>
+<li>刚好题干给了咱一个<code>itertools.islice()</code>我们可以用它对rand进行爆破<br>。。。好吧我承认到这一步我真不会了。。。我一头雾水学了半天（这里的半天是实指）没明白最后我去搜了我有罪<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> rand <span class="keyword">in</span> itertools.product(<span class="built_in">range</span>(<span class="number">256</span>), repeat=<span class="number">2</span>):</span><br><span class="line">    rand = <span class="built_in">bytes</span>(rand) * <span class="number">16</span></span><br></pre></td></tr></table></figure></li>
+<li>然后最后如果flag出现CCTF的字样，则输出flag<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (flag.startswith(<span class="string">b&#x27;CCTF&#x27;</span>)):</span><br><span class="line">	<span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+这一步卡了半天因为我一开始开头没有b，这混帐玩意儿老给我报错😅<br><strong>因为flag是一个字节串，加上b的意思是表示以字节的形式来检测</strong></li>
+</ol>
+<p>最后附上我的代码。。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> struct <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aniely_stream</span>(<span class="params">passphrase</span>):</span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">mixer</span>(<span class="params">u, v</span>):</span><br><span class="line">		<span class="keyword">return</span> ((u &lt;&lt; v) &amp; <span class="number">0xffffffff</span>) | u &gt;&gt; (<span class="number">32</span> - v)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">forge</span>(<span class="params">w, a, b, c, d</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">			w[a] = (w[a] + w[b]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[d] = mixer(w[a] ^ w[d], <span class="number">16</span> // (i + <span class="number">1</span>))</span><br><span class="line">			w[c] = (w[c] + w[d]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[b] = mixer(w[b] ^ w[c], (<span class="number">12</span> + <span class="number">2</span>*i) // (i + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">	bring = [<span class="number">0</span>] * <span class="number">16</span></span><br><span class="line">	bring[:<span class="number">4</span>] = [<span class="number">0x61707865</span>, <span class="number">0x3320646e</span>, <span class="number">0x79622d32</span>, <span class="number">0x6b206574</span>]</span><br><span class="line">	bring[<span class="number">4</span>:<span class="number">12</span>] = unpack(<span class="string">&#x27;&lt;8L&#x27;</span>, passphrase)</span><br><span class="line">	bring[<span class="number">12</span>] = bring[<span class="number">13</span>] = <span class="number">0x0</span></span><br><span class="line">	bring[<span class="number">14</span>:] = [<span class="number">0</span>] * <span class="number">2</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		w = <span class="built_in">list</span>(bring)</span><br><span class="line">		<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x4</span>, <span class="number">0x8</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x5</span>, <span class="number">0x9</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x6</span>, <span class="number">0xa</span>, <span class="number">0xe</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x7</span>, <span class="number">0xb</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x5</span>, <span class="number">0xa</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x6</span>, <span class="number">0xb</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x7</span>, <span class="number">0x8</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x4</span>, <span class="number">0x9</span>, <span class="number">0xe</span>)</span><br><span class="line">		<span class="keyword">for</span> c <span class="keyword">in</span> pack(<span class="string">&#x27;&lt;16L&#x27;</span>, *((w[_] + bring[_]) &amp; <span class="number">0xffffffff</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>))):</span><br><span class="line">			<span class="keyword">yield</span> c</span><br><span class="line">		bring[<span class="number">12</span>] = (bring[<span class="number">12</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">		<span class="keyword">if</span> bring[<span class="number">12</span>] == <span class="number">0</span>:</span><br><span class="line">			bring[<span class="number">13</span>] = (bring[<span class="number">13</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;4dcceb8802ae3c45fe80ccb364c8de19f2d39aa8ebbfb0621623e67aba8ed5bc&#x27;</span></span><br><span class="line">enc = <span class="string">&#x27;e67a67efee3a80b66af0c33260f96b38e4142cd5d9426f6f156839f2e2a8efe8&#x27;</span></span><br><span class="line">key = <span class="built_in">bytes</span>.fromhex(key)</span><br><span class="line">enc = <span class="built_in">bytes</span>.fromhex(enc)</span><br><span class="line"></span><br><span class="line">key1 = (key * (<span class="number">32</span> // <span class="built_in">len</span>(key) + <span class="number">1</span>))[:<span class="number">32</span>]</span><br><span class="line"><span class="comment">#将字符串重复多次，直到它的长度达到32，然后取前32个字符</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> rand <span class="keyword">in</span> itertools.product(<span class="built_in">range</span>(<span class="number">256</span>), repeat=<span class="number">2</span>):</span><br><span class="line">	rand = <span class="built_in">bytes</span>(rand) * <span class="number">16</span></span><br><span class="line">	<span class="comment">#是的这一部分还没明白，还在研究ing</span></span><br><span class="line">	key2 = aniely_stream(key1)</span><br><span class="line">	passphrase = <span class="built_in">bytes</span>(a ^ b ^ c <span class="keyword">for</span> a, b, c <span class="keyword">in</span> <span class="built_in">zip</span>(enc, key2, rand))</span><br><span class="line">	flag = <span class="built_in">bytes</span>(a ^ b <span class="keyword">for</span> a, b <span class="keyword">in</span> <span class="built_in">zip</span>(passphrase, key))</span><br><span class="line">	<span class="keyword">if</span> (flag.startswith(<span class="string">b&#x27;CCTF&#x27;</span>)):</span><br><span class="line">		<span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+<p>虽然搜了一部分（而且感觉搜的部分是最重要的。。。）但是还是有努力再搜的（目移。。<br>说起来这是非预期解法吗？我完全想不到其他解法。。也可能我刚学，脑袋里只有xor所以是这个思路<br>不管了先去吃饭。。。</p>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="Two-Dimensional"><a href="#Two-Dimensional" class="headerlink" title="Two Dimensional"></a>Two Dimensional</h3><ol>
+<li>一团乱码，看起来像base64，随便找个网站解一下字符串，看到前边开头是PNG。。害这玩意我可太熟了。。我不会说有段时间我得了看到PNG文件就往Winhex里面导的习惯。。<br>2.啊废话太多了，反正就是找个base64转十六进制的网站<br>belike：<br><a href="https://tool.hiofd.com/base64-convert-hex-online/">https://tool.hiofd.com/base64-convert-hex-online/</a></li>
+<li>把结果导到winhex里面保存为.png后缀的文件</li>
+<li>打开一看是个缺了一角的二维码，补齐就好了<br><del>我不会说我ps没使明白最后是开画板画上那个角的。。</del></li>
+<li>找个扫二维码的网站<br>belike：<br><a href="https://cli.im/deqr">https://cli.im/deqr</a><br>其实我有QR_Research。。但是我从来不用，都是网上现找的网站。。</li>
+</ol>
+<h3 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h3><ol>
+<li>解压zip（啊这是废话</li>
+<li>由题意可知这是lsb隐写（啊这也是废话</li>
+<li>用Stegsolve打开，Data Extract打开，勾选Red0&#x2F;Green0&#x2F;Blue0还有LSB First</li>
+<li>Save Bin保存为txt文件</li>
+<li>啊神奇的事情发生了</li>
+</ol>
+<h3 id="misc套娃"><a href="#misc套娃" class="headerlink" title="misc套娃"></a>misc套娃</h3><p>base16转字符串<br><a href="http://www.hiencode.com/base64.html">http://www.hiencode.com/base64.html</a><br>base64转字符串<br><a href="https://c.runoob.com/front-end/693/">https://c.runoob.com/front-end/693/</a><br><a href="https://base64.us/">https://base64.us/</a><br>八进制（octal）转字符串<br><a href="https://photo333.com/octal-to-text-zh.php">https://photo333.com/octal-to-text-zh.php</a><br>hex转字符串<br><a href="https://www.lddgo.net/string/hex">https://www.lddgo.net/string/hex</a><br>凯撒密码（Caesar）解密<br><del>本题位移是10</del><br><a href="https://www.qqxiuzi.cn/bianma/kaisamima.php">https://www.qqxiuzi.cn/bianma/kaisamima.php</a><br>Base32转字符串<br><del>我不会说第一个链接可以用但是这是事实</del><br>摩斯密码（morse）<br><a href="https://www.lddgo.net/encrypt/morse">https://www.lddgo.net/encrypt/morse</a><br>Base32转字符串<br><del>又是一个base32</del><br>10进制ASCII转字符串<br><a href="https://www.asciim.cn/m/tools/convert_ascii_to_string.html">https://www.asciim.cn/m/tools/convert_ascii_to_string.html</a><br>阿特巴希密码（atbash）<br><a href="http://www.metools.info/code/atbash209.html">http://www.metools.info/code/atbash209.html</a><br>字母大小写转换<br><a href="https://www.iamwawa.cn/daxiaoxie.html">https://www.iamwawa.cn/daxiaoxie.html</a></p>
+<h3 id="鼠鼠的假期"><a href="#鼠鼠的假期" class="headerlink" title="鼠鼠的假期"></a>鼠鼠的假期</h3><ol>
+<li>zip文件打开</li>
+<li>把里面的图片拉去百度识图</li>
+<li>出来一个北京BAMN coffee的和一个厦门HOUSE OF RA</li>
+<li>搜索上面这两个的地址</li>
+<li>提交试一试</li>
+<li>哇！太神奇了</li>
+</ol>
+]]></content>
+      <categories>
+        <category>做题记录</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>web</tag>
+        <tag>crypto</tag>
+        <tag>misc</tag>
       </tags>
   </entry>
   <entry>
@@ -206,29 +499,8 @@
       </categories>
       <tags>
         <tag>CTF</tag>
+        <tag>web</tag>
         <tag>misc</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>xss学习做题wp</title>
-    <url>/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/</url>
-    <content><![CDATA[<p>xss，没学过，不会做，找点题来练练手<br>闯关网址<a href="http://test.xss.tv/">http://test.xss.tv</a></p>
-<span id="more"></span>
-<p>上网看到有个测试神句<code>&lt;script &quot; &#39;Oonn&gt;</code>但是我还不怎么会用</p>
-<h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>经典代码<br><code>&lt;script&gt;alert()&lt;/script&gt;</code></p>
-<h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>用用那个什么<code>&lt;script &quot; &#39;Oonn&gt;</code>神句看看<br>搜索框里只出现了<code>&lt;script </code>猜测可以用双引号绕过<br>闭合绕过<br><code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;</code></p>
-<h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code><br>搜索框里只出现了<code>&lt;script &quot; </code>猜测可以用单引号绕过<br><code>&#39;&gt; &lt;script&gt;alert()&lt;/script&gt; &lt;&#39;</code><br>左边一个&gt;闭合，右边一个&lt;和末端的&gt;闭合<br>什么单引号也不行？！右键源代码一探究竟<br>看到<code>value=&#39;&amp;lt;script &amp;quot; &#39;Oonn&amp;gt;&#39;</code><br>OMG原来大于小于被转义了！好悲伤的一道题<br>浅浅网上随便找个不用大于小于的<br><code>&#39;onmouseover=&#39;alert()</code>然后点击搜索</p>
-<h3 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里只剩<code>script</code><br>源代码<code>value=&quot;script &quot; &#39;Oonn&quot;</code><br>卡在双引号，大于小于不能用因为被过滤了<br>那不和上一题一样只是单引变双引嘛<br><code>&quot;onmouseover=&quot;alert()</code></p>
-<h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里变成<code>&lt;scr_ipt </code><br>源代码<code>value=&quot;&lt;scr_ipt &quot; &#39;oo_nn&gt;&quot;</code>介个似协模意思捏。。<br>首先哈，大于小于没被转义也没被过滤，然后哈，应该是双引号闭合<br>输<code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;&quot;</code>源代码是<code>value=&quot;&quot;&gt;&lt;scr_ipt&gt;alert()&lt;/script&gt;&lt;&quot;&quot;</code><br>输<code>&quot;onmouseover=&quot;alert()</code>源代码是<code>value=&quot;&quot;o_nmouseover=&quot;alert()&quot;</code><br>但是试了<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>可以发现是可行的<br>构建，先双引号<code>&quot;</code>然后<code>&gt;</code>和左边闭合，然后<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>，<code>&lt;</code>和右边闭合<br><code>&quot;&gt;&lt;a href=&quot;javascript:alert()&quot;&gt;&lt;</code>铛铛出炉</p>
-<p>先做到这，明天继续</p>
-]]></content>
-      <categories>
-        <category>做题记录</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -255,283 +527,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ROIS冬令营第一周WriteUp</title>
-    <url>/2023/01/14/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8Write-Up/</url>
-    <content><![CDATA[<p>（1.16有更新）ROIS冬令营第一周Write Up</p>
-<span id="more"></span>
-<p>废话很多。。</p>
-<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Week1-HTTPtest"><a href="#Week1-HTTPtest" class="headerlink" title="[Week1]HTTPtest"></a>[Week1]HTTPtest</h3><ol>
-<li>这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！这是什么？bp抓一下！</li>
-<li>Response里面可以看到：flag: I can only give you flag with the browser of <code>ROIS_browser</code></li>
-<li>由题意得，把Request的User-Agent改改</li>
-</ol>
-<h3 id="Week1-ViewSource"><a href="#Week1-ViewSource" class="headerlink" title="[Week1]ViewSource"></a>[Week1]ViewSource</h3><p>view-source是一种协议，可以查看网页源代码</p>
-<ol>
-<li>在浏览器地址栏前面加上view-source:<br><del>btw其实我是上一题刚做完顺手在bp抓的</del></li>
-<li>可以从源代码看出来，它大概的意思是它用一串函数复合表达了my_flag，但是没有明确打出来它完整的样子</li>
-<li>在&lt; script&gt;里面&lt; &#x2F;script&gt;给它加个JavaScript的输出函数alert()<br><del>alert(my_flag)</del></li>
-<li>🤗🤗🤗🤗</li>
-</ol>
-<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="Week1-0-amp-1"><a href="#Week1-0-amp-1" class="headerlink" title="[Week1] 0&amp;1"></a>[Week1] 0&amp;1</h3><p>因为没学过python，所以不知道有没有简单的方式，我是最基础的思路</p>
-<ol>
-<li><p>首先，先把二进制八位八位的分开，每八个转一次十进制再转成相应的ASCII码</p>
-</li>
-<li><p>显然易得，出来的是十六进制，hex解一下</p>
-</li>
-<li><p>然后可以看出来这一层是base64加密，再解一下</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">   <span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">bin</span> = <span class="string">&#x27;00110101001101010011011001100010001100110011100100110100011000010011010100110101001100110011001100110111001101000011011000111001001101010011100100110101001110000011010001100101001101100110001100110100011001010011011001100001001101010011001000110110001101100011011000110001001101000011011100110101001101100011001100110100001101010011100000110011001100100011010001100001001101110011000000110110001100100011011001100100001101000011011000110111001110010011011000110101001101010011100000110011001100000011001101100100&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bins = [<span class="built_in">bin</span>[i:i+<span class="number">8</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(<span class="built_in">bin</span>), <span class="number">8</span>)]</span><br><span class="line"><span class="comment"># 将字符串每八位分割</span></span><br><span class="line"></span><br><span class="line">decs = [<span class="built_in">int</span>(b, <span class="number">2</span>) <span class="keyword">for</span> b <span class="keyword">in</span> bins]</span><br><span class="line"><span class="comment"># 将每八位二进制转换为十进制</span></span><br><span class="line"></span><br><span class="line">ascs = [<span class="built_in">chr</span>(d) <span class="keyword">for</span> d <span class="keyword">in</span> decs]</span><br><span class="line"><span class="comment"># 将每个十进制数字转换为相应的ASCII码</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span>=<span class="string">&#x27;&#x27;</span>.join(ascs)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="comment"># 输出第一次解密结果</span></span><br><span class="line"></span><br><span class="line">hex_str = binascii.unhexlify(<span class="built_in">str</span>).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># hex解密</span></span><br><span class="line"><span class="built_in">print</span>(hex_str)</span><br><span class="line"><span class="comment"># 输出第二次解密结果</span></span><br><span class="line"></span><br><span class="line">b64_str = base64.b64decode(hex_str)</span><br><span class="line"><span class="comment"># base64解密</span></span><br><span class="line"><span class="built_in">print</span>(b64_str)</span><br><span class="line"><span class="comment"># 输出最后结果</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>btw，不写代码的方式：<br>二进制转ASCII<br><a href="https://www.lddgo.net/convert/string-binary">https://www.lddgo.net/convert/string-binary</a><br>hex解码<br><a href="http://tool.geekapp.cn/hex.php">http://tool.geekapp.cn/hex.php</a><br>base64解码<br><a href="https://base64.us/">https://base64.us/</a></p>
-<h3 id="Week1-Aniely"><a href="#Week1-Aniely" class="headerlink" title="[Week1]Aniely"></a>[Week1]Aniely</h3><p>这题我捋了一下题干，感觉应该是</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> struct <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#from secret import passphrase, flag</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#我完全没学过的知识告诉我。。呃啊完全看不懂啊救救孩子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#这段应该是将passphrase加密</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aniely_stream</span>(<span class="params">passphrase</span>):</span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">mixer</span>(<span class="params">u, v</span>):</span><br><span class="line">		<span class="keyword">return</span> ((u &lt;&lt; v) &amp; <span class="number">0xffffffff</span>) | u &gt;&gt; (<span class="number">32</span> - v)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">forge</span>(<span class="params">w, a, b, c, d</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">			w[a] = (w[a] + w[b]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[d] = mixer(w[a] ^ w[d], <span class="number">16</span> // (i + <span class="number">1</span>))</span><br><span class="line">			w[c] = (w[c] + w[d]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[b] = mixer(w[b] ^ w[c], (<span class="number">12</span> + <span class="number">2</span>*i) // (i + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">	bring = [<span class="number">0</span>] * <span class="number">16</span></span><br><span class="line">	bring[:<span class="number">4</span>] = [<span class="number">0x61707865</span>, <span class="number">0x3320646e</span>, <span class="number">0x79622d32</span>, <span class="number">0x6b206574</span>]</span><br><span class="line">	bring[<span class="number">4</span>:<span class="number">12</span>] = unpack(<span class="string">&#x27;&lt;8L&#x27;</span>, passphrase)</span><br><span class="line">	bring[<span class="number">12</span>] = bring[<span class="number">13</span>] = <span class="number">0x0</span></span><br><span class="line">	bring[<span class="number">14</span>:] = [<span class="number">0</span>] * <span class="number">2</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		w = <span class="built_in">list</span>(bring)</span><br><span class="line">		<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x4</span>, <span class="number">0x8</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x5</span>, <span class="number">0x9</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x6</span>, <span class="number">0xa</span>, <span class="number">0xe</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x7</span>, <span class="number">0xb</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x5</span>, <span class="number">0xa</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x6</span>, <span class="number">0xb</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x7</span>, <span class="number">0x8</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x4</span>, <span class="number">0x9</span>, <span class="number">0xe</span>)</span><br><span class="line">		<span class="keyword">for</span> c <span class="keyword">in</span> pack(<span class="string">&#x27;&lt;16L&#x27;</span>, *((w[_] + bring[_]) &amp; <span class="number">0xffffffff</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>))):</span><br><span class="line">			<span class="keyword">yield</span> c</span><br><span class="line">		bring[<span class="number">12</span>] = (bring[<span class="number">12</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">		<span class="keyword">if</span> bring[<span class="number">12</span>] == <span class="number">0</span>:</span><br><span class="line">			bring[<span class="number">13</span>] = (bring[<span class="number">13</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aniely_encrypt</span>(<span class="params">msg, passphrase</span>):</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(passphrase) &lt; <span class="number">32</span>:</span><br><span class="line">		<span class="comment">#如果passphrase长度小于32</span></span><br><span class="line">		passphrase = (passphrase * (<span class="number">32</span> // <span class="built_in">len</span>(passphrase) + <span class="number">1</span>))[:<span class="number">32</span>]</span><br><span class="line">		<span class="comment">#则将passphrase字符串重复多次</span></span><br><span class="line">		<span class="comment">#直到它的长度达到32，然后取前32个字符</span></span><br><span class="line">		<span class="comment">#最终将passphrase字符串变成32位长度的字符串</span></span><br><span class="line">	rand = urandom(<span class="number">2</span>) * <span class="number">16</span></span><br><span class="line">	<span class="comment">#urandom(2)是生成2个字节的随机数，乘以16获得一个范围在0到32之间的随机数（大概？</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">bytes</span>(a ^ b ^ c <span class="keyword">for</span> a, b, c <span class="keyword">in</span> <span class="built_in">zip</span>(msg, aniely_stream(passphrase), rand))</span><br><span class="line">	<span class="comment">#使用zip函数将msg，aniely_stream（passphrase）和rand三个参数进行拉链</span></span><br><span class="line">	<span class="comment">#然后使用异或运算对拉链中的每个元素进行运算</span></span><br><span class="line">	<span class="comment">#最后将运算结果以字节形式返回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这里有百度：</span></span><br><span class="line"><span class="comment">#密钥流是一种加密技术，它使用一个密钥流来加密和解密数据。</span></span><br><span class="line"><span class="comment">#其原理是，它将一个随机生成的密钥流与要加密的数据进行异或运算，以生成加密后的数据。</span></span><br><span class="line"><span class="comment">#解密时，只要将加密后的数据与密钥流再次进行异或运算，就可以得到原始数据。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">key = <span class="built_in">bytes</span>(a ^ b <span class="keyword">for</span> a, b <span class="keyword">in</span> <span class="built_in">zip</span>(passphrase, flag))</span><br><span class="line"><span class="comment">#zip函数将passphrase和flag这两个对应的元素打包成元组</span></span><br><span class="line"><span class="comment">#然后使用列表推导式将元组中的元素进行异或运算，并将结果转换为字节形式，赋值给key</span></span><br><span class="line">enc = aniely_encrypt(passphrase, key)</span><br><span class="line"><span class="comment">#用aniely_encrypt将passphrase和flag加密后赋给enc</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;key = <span class="subst">&#123;key.<span class="built_in">hex</span>()&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;enc = <span class="subst">&#123;enc.<span class="built_in">hex</span>()&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#hex加密一下print出来</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;4dcceb8802ae3c45fe80ccb364c8de19f2d39aa8ebbfb0621623e67aba8ed5bc&#x27;</span></span><br><span class="line">enc = <span class="string">&#x27;e67a67efee3a80b66af0c33260f96b38e4142cd5d9426f6f156839f2e2a8efe8&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>首先有两个东西，一个叫passphrase一个叫flag，但咱现在不知道，是咱现在要求的<br>咱只知道key和enc<br>key是：</p>
-<ol>
-<li>用zip函数将passphrase和flag这两个对应的元素打包成元组</li>
-<li>然后使用列表推导式将元组中的元素进行异或运算</li>
-<li>并将结果转换为字节形式，赋值给key</li>
-</ol>
-<p>enc就复杂了，enc是：</p>
-<ol>
-<li>判断得到的key长度是否小于32，若小于则将字符串重复多次，直至字符串大于等于32，取前面32位</li>
-<li>用上面定义的aniely_stream加密key（咋加密还在理解</li>
-<li>生成一个随机数rand</li>
-<li>将用zip函数将（passphrase，加密后的key，rand）拉链，异或运算对拉链中的每个元素进行运算</li>
-<li>返回的值即为enc</li>
-</ol>
-<p>我的思路：</p>
-<ol>
-<li>key和enc解一下hex</li>
-<li>判断得到的key长度是否小于32，若小于则将字符串重复多次，直至字符串大于等于32，取前面32位</li>
-<li>用上面定义的aniely_stream加密key（咋加密的应该不用理解太仔细吧（是的我没理解</li>
-<li>enc&#x3D;(aniely_stream加密后的key)^passphrase^rand</li>
-<li>所以passphrase&#x3D;enc^(aniely_stream加密后的key)^rand</li>
-<li>因为key&#x3D;passphrase^flag，所以把求出来的passphrase^key即为所求flag</li>
-<li>很不幸里面的rand是随机数所以我们需要爆破一下</li>
-<li>大概是：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">passphrase = bytes(a ^ b ^ c for a, b, c in zip(enc, aniely_stream(key), rand))</span><br><span class="line">flag = bytes(a ^ b for a, b in zip(passphrase, key))</span><br></pre></td></tr></table></figure></li>
-<li>刚好题干给了咱一个<code>itertools.islice()</code>我们可以用它对rand进行爆破<br>。。。好吧我承认到这一步我真不会了。。。我一头雾水学了半天（这里的半天是实指）没明白最后我去搜了我有罪<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> rand <span class="keyword">in</span> itertools.product(<span class="built_in">range</span>(<span class="number">256</span>), repeat=<span class="number">2</span>):</span><br><span class="line">    rand = <span class="built_in">bytes</span>(rand) * <span class="number">16</span></span><br></pre></td></tr></table></figure></li>
-<li>然后最后如果flag出现CCTF的字样，则输出flag<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (flag.startswith(<span class="string">b&#x27;CCTF&#x27;</span>)):</span><br><span class="line">	<span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
-这一步卡了半天因为我一开始开头没有b，这混帐玩意儿老给我报错😅<br><strong>因为flag是一个字节串，加上b的意思是表示以字节的形式来检测</strong></li>
-</ol>
-<p>最后附上我的代码。。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> struct <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aniely_stream</span>(<span class="params">passphrase</span>):</span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">mixer</span>(<span class="params">u, v</span>):</span><br><span class="line">		<span class="keyword">return</span> ((u &lt;&lt; v) &amp; <span class="number">0xffffffff</span>) | u &gt;&gt; (<span class="number">32</span> - v)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">forge</span>(<span class="params">w, a, b, c, d</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">			w[a] = (w[a] + w[b]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[d] = mixer(w[a] ^ w[d], <span class="number">16</span> // (i + <span class="number">1</span>))</span><br><span class="line">			w[c] = (w[c] + w[d]) &amp; <span class="number">0xffffffff</span></span><br><span class="line">			w[b] = mixer(w[b] ^ w[c], (<span class="number">12</span> + <span class="number">2</span>*i) // (i + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">	bring = [<span class="number">0</span>] * <span class="number">16</span></span><br><span class="line">	bring[:<span class="number">4</span>] = [<span class="number">0x61707865</span>, <span class="number">0x3320646e</span>, <span class="number">0x79622d32</span>, <span class="number">0x6b206574</span>]</span><br><span class="line">	bring[<span class="number">4</span>:<span class="number">12</span>] = unpack(<span class="string">&#x27;&lt;8L&#x27;</span>, passphrase)</span><br><span class="line">	bring[<span class="number">12</span>] = bring[<span class="number">13</span>] = <span class="number">0x0</span></span><br><span class="line">	bring[<span class="number">14</span>:] = [<span class="number">0</span>] * <span class="number">2</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		w = <span class="built_in">list</span>(bring)</span><br><span class="line">		<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x4</span>, <span class="number">0x8</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x5</span>, <span class="number">0x9</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x6</span>, <span class="number">0xa</span>, <span class="number">0xe</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x7</span>, <span class="number">0xb</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x0</span>, <span class="number">0x5</span>, <span class="number">0xa</span>, <span class="number">0xf</span>)</span><br><span class="line">			forge(w, <span class="number">0x1</span>, <span class="number">0x6</span>, <span class="number">0xb</span>, <span class="number">0xc</span>)</span><br><span class="line">			forge(w, <span class="number">0x2</span>, <span class="number">0x7</span>, <span class="number">0x8</span>, <span class="number">0xd</span>)</span><br><span class="line">			forge(w, <span class="number">0x3</span>, <span class="number">0x4</span>, <span class="number">0x9</span>, <span class="number">0xe</span>)</span><br><span class="line">		<span class="keyword">for</span> c <span class="keyword">in</span> pack(<span class="string">&#x27;&lt;16L&#x27;</span>, *((w[_] + bring[_]) &amp; <span class="number">0xffffffff</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>))):</span><br><span class="line">			<span class="keyword">yield</span> c</span><br><span class="line">		bring[<span class="number">12</span>] = (bring[<span class="number">12</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">		<span class="keyword">if</span> bring[<span class="number">12</span>] == <span class="number">0</span>:</span><br><span class="line">			bring[<span class="number">13</span>] = (bring[<span class="number">13</span>] + <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">key = <span class="string">&#x27;4dcceb8802ae3c45fe80ccb364c8de19f2d39aa8ebbfb0621623e67aba8ed5bc&#x27;</span></span><br><span class="line">enc = <span class="string">&#x27;e67a67efee3a80b66af0c33260f96b38e4142cd5d9426f6f156839f2e2a8efe8&#x27;</span></span><br><span class="line">key = <span class="built_in">bytes</span>.fromhex(key)</span><br><span class="line">enc = <span class="built_in">bytes</span>.fromhex(enc)</span><br><span class="line"></span><br><span class="line">key1 = (key * (<span class="number">32</span> // <span class="built_in">len</span>(key) + <span class="number">1</span>))[:<span class="number">32</span>]</span><br><span class="line"><span class="comment">#将字符串重复多次，直到它的长度达到32，然后取前32个字符</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> rand <span class="keyword">in</span> itertools.product(<span class="built_in">range</span>(<span class="number">256</span>), repeat=<span class="number">2</span>):</span><br><span class="line">	rand = <span class="built_in">bytes</span>(rand) * <span class="number">16</span></span><br><span class="line">	<span class="comment">#是的这一部分还没明白，还在研究ing</span></span><br><span class="line">	key2 = aniely_stream(key1)</span><br><span class="line">	passphrase = <span class="built_in">bytes</span>(a ^ b ^ c <span class="keyword">for</span> a, b, c <span class="keyword">in</span> <span class="built_in">zip</span>(enc, key2, rand))</span><br><span class="line">	flag = <span class="built_in">bytes</span>(a ^ b <span class="keyword">for</span> a, b <span class="keyword">in</span> <span class="built_in">zip</span>(passphrase, key))</span><br><span class="line">	<span class="keyword">if</span> (flag.startswith(<span class="string">b&#x27;CCTF&#x27;</span>)):</span><br><span class="line">		<span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
-<p>虽然搜了一部分（而且感觉搜的部分是最重要的。。。）但是还是有努力再搜的（目移。。<br>说起来这是非预期解法吗？我完全想不到其他解法。。也可能我刚学，脑袋里只有xor所以是这个思路<br>不管了先去吃饭。。。</p>
-<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="Two-Dimensional"><a href="#Two-Dimensional" class="headerlink" title="Two Dimensional"></a>Two Dimensional</h3><ol>
-<li>一团乱码，看起来像base64，随便找个网站解一下字符串，看到前边开头是PNG。。害这玩意我可太熟了。。我不会说有段时间我得了看到PNG文件就往Winhex里面导的习惯。。<br>2.啊废话太多了，反正就是找个base64转十六进制的网站<br>belike：<br><a href="https://tool.hiofd.com/base64-convert-hex-online/">https://tool.hiofd.com/base64-convert-hex-online/</a></li>
-<li>把结果导到winhex里面保存为.png后缀的文件</li>
-<li>打开一看是个缺了一角的二维码，补齐就好了<br><del>我不会说我ps没使明白最后是开画板画上那个角的。。</del></li>
-<li>找个扫二维码的网站<br>belike：<br><a href="https://cli.im/deqr">https://cli.im/deqr</a><br>其实我有QR_Research。。但是我从来不用，都是网上现找的网站。。</li>
-</ol>
-<h3 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h3><ol>
-<li>解压zip（啊这是废话</li>
-<li>由题意可知这是lsb隐写（啊这也是废话</li>
-<li>用Stegsolve打开，Data Extract打开，勾选Red0&#x2F;Green0&#x2F;Blue0还有LSB First</li>
-<li>Save Bin保存为txt文件</li>
-<li>啊神奇的事情发生了</li>
-</ol>
-<h3 id="misc套娃"><a href="#misc套娃" class="headerlink" title="misc套娃"></a>misc套娃</h3><p>base16转字符串<br><a href="http://www.hiencode.com/base64.html">http://www.hiencode.com/base64.html</a><br>base64转字符串<br><a href="https://c.runoob.com/front-end/693/">https://c.runoob.com/front-end/693/</a><br><a href="https://base64.us/">https://base64.us/</a><br>八进制（octal）转字符串<br><a href="https://photo333.com/octal-to-text-zh.php">https://photo333.com/octal-to-text-zh.php</a><br>hex转字符串<br><a href="https://www.lddgo.net/string/hex">https://www.lddgo.net/string/hex</a><br>凯撒密码（Caesar）解密<br><del>本题位移是10</del><br><a href="https://www.qqxiuzi.cn/bianma/kaisamima.php">https://www.qqxiuzi.cn/bianma/kaisamima.php</a><br>Base32转字符串<br><del>我不会说第一个链接可以用但是这是事实</del><br>摩斯密码（morse）<br><a href="https://www.lddgo.net/encrypt/morse">https://www.lddgo.net/encrypt/morse</a><br>Base32转字符串<br><del>又是一个base32</del><br>10进制ASCII转字符串<br><a href="https://www.asciim.cn/m/tools/convert_ascii_to_string.html">https://www.asciim.cn/m/tools/convert_ascii_to_string.html</a><br>阿特巴希密码（atbash）<br><a href="http://www.metools.info/code/atbash209.html">http://www.metools.info/code/atbash209.html</a><br>字母大小写转换<br><a href="https://www.iamwawa.cn/daxiaoxie.html">https://www.iamwawa.cn/daxiaoxie.html</a></p>
-<h3 id="鼠鼠的假期"><a href="#鼠鼠的假期" class="headerlink" title="鼠鼠的假期"></a>鼠鼠的假期</h3><ol>
-<li>zip文件打开</li>
-<li>把里面的图片拉去百度识图</li>
-<li>出来一个北京BAMN coffee的和一个厦门HOUSE OF RA</li>
-<li>搜索上面这两个的地址</li>
-<li>提交试一试</li>
-<li>哇！太神奇了</li>
-</ol>
-]]></content>
-      <categories>
-        <category>做题记录</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>crypto</tag>
-        <tag>misc</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ROIS2023冬令营第一周学习记录</title>
-    <url>/2023/01/14/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>🐏了使人大脑晕眩。。若有错误还请见谅。。（此处意念上表情包：没读过书很抱歉.jpg<br>正在研究给blog加留言区的方法（已完成）<br>正在研究给blog加访问限制的方法（已完成）</p>
-<span id="more"></span>
-
-<p>1.11-1.12安装了VMware和Ubuntu，本来想要等博客搭建好了就记录安装过程出现中的小问题，万万没想到博客搭建了两天😅。。现在不太记得安装细节了，有缘再补吧</p>
-<p>btw，为了写这篇blog还学了但MarkDown语法，虽然md走简洁风语法不多，然而本人本就不富裕的脑容量还是雪上加霜了orz。</p>
-<p>再次btw，虽然是学习日记但是跟个人吐槽区别不大啦其实🤣都不知道在写什么</p>
-<h1 id="2023-x2F-01-x2F-14"><a href="#2023-x2F-01-x2F-14" class="headerlink" title="2023&#x2F;01&#x2F;14"></a>2023&#x2F;01&#x2F;14</h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="前端三件套HTML-x2F-CSS-x2F-JavaScript关系："><a href="#前端三件套HTML-x2F-CSS-x2F-JavaScript关系：" class="headerlink" title="前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系："></a>前端三件套HTML&#x2F;CSS&#x2F;JavaScript关系：</h3><p>（引用自：<a href="https://zhuanlan.zhihu.com/p/86270957">https://zhuanlan.zhihu.com/p/86270957</a>）</p>
-<blockquote>
-<p><strong>HTML是用来标记内容的（重在内容组织上）</strong></p>
-</blockquote>
-<blockquote>
-<p>HTML是超文本标记语言的简称，它是一种不严谨的、简单的标识性语言。它用各种标签将页面中的元素组织起来，告诉浏览器该如何显示其中的内容。</p>
-</blockquote>
-<blockquote>
-<p>为什么说HTML是不严谨的呢？因为HTML标签即使不闭合，也并不会影响页面内容的组织。</p>
-</blockquote>
-<blockquote>
-<p><strong>CSS是用来修饰内容样式的（重在内容样式美化展示上）</strong></p>
-</blockquote>
-<blockquote>
-<p>CSS是层叠样式表的简称，它用来表现HTML文件样式的，简单说就是负责HTML页面中元素的展现及排版。</p>
-</blockquote>
-<blockquote>
-<p><strong>JavaScript是用来做交互的</strong></p>
-</blockquote>
-<blockquote>
-<p>JavaScript是一种脚本语言，即可以运行在客户端也能运行在服务器端。JavaScript的解释器就是JS引擎，JS引擎是浏览器的一部分。而JavaScript主要是用来扩展文档交互能力的，使静态的HTML具有一定的交互行为（比如表单提交、动画特效、弹窗等）。</p>
-</blockquote>
-<p>看到有人说：HTML是骨架，CSS是皮肤，JS是肌肉。确实很形象。。</p>
-<h3 id="HTML-x2F-CSS-x2F-JavaScript学习"><a href="#HTML-x2F-CSS-x2F-JavaScript学习" class="headerlink" title="HTML&#x2F;CSS&#x2F;JavaScript学习"></a>HTML&#x2F;CSS&#x2F;JavaScript学习</h3><p>啊发现HTML的排版格式在MarkDown里也可以用。。<br>belike：<br><a href="https://linturrr.github.io/" style="text-decoration:none"><br>首页<br></a><br>↑这个链接就是用HTML的&lt; a &gt;链接语法写的（应该能显示出来吧</p>
-<p>看完HTML部分，我有个严峻的问题。。怎么做到记住怎么多用法的，用一次查一次参考手册吗</p>
-<h3 id="编写一个主页！"><a href="#编写一个主页！" class="headerlink" title="编写一个主页！"></a>编写一个主页！</h3><p>熟话说好记性不如烂笔头，再多的知识不如自己用一用</p>
-<p>本来打算下载vscode的，然而很不幸本人刚好有Sublime Text3，能凑合着用就不下了</p>
-<ol>
-<li>首先CTRL N创建一个新文件，然后CTRL S命名并且以html后缀保存</li>
-<li>输入&lt;h 然后选html的那个，Sublime就会自动把html的框架补全</li>
-<li>然后在tltle里填上标题，再补充一点花里胡哨的，一个全新的赛博垃圾就铛铛出炉！它跟别的垃圾不一样。。它是本人亲手创造的垃圾。。是垃圾中的垃圾。。。。。。。。。。。。。</li>
-<li>做了一个按钮配了一点阴影和鼠标上去会出字的效果。。</li>
-<li>过程中遇到问题：我的背景是渐变色45deg，结果我渐变色铺不满。。后来换成90deg铺满了。。</li>
-</ol>
-<p>放一下代码吧。。。好简陋emmmmmm</p>
-<p><strong>HTML</strong></p>
-<pre><code>    &lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;!--这玩意是控制网页的编码格式 utf-8 国际性编码--&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;style2.css&quot;&gt;
-&lt;!--这里要来个css修饰一下主页！！！用link--&gt;
-    &lt;title&gt;一个赛博垃圾&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;header&quot;&gt;
-        &lt;font size=&quot;7&quot;&gt;Welcome！&lt;/font&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;passage&quot;&gt;
-        &lt;font size=&quot;5&quot;&gt;这里是林涂！&lt;/font&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;a href=&quot;https://linturrr.github.io/&quot; class=&quot;button&quot;&gt;Blog&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;ff&quot;&gt;
-        &lt;p&gt;拳打脚踢！飞来飞去！&lt;/p&gt;
-        &lt;p&gt;蹦蹦跳跳！蹦蹦跳跳！&lt;/p&gt;
-        &lt;p&gt;飞翔！自由飞翔！&lt;/p&gt;
-        &lt;p&gt;飞累了！&lt;/p&gt;
-        &lt;p&gt;吃饭！躺下！&lt;/p&gt;
-        &lt;p&gt;休息好了！&lt;/p&gt;
-        &lt;p&gt;继续发疯！&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p><strong>CSS</strong></p>
-<pre><code>    body&#123;
-    text-align: center;/*居中*/
-    background: linear-gradient(90deg,#9370D8,#FFC0CB,#E0FFFF,#7FFFD4);/*来点渐变色*/
-&#125;
-
-.header&#123;
-        padding-bottom: 75px;/*底部填充*/
-        padding-top: 50px;/*顶部填充*/
-    &#125;
-.passage&#123;
-        padding-bottom: 20px;
-        padding-top: 25px;
-    &#125;
-.button &#123;
-    background: linear-gradient(45deg,#FFC0CB,#B0E0E6,	#F5F5DC);
-    color: teal;
-    border: none;
-    padding: 3px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);/*阴影*/
-&#125;
-.button &#123;
-    transition: all 0.3s ease;
-&#125;
-
-.button:hover &#123;
-    transform: rotate(360deg);
-&#125;
-.button:hover:after &#123;
-    text-align: center;
-    content: &quot;间歇性发疯！&quot;;
-    position: absolute;
-    top: 50;
-    left: 50;
-    width: 100%;
-    height: 50%;
-    color: black;
-    background:(45deg,#FFC0CB,#B0E0E6,	#F5F5DC);
-&#125;
-.ff&#123;
-    color: maroon;
-&#125;
-</code></pre>
-<p>真的很简陋。。。。。但是有努力过的。。</p>
-<p>放一下我做的两个文件。。感兴趣的可以去下载来看看（真的会有人想看垃圾吗。。<br><a href="https://github.com/LinTurrr/A_Useless_Thing.git">一个垃圾捏。。</a></p>
-<h1 id="2023-x2F-01-x2F-15"><a href="#2023-x2F-01-x2F-15" class="headerlink" title="2023&#x2F;01&#x2F;15"></a>2023&#x2F;01&#x2F;15</h1><p>早上起来一看主队又在梦游了，苦中作乐安慰自己起码没有和隔壁一起惨剧🙏<br>联赛有机会？无所谓，我会出手👊👊👊</p>
-<p>今天写完了wp，打算去做CryptoHack的题，打开一看页面分外熟悉，才想起来我曾经三进三出CryptoHack。。<br><del>原因是因为看不懂英语</del><br><del>救救文盲！！！</del></p>
-<p>wp写隔壁了。。</p>
-<hr>
-<p>研究添加blog评论区ing…</p>
-<ol>
-<li>首先先注册一个LearnCloud账号</li>
-<li>应用&gt;创建应用&gt;开发版，不花钱&gt;设置&gt;安全中心绑定域名&gt;应用凭证记下AppID和AppKey</li>
-<li>打开主题配置文件，找到comments栏目并开启valine（enable: false改成true）。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Valine</span><br><span class="line"># For more information: https://valine.js.org, https://github.com/xCss/Valine</span><br><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appid: # 输入你的 appid</span><br><span class="line">  appkey: # 输入你的 appkey</span><br><span class="line">  notify: true # Mail notifier</span><br><span class="line">  verify: false # Verification code</span><br><span class="line">  placeholder: 输入你的评论\n昵称为必填项目 # Comment box placeholder</span><br><span class="line">  avatar: mm # Gravatar style</span><br><span class="line">  guest_info: nick,mail,link # Custom comment header</span><br><span class="line">  pageSize: 3 # Pagination size</span><br><span class="line">  language:  zh-cn</span><br><span class="line">  visitor: true # Article reading statistic</span><br><span class="line">  comment_count: true # If false, comment count will only be displayed in post page, not in home page</span><br><span class="line">  recordIP: true # Whether to record the commenter IP</span><br><span class="line">  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)</span><br></pre></td></tr></table></figure></li>
-<li><code>$ hexo new page guestbook</code>添加一个新的页面</li>
-<li>进入 source&#x2F;guestbook&#x2F;index.md。加入你想显示的内容，如：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: guestbook</span><br><span class="line">date: 2023-01-15 20:34:53</span><br><span class="line">---</span><br><span class="line"># Welcome！</span><br><span class="line"></span><br><span class="line">&gt; 欢迎在这里留言！</span><br></pre></td></tr></table></figure></li>
-<li>打开主题配置文件，找到menu栏目，添加留言板功能：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: /guestbook/ || fa fa-book</span><br></pre></td></tr></table></figure></li>
-<li>更改 themes&#x2F;next&#x2F;languages 下对应语言的翻译。例如中文的<code>zh-CN.yml</code>文件：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: 留言板</span><br></pre></td></tr></table></figure></li>
-<li><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code></li>
-</ol>
-<h1 id="2023-x2F-01-x2F-17"><a href="#2023-x2F-01-x2F-17" class="headerlink" title="2023&#x2F;01&#x2F;17"></a>2023&#x2F;01&#x2F;17</h1><p>昨天没读书。。就解了[Week1]Aniely。。听说凌晨法甲比赛有乐子下午在乐颠颠补，晚上在看京城大师赛，今早在给我cp写同人。。整天总结：比王宝宝悍跳更依托答辩的是psg的比赛，比psg更依托答辩的是本人的python水平😇</p>
-<h3 id="给博客加密方式"><a href="#给博客加密方式" class="headerlink" title="给博客加密方式"></a>给博客加密方式</h3><p>首先，安装插件<br>npm install hexo-blog-encrypt</p>
-<p>然后再在需要加密的文章信息头处加上<br><code>password: hello</code><br>复杂一点的可以是</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">password: 密码</span><br><span class="line">abstract: 摘要捏</span><br><span class="line">message: 密码在这里输捏</span><br><span class="line">wrong_pass_message: 不会吧不会吧不会这都不对吧</span><br></pre></td></tr></table></figure>
-<hr>
-<p>今天去做Introduction to CryptoHack的剩下三题了，wp写隔壁</p>
-<hr>
-<p>在读Modern Cryptanalysis，很不幸本人是个文盲看不懂英文，不过碰巧年前我为了看洋妞同人充了彩云小译的VIP。。虽然翻得很烂但是还是可以凑合用用。。先翻了一部分（目录至第76页），如果有需要的可以来找我要。。。</p>
-<h1 id="2023-x2F-01-x2F-18"><a href="#2023-x2F-01-x2F-18" class="headerlink" title="2023&#x2F;01&#x2F;18"></a>2023&#x2F;01&#x2F;18</h1><p>xss，没学过，不会做，找点题来练练手<br>闯关网址<a href="http://test.xss.tv/">http://test.xss.tv</a><br>wp写隔壁了</p>
-<blockquote>
-<p>在测试过程中，有哪些东西是我们可以利用来猜测与判断的：</p>
-</blockquote>
-<blockquote>
-<p>网页页面的变化；<br>审查网页元素；<br>查看网页源码；<br>如果是白盒测试，还可以进行代码审计。</p>
-</blockquote>
-<blockquote>
-<p>一个好用的xss测试代码：&lt;script “ ‘Oonn&gt;，方便我们测试网页后台对输入语句的过滤规则。利用该语句输入后，审查源码，猜测是否过滤以及过滤规则是什么。</p>
-</blockquote>
-<p>抄了个别人的解题思路，测试语句<code>&lt;script &quot; &#39;Oonn&gt;</code></p>
-<p>一、通过测试语句执行情况、网页源码等，进行如下判断：</p>
-<ol>
-<li>判断大小于号是否过滤与转义；</li>
-<li>判断单双引号是否过滤与转义；</li>
-<li>判断关键字是否过滤与转义；</li>
-<li>判断大小写是否转化；</li>
-<li>判断语句闭合方式。</li>
-</ol>
-<p>二、额外地，可以分析是否存在其他注入点。<br>三、根据判断结果，灵活构造语句与利用绕过规则。</p>
-<p>明天凌晨要看球，早上要大扫除，明天下午见！</p>
-]]></content>
-      <categories>
-        <category>学习日记</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>crypto</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>第一篇博客test</title>
     <url>/2023/01/12/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2test/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="都说了是hello怎么还能输错啊😇" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -548,6 +543,153 @@
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>CTF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简介</title>
+    <url>/2023/01/13/%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<p><b>欢迎！</b><br>这里是林涂！很高兴认识你！<br>本人间歇性发疯中。。。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>《图解密码技术》读书笔记</title>
+    <url>/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>不会吧不会吧不会真有人连读书笔记都往网上发吧</p>
+<span id="more"></span>
+<p>读《图解密码技术》ing。。<br>还挺有意思的这本书。。找了个图床贴点图片。。希望图片不会裂掉。。</p>
+<p><img src="https://img.mjj.today/2023/01/28/33fad240cf463b69695e9ec84f106339.png" alt="33fad240cf463b69695e9ec84f106339.png"></p>
+<p>记点可能有用的。。</p>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><blockquote>
+<p>正当的接收者将密文还原为明文称为“解密”，但接收者以外的其他人试图将密文还原为明文，则称为密码破译( cryptanalysis )，简称为破译，有时也称为密码分析。</p>
+</blockquote>
+<h4 id="对称密码与公钥密码"><a href="#对称密码与公钥密码" class="headerlink" title="对称密码与公钥密码"></a>对称密码与公钥密码</h4><p><img src="https://img.mjj.today/2023/01/28/fddf2ceb003526dcf7df0b66f5676dec.png" alt="fddf2ceb003526dcf7df0b66f5676dec.png"></p>
+<h4 id="隐写术与密码"><a href="#隐写术与密码" class="headerlink" title="隐写术与密码"></a>隐写术与密码</h4><blockquote>
+<p>隐写术的目的是隐藏消息本身，但如果搞清楚了嵌人消息的方法，也就可以搞清楚消息的内容。因此，隐写术并不能代替密码。<br>密码隐藏的是内容，隐写术隐藏的是消息本身。通过将密码与隐写术相结合，就可以同时产生两者所各自具备的效果。</p>
+</blockquote>
+<h4 id="密码与信息安全常识"><a href="#密码与信息安全常识" class="headerlink" title="密码与信息安全常识"></a>密码与信息安全常识</h4><blockquote>
+<p>●不要使用保密的密码算法</p>
+<ol>
+<li>密码算法的秘密早晚都会被公诸于世</li>
+<li>开发高强度的密码算法是非常困难的</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>●使用低强度的密码比不进行任何加密更危险<br>●任何密码总有一天都会被破解（但是量子密码不好说<br>●密码只是信息安全的一部分</p>
+</blockquote>
+<h4 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>发送者Alice接收者Alice<br>小测验2<br>OXXOX</p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h4 id="恺撒密码"><a href="#恺撒密码" class="headerlink" title="恺撒密码"></a>恺撒密码</h4><blockquote>
+<p>密码算法:将明文中的各个字母按照指定的字母数平移<br>密钥:平移的字母数量</p>
+</blockquote>
+<h4 id="简单替换密码"><a href="#简单替换密码" class="headerlink" title="简单替换密码"></a>简单替换密码</h4><blockquote>
+<p>密码算法:按照替换表对字母表进行替换<br>密钥:替换表</p>
+</blockquote>
+<h4 id="Enigma-通信密码的加密"><a href="#Enigma-通信密码的加密" class="headerlink" title="Enigma(通信密码的加密)"></a>Enigma(通信密码的加密)</h4><blockquote>
+<p>密码算法:使用Enigma密码机，通过接线板的接线方式、3个转子的顺序、每个转子的旋转位置对字母进行替换<br>密钥(每日密码):接线板的接线方式、3个转子的顺序、每个转子的旋转位置</p>
+</blockquote>
+<h4 id="Enigma-通信电文的加密"><a href="#Enigma-通信电文的加密" class="headerlink" title="Enigma (通信电文的加密)"></a>Enigma (通信电文的加密)</h4><blockquote>
+<p>密码算法:使用接线板的接线方式和3个转子的顺序固定的Enigma密码机，按照每个转子的旋转位置对字母进行替换<br>密钥(通信密码):每个转子的旋转位置</p>
+</blockquote>
+<h4 id="小测验-1"><a href="#小测验-1" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>CRYPTOGRAPHY<br>小测验2<br>错<br>小测验3<br><del>不道哇</del></p>
+<h5 id="小测验3答案"><a href="#小测验3答案" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p>小测验3的答案:没有L的密文<br>明文是一段只有字母L的文字，即LLLLL….发送者的目的是将毫无意义的明文加密发送以干扰密码破译者。<br>然而密码破译者知道Enigma的构造，即无论接线板如何接线，3个转子的顺序和每个转子的旋转位置如何改变，输入的字母都绝对不可能被替换成该字母本身。通过密文中没有L这一事实，密码破译者就能够推测出其明文可能是一串L。<br>此外，密码破译者还能够根据密文的排列组合继续进行破译，从而得到推测Enigma的接线板和转子状态的线索。<br>发送者本想干扰密码破译者，却反而为破译者提供了线索。顺便提一下，破解这一谜题的破译者名叫Mavis Lever，是一位女性。</p>
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h4 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h4><p>加密方式不算很明白，看了个大概<br>不过知道它可以被暴力破解</p>
+<h4 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h4><p>增强DES的强度</p>
+<h4 id="AES（Rijndael）"><a href="#AES（Rijndael）" class="headerlink" title="AES（Rijndael）"></a>AES（Rijndael）</h4><p>对称密码算法<br>逐字节替换&gt;向左平移&gt;矩阵运算&gt;XOR</p>
+<p>大家现在都用AES。。</p>
+<h4 id="小测验-2"><a href="#小测验-2" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>小于等于22的+3，大于等于23的-23<br>小测验2<br>错<br>小测验3<br><del>不道哇。。。我猜是E</del><br>小测验4<br><del>OXOXOO</del><br>OXXXOO</p>
+<h5 id="小测验3答案-1"><a href="#小测验3答案-1" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p><img src="https://img.mjj.today/2023/01/28/d2c62fbe2646bdcc5e72451d8447153a.png" alt="d2c62fbe2646bdcc5e72451d8447153a.png"></p>
+<h5 id="小测验4第3问答案"><a href="#小测验4第3问答案" class="headerlink" title="小测验4第3问答案"></a>小测验4第3问答案</h5><p>如果密钥长度为56比特，那么用暴力破解找到正确密钥需要平均尝试约2^28次。（X）<br>平均尝试次数是密钥总数的大约一半。当密钥长度为56比特时，密钥总数为2^56个，它的一半是2^55（注意，不是指数56变成一半得28，而是减1得55）。<br>因此，当密钥长度为56比特时，平均尝试次数为2^55次，大约相当于3.6x10^16次。</p>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><blockquote>
+<p>密码算法可以分为<strong>分组密码</strong>和<strong>流密码</strong>两种。</p>
+</blockquote>
+<blockquote>
+<p>分组密码处理完一个分组 就结束了，因此不需要通过内部状态来记录加密的进度;<br>相对地，流密码是对一串数据流进行连续处理，因此需要保持内部状态。</p>
+</blockquote>
+<blockquote>
+<p>前面提到的算法中，只有一次性密码本属于流密码，而DES、三重DES、AES( Rijndael )等大多数对称密码算法都属于分组密码。</p>
+</blockquote>
+<h4 id="ECB"><a href="#ECB" class="headerlink" title="ECB"></a>ECB</h4><p>将明文分组直接加密</p>
+<h5 id="ECB的风险"><a href="#ECB的风险" class="headerlink" title="ECB的风险"></a>ECB的风险</h5><blockquote>
+<p>ECB模式中，每个明文分组都各自独立地进行加密和解密，但这其实是一个很大的弱点。<br>假如存在主动攻击者Mallory，他能够改变密文分组的顺序。当接收者对密文进行解密时，由于密文分组的顺序被改变了，因此相应的明文分组的顺序也会被改变。也就是说，攻击者Mallory无需破译密码就能够操纵明文。在这个场景中，攻击者Mallory不需要破译密码，也不需要知道分组密码算法，他只要知道哪个分组记录了什么样的数据(即电文的格式)就可以了。</p>
+</blockquote>
+<p>btw，我还以为Mallory是女名。。</p>
+<h4 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h4><blockquote>
+<p>首先将明文分组与前一个密文分组进行XOR运算，然后再进行加密</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/383d9d5b787251945de63be98b21e732.png" alt="383d9d5b787251945de63be98b21e732.png"></p>
+<blockquote>
+<p>ECB模式和CBC模式的区别：ECB模式只进行了加密，而CBC模式则在加密之前进行了一次XOR。</p>
+</blockquote>
+<h4 id="CTS"><a href="#CTS" class="headerlink" title="CTS"></a>CTS</h4><p>ECB和CTF混合使用</p>
+<h4 id="CFB"><a href="#CFB" class="headerlink" title="CFB"></a>CFB</h4><p><img src="https://img.mjj.today/2023/01/28/91a945dd607f42d856e1ffba256b6f09.png" alt="91a945dd607f42d856e1ffba256b6f09.png"></p>
+<blockquote>
+<p>在CFB模式中，明文数据可以被逐比特加密，因此我们可以将CFB模式看作是一种使用分组密码来实现流密码的方式。</p>
+</blockquote>
+<h4 id="OFB"><a href="#OFB" class="headerlink" title="OFB"></a>OFB</h4><p><img src="https://img.mjj.today/2023/01/28/14ebda9ae34cb830ad7c485a89721396.png" alt="14ebda9ae34cb830ad7c485a89721396.png"></p>
+<h4 id="CTR"><a href="#CTR" class="headerlink" title="CTR"></a>CTR</h4><blockquote>
+<p>CTR模式的全称是CounTeR模式(计数器模式)。CTR模式是一种通过将逐次累加的计数器进行加密来生成密钥流的流密码。</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/a55b5490b690e67ce60f1b1e85a73eda.png" alt="a55b5490b690e67ce60f1b1e85a73eda.png"></p>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p><img src="https://img.mjj.today/2023/01/28/f36d4213ed567f992f675b7da0f18a48.png" alt="f36d4213ed567f992f675b7da0f18a48.png"></p>
+<h4 id="小测验-3"><a href="#小测验-3" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>16<br>小测验2<br><del>把用户名称和口令错开。。</del><br>小测验3<br><del>能猜出初始化变量。。？</del><br>小测验4<br><del>不道哇。。</del><br>小测验5<br>等于通过XOR加密。。。。？<br>小测验6<br><del>XOXX</del></p>
+<h5 id="小测验2答案"><a href="#小测验2答案" class="headerlink" title="小测验2答案"></a>小测验2答案</h5><p>很多种方式，可以把口令用用户名称覆盖，这样子知道用户名就可以登陆了</p>
+<h5 id="小测验3答案-2"><a href="#小测验3答案-2" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><blockquote>
+<p>在CBC模式中，我们假设永远使用相同的初始化向量。于是，当用同一密钥对同一明文进行加密时，所得到的密文一定是相同的。<br>例如，密码破译者间隔一周收到了两份相同的密文。于是，密码破译者无需破译密码，就可以判断出:这份密文和上周的密文一样，因此两份密文解密所得到的明文也是一样的。<br>如果在每次加密时都改变初始化向量的值，那么即便是用同一密钥对同一明文进行加密，也可以确保每次所得到的密文都不相同。</p>
+</blockquote>
+<h5 id="小测验4答案"><a href="#小测验4答案" class="headerlink" title="小测验4答案"></a>小测验4答案</h5><blockquote>
+<p>Alice的这个模式，实质上等同于ECB模式。</p>
+</blockquote>
+<h5 id="小测验6答案"><a href="#小测验6答案" class="headerlink" title="小测验6答案"></a>小测验6答案</h5><p>怎么能全错哇我要闹了我要闹了好崩溃。。。</p>
+<blockquote>
+<p>在ECB模式的加密中，内容相同的明文分组，一定会被转换为内容相同的密文分组。(O)</p>
+</blockquote>
+<blockquote>
+<p>在CBC模式的解密中，如果密文分组3损坏，则密文分组5是无法正确解密的。(X)<br>密文分组3损坏会导致密文分组3和4无法解密，但密文分组5依然能够正常解密。</p>
+</blockquote>
+<blockquote>
+<p>在CFB模式的加密中，不可以从明文的中间开始加密。(O)<br>正确。如果不是使用CFB模式，而是使用OFB模式或CTR模式的话，就可以从明文的中间开始加密。</p>
+</blockquote>
+<blockquote>
+<p>在OFB模式的解密中，分组密码算法本身所实际执行的是加密操作。(O)<br>正确。在CFB模式、OFB模式和CTR模式中，分组密码算法是用来生成密钥流的，因此，无论是加密还是解密，分组密码算法本身执行的都是相同的操作(加密操作)。</p>
+</blockquote>
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><blockquote>
+<p>公钥密码( public-key cryptography )中，密钥分为加密密钥和解密密钥两种。发送者用加密密钥对消息进行加密，接收者用解密密钥对密文进行解密。要理解公钥密码，清楚地区分加密密钥和解密密钥是非常重要的。加密密钥是发送者加密时使用的，而解密密钥则是接收者解密时使用的。</p>
+</blockquote>
+<blockquote>
+<p>仔细思考一下加密密钥和解密密钥的区别，我们可以发现:<br>●发送者只需要加密密钥<br>●接收者只需要解密密钥<br>●解密密钥不可以被窃听者获取<br>●加密密钥被窃听者获取也没问题</p>
+</blockquote>
+<p><strong>公钥密码</strong>：又称<strong>非对称密码</strong><br><strong>加密密钥</strong>：一般为公开，又称<strong>公钥</strong><br><strong>解密密钥</strong>：绝对不能公开，又称<strong>私钥</strong></p>
+<blockquote>
+<p>公钥和私钥是一一 对应的， 一对公钥和私钥统称为密钥对( key pair )。由公钥进行加密的密文，必须使用与该公钥配对的私钥才能够解密。密钥对中的两个密钥之间具有非常密切的关系——数学上的关系——因此公钥 和私钥是不能分别单独生成的。<br>公钥密码的使用者需要生成一个包括公钥和私钥的密钥对，其中公钥会被发送给别人，而私钥则仅供自己使用。</p>
+</blockquote>
+<h4 id="mod运算"><a href="#mod运算" class="headerlink" title="mod运算"></a>mod运算</h4><blockquote>
+<p>A除以B求余数记作 <strong>A mod B</strong></p>
+</blockquote>
+<h4 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h4><p><img src="https://img.mjj.today/2023/01/28/d9f9829560a460ad3681aa0febebc11f.png" alt="d9f9829560a460ad3681aa0febebc11f.png"></p>
+<p>公钥：(E,N)</p>
+<blockquote>
+<p>E和N这两个数并不是密钥对(公钥和私钥的密钥对)。E和N两个数才组成了一个公钥，因此我们一.般会写成“公钥是(E, N)”或者“公钥是{E,N}”这样的形式，将E和N用括号括起来。</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/d54ea3cbbccdf07c0be47bc1e1ef8aba.png" alt="d54ea3cbbccdf07c0be47bc1e1ef8aba.png"></p>
+<p>私钥：(D,N)</p>
+<p>N：两个质数(p,q)相乘<br>L：(p-1,q-1)的最小公倍数<br>E：1&lt;E&lt;L，E与L互质<br>D：1&lt;D&lt;L，E x D mod &#x3D; 1</p>
+<p><img src="https://img.mjj.today/2023/01/28/915301359b9b3bd856e356bb5119882f.png" alt="915301359b9b3bd856e356bb5119882f.png"></p>
+<hr>
+<p>好好笑这个例子。。放出来乐乐<br><img src="https://img.mjj.today/2023/01/28/f28ef45ddb5d49985638dfd9777c37bb.png" alt="f28ef45ddb5d49985638dfd9777c37bb.png"><br>Mallory在我这已经是是弯恋直求而不得拆散别人的坏女人了（恼<br>（我不管Mallory明明就是女名嘛</p>
+<hr>
+<h4 id="小测验-4"><a href="#小测验-4" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br><del>没必要吧。。Alice知道自己的私钥就好了</del><br>小测验2<br><del>自己也解不开了吧。。？</del><br>小测验3<br><del>9</del><br>小测验4<br><del>OOXXO</del></p>
+<h5 id="小测验错题答案"><a href="#小测验错题答案" class="headerlink" title="小测验错题答案"></a>小测验错题答案</h5><ol>
+<li>这是因为如果将Bob的密钥交给Alice，从此之后(即在本次通信结束之后) Alice就能够对用Bob的密钥加密的密文进行解密。也就是说，对于Bob来说，Alice 有可能成为一个窃听者。</li>
+<li>Alice的方法没有解决三重DES的密钥配送问题。<br>的确，将AES密钥通过三重DES加密后再发送的话，加密后的AES密钥就不怕被窃听。<br>但是，我们还是需要配送加密AES密钥时使用的那个密钥(三重DES的密钥)，否则接收者就无法解密AES密钥。<br>Alice的方法只是把问题转移了而已，并没有真正解决密钥配送问题。</li>
+<li><img src="https://img.mjj.today/2023/01/28/d30e249ddb83af37ba2f375aa912784a.png" alt="d30e249ddb83af37ba2f375aa912784a.png"></li>
+<li>OOXOO<br>(4)一般来说，对称密码的速度比公钥密码要快。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习日记</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>crypto</tag>
       </tags>
   </entry>
 </search>
