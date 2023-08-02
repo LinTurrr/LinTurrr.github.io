@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学个der。。。是这样。。我把hexo配回来了。。。blog堂堂复活。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023暑期学习week2">
+<meta property="og:url" content="http://example.com/2023/07/25/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week2/index.html">
+<meta property="og:site_name" content="LinTu&#39;s Blog">
+<meta property="og:description" content="学个der。。。是这样。。我把hexo配回来了。。。blog堂堂复活。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-25T08:10:57.000Z">
+<meta property="article:modified_time" content="2023-07-27T10:06:02.945Z">
+<meta property="article:author" content="林涂">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="crypto">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/07/25/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2023暑期学习week2 | LinTu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="LinTu's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LinTu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/25/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="林涂">
+      <meta itemprop="description" content="学习ing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LinTu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2023暑期学习week2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-07-25 16:10:57" itemprop="dateCreated datePublished" datetime="2023-07-25T16:10:57+08:00">2023-07-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-27 18:06:02" itemprop="dateModified" datetime="2023-07-27T18:06:02+08:00">2023-07-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/07/25/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week2/" class="post-meta-item leancloud_visitors" data-flag-title="2023暑期学习week2" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/07/25/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/25/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学个der。。。<br>是这样。。我把hexo配回来了。。。blog堂堂复活。。。</p>
+<span id="more"></span>
+<h1 id="imaginaryctf复现（只有一点点"><a href="#imaginaryctf复现（只有一点点" class="headerlink" title="imaginaryctf复现（只有一点点"></a>imaginaryctf复现（只有一点点</h1><p><a target="_blank" rel="noopener" href="https://linturrr.github.io/2023/07/27/imaginaryctf%E9%83%A8%E5%88%86wp%EF%BC%88%E5%8F%AA%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E3%80%82%E3%80%82/">imaginaryctf复现</a></p>
+<h1 id="xss-labs"><a href="#xss-labs" class="headerlink" title="xss-labs"></a>xss-labs</h1><p>想起来以前好像写过五题。。。<br><a target="_blank" rel="noopener" href="http://linturrr.github.io/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/">xss学习做题wp</a></p>
+<h1 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h1><h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> n=nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                <span class="keyword">return</span> &#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="字母异位词分组"><a href="#字母异位词分组" class="headerlink" title="字母异位词分组"></a>字母异位词分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">groupAnagrams</span>(<span class="params">self, strs</span>):</span><br><span class="line">        hashtable = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">            fenlei = <span class="string">&#x27;&#x27;</span>.join(<span class="built_in">sorted</span>(s))</span><br><span class="line">            <span class="keyword">if</span> fenlei <span class="keyword">not</span> <span class="keyword">in</span> hashtable:</span><br><span class="line">                hashtable[fenlei] = [s]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashtable[fenlei].append(s)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">list</span>(hashtable.values())</span><br></pre></td></tr></table></figure>
+<h2 id="最长连续序列"><a href="#最长连续序列" class="headerlink" title="最长连续序列"></a>最长连续序列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestConsecutive</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        hashtable = <span class="built_in">set</span>(nums)</span><br><span class="line">        ls = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> n - <span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> hashtable:</span><br><span class="line">                i = n</span><br><span class="line">                <span class="keyword">while</span> i <span class="keyword">in</span> hashtable:</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                ls = <span class="built_in">max</span>(ls, i - n)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ls</span><br></pre></td></tr></table></figure>
+<p>好像太慢了额,看了眼官方题解,虽然我觉得没差,但是或许系统会给点优待</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestConsecutive</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        hashtable = <span class="built_in">set</span>(nums)</span><br><span class="line">        ls = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> n - <span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> hashtable:</span><br><span class="line">                i = n</span><br><span class="line">                cs = <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> i + <span class="number">1</span>  <span class="keyword">in</span> hashtable:</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                    cs += <span class="number">1</span></span><br><span class="line">                ls = <span class="built_in">max</span>(ls, cs)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ls</span><br></pre></td></tr></table></figure>
+<p>挺好的,更慢了(眼神死)<br>抄个佬的研究一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestConsecutive</span>(<span class="params">self, nums</span>):</span><br><span class="line">        hash_dict = <span class="built_in">dict</span>()</span><br><span class="line">        </span><br><span class="line">        max_length = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> hash_dict:</span><br><span class="line">                left = hash_dict.get(num - <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">                right = hash_dict.get(num + <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">                </span><br><span class="line">                cur_length = <span class="number">1</span> + left + right</span><br><span class="line">                <span class="keyword">if</span> cur_length &gt; max_length:</span><br><span class="line">                    max_length = cur_length</span><br><span class="line">                </span><br><span class="line">                hash_dict[num] = cur_length</span><br><span class="line">                hash_dict[num - left] = cur_length</span><br><span class="line">                hash_dict[num + right] = cur_length</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> max_length</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="啥"><a href="#啥" class="headerlink" title="啥"></a>啥</h1><p>然后我最近干嘛了我也不知道<br>大概有<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/165379391">VSCode搭建Python开发环境(含Python环境搭建)</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/thefg/article/details/128601410">2023年最新Python安装详细教程</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42412061/article/details/109718713">No module named ‘request’</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/402166578">‘pip’ 不是内部或外部命令，也不是可运行的程序 或批处理文件。</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010244992/article/details/105039778">ModuleNotFoundError: No module named ‘bs4’</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38853585/article/details/89238982">kali虚拟机磁盘不足扩容</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46136890/article/details/130750913?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-130750913-blog-89238982.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-130750913-blog-89238982.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=3">kali虚拟机根目录扩容（最有效最简洁）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lyc0424/article/details/106917167">linux &#x2F;dev&#x2F;sda1 磁盘满了，解决办法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44119101/article/details/105017632">kali虚拟机扩容详细教程</a><br><a target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-248375.htm">[原创]sqli-labs靶场第七关文件无法写入</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/379682771">你没有权限在此位置中保存文件</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/403961135">找不到 gpedit.msc 的最优解决办法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Hunter_Murphy/article/details/109697249">ModuleNotFoundError: No module named ‘tqdm’</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向）</a><br><a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/415248-%E5%A4%8D%E5%88%B6%E7%BD%91%E9%A1%B5%E6%A0%87%E9%A2%98%E5%92%8C%E7%BD%91%E5%9D%80%E4%B8%BAmarkdown%E9%93%BE%E6%8E%A5">复制网页标题和网址为Markdown链接</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/heimu24/article/details/81210640?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-81210640-blog-89496837.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-81210640-blog-89496837.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=6">hexo个人博客：换了电脑怎么办</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21193762">使用hexo，如果换了电脑怎么更新博客？ - 知乎</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_66964652/article/details/122882957?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-122882957-blog-107599437.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-122882957-blog-107599437.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=5">2022最新hexo最新搭建教程</a><br>还看了一些别人的wp啥的<br><a target="_blank" rel="noopener" href="https://f0rk3b0mb.github.io/p/imaginaryctf2023/">ImaginaryCTF2023</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ZimaBlue/articles/17577500.html">ImaginaryCTF 2023 - ZimaB1ue - 博客园</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/288451281">解决Flash插件已被屏蔽的问题（谷歌、火狐、IE、Edge） - 知乎</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+              <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+              <a href="/tags/crypto/" rel="tag"><i class="fa fa-tag"></i> crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/12/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week1/" rel="prev" title="2023暑期学习week1">
+      <i class="fa fa-chevron-left"></i> 2023暑期学习week1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/07/27/imaginaryctf%E9%83%A8%E5%88%86wp%EF%BC%88%E5%8F%AA%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E3%80%82%E3%80%82/" rel="next" title="imaginaryctf部分wp">
+      imaginaryctf部分wp <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=478507889&auto=1&height=66"></iframe>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#imaginaryctf%E5%A4%8D%E7%8E%B0%EF%BC%88%E5%8F%AA%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">imaginaryctf复现（只有一点点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xss-labs"><span class="nav-number">2.</span> <span class="nav-text">xss-labs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode"><span class="nav-number">3.</span> <span class="nav-text">LeetCode</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">3.1.</span> <span class="nav-text">两数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84"><span class="nav-number">3.2.</span> <span class="nav-text">字母异位词分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97"><span class="nav-number">3.3.</span> <span class="nav-text">最长连续序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%95%A5"><span class="nav-number">4.</span> <span class="nav-text">啥</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="林涂"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">林涂</p>
+  <div class="site-description" itemprop="description">学习ing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LinTurrr" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LinTurrr" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林涂</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'YVmWHQrHLOAW7ewgX1jprtQl-gzGzoHsz',
+      appKey     : 'dY6y287UlOydRGZnN74I8XyY',
+      placeholder: "输入你的评论\\n昵称为必填项目",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '3' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

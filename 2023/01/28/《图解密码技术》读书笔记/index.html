@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="不会吧不会吧不会真有人连读书笔记都往网上发吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《图解密码技术》读书笔记">
+<meta property="og:url" content="http://example.com/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="LinTu&#39;s Blog">
+<meta property="og:description" content="不会吧不会吧不会真有人连读书笔记都往网上发吧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/33fad240cf463b69695e9ec84f106339.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/fddf2ceb003526dcf7df0b66f5676dec.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/d2c62fbe2646bdcc5e72451d8447153a.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/383d9d5b787251945de63be98b21e732.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/91a945dd607f42d856e1ffba256b6f09.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/14ebda9ae34cb830ad7c485a89721396.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/a55b5490b690e67ce60f1b1e85a73eda.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/f36d4213ed567f992f675b7da0f18a48.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/d9f9829560a460ad3681aa0febebc11f.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/d54ea3cbbccdf07c0be47bc1e1ef8aba.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/915301359b9b3bd856e356bb5119882f.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/f28ef45ddb5d49985638dfd9777c37bb.png">
+<meta property="og:image" content="https://img.mjj.today/2023/01/28/d30e249ddb83af37ba2f375aa912784a.png">
+<meta property="article:published_time" content="2023-01-28T04:35:21.000Z">
+<meta property="article:modified_time" content="2023-02-13T03:06:00.573Z">
+<meta property="article:author" content="林涂">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.mjj.today/2023/01/28/33fad240cf463b69695e9ec84f106339.png">
+
+<link rel="canonical" href="http://example.com/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《图解密码技术》读书笔记 | LinTu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="LinTu's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LinTu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="林涂">
+      <meta itemprop="description" content="学习ing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LinTu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《图解密码技术》读书笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-01-28 12:35:21" itemprop="dateCreated datePublished" datetime="2023-01-28T12:35:21+08:00">2023-01-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-13 11:06:00" itemprop="dateModified" datetime="2023-02-13T11:06:00+08:00">2023-02-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="《图解密码技术》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/01/28/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>不会吧不会吧不会真有人连读书笔记都往网上发吧</p>
+<span id="more"></span>
+<p>读《图解密码技术》ing。。<br>还挺有意思的这本书。。找了个图床贴点图片。。希望图片不会裂掉。。</p>
+<p><img src="https://img.mjj.today/2023/01/28/33fad240cf463b69695e9ec84f106339.png" alt="33fad240cf463b69695e9ec84f106339.png"></p>
+<p>记点可能有用的。。</p>
+<h1 id="第一部分：密码"><a href="#第一部分：密码" class="headerlink" title="第一部分：密码"></a>第一部分：密码</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><blockquote>
+<p>正当的接收者将密文还原为明文称为“解密”，但接收者以外的其他人试图将密文还原为明文，则称为密码破译( cryptanalysis )，简称为破译，有时也称为密码分析。</p>
+</blockquote>
+<h4 id="对称密码与公钥密码"><a href="#对称密码与公钥密码" class="headerlink" title="对称密码与公钥密码"></a>对称密码与公钥密码</h4><p><img src="https://img.mjj.today/2023/01/28/fddf2ceb003526dcf7df0b66f5676dec.png" alt="fddf2ceb003526dcf7df0b66f5676dec.png"></p>
+<h4 id="隐写术与密码"><a href="#隐写术与密码" class="headerlink" title="隐写术与密码"></a>隐写术与密码</h4><blockquote>
+<p>隐写术的目的是隐藏消息本身，但如果搞清楚了嵌人消息的方法，也就可以搞清楚消息的内容。因此，隐写术并不能代替密码。<br>密码隐藏的是内容，隐写术隐藏的是消息本身。通过将密码与隐写术相结合，就可以同时产生两者所各自具备的效果。</p>
+</blockquote>
+<h4 id="密码与信息安全常识"><a href="#密码与信息安全常识" class="headerlink" title="密码与信息安全常识"></a>密码与信息安全常识</h4><blockquote>
+<p>●不要使用保密的密码算法</p>
+<ol>
+<li>密码算法的秘密早晚都会被公诸于世</li>
+<li>开发高强度的密码算法是非常困难的</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>●使用低强度的密码比不进行任何加密更危险<br>●任何密码总有一天都会被破解（但是量子密码不好说<br>●密码只是信息安全的一部分</p>
+</blockquote>
+<h4 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>发送者Alice接收者Alice<br>小测验2<br>OXXOX</p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h4 id="恺撒密码"><a href="#恺撒密码" class="headerlink" title="恺撒密码"></a>恺撒密码</h4><blockquote>
+<p>密码算法:将明文中的各个字母按照指定的字母数平移<br>密钥:平移的字母数量</p>
+</blockquote>
+<h4 id="简单替换密码"><a href="#简单替换密码" class="headerlink" title="简单替换密码"></a>简单替换密码</h4><blockquote>
+<p>密码算法:按照替换表对字母表进行替换<br>密钥:替换表</p>
+</blockquote>
+<h4 id="Enigma-通信密码的加密"><a href="#Enigma-通信密码的加密" class="headerlink" title="Enigma(通信密码的加密)"></a>Enigma(通信密码的加密)</h4><blockquote>
+<p>密码算法:使用Enigma密码机，通过接线板的接线方式、3个转子的顺序、每个转子的旋转位置对字母进行替换<br>密钥(每日密码):接线板的接线方式、3个转子的顺序、每个转子的旋转位置</p>
+</blockquote>
+<h4 id="Enigma-通信电文的加密"><a href="#Enigma-通信电文的加密" class="headerlink" title="Enigma (通信电文的加密)"></a>Enigma (通信电文的加密)</h4><blockquote>
+<p>密码算法:使用接线板的接线方式和3个转子的顺序固定的Enigma密码机，按照每个转子的旋转位置对字母进行替换<br>密钥(通信密码):每个转子的旋转位置</p>
+</blockquote>
+<h4 id="小测验-1"><a href="#小测验-1" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>CRYPTOGRAPHY<br>小测验2<br>错<br>小测验3<br><del>不道哇</del></p>
+<h5 id="小测验3答案"><a href="#小测验3答案" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p>小测验3的答案:没有L的密文<br>明文是一段只有字母L的文字，即LLLLL….发送者的目的是将毫无意义的明文加密发送以干扰密码破译者。<br>然而密码破译者知道Enigma的构造，即无论接线板如何接线，3个转子的顺序和每个转子的旋转位置如何改变，输入的字母都绝对不可能被替换成该字母本身。通过密文中没有L这一事实，密码破译者就能够推测出其明文可能是一串L。<br>此外，密码破译者还能够根据密文的排列组合继续进行破译，从而得到推测Enigma的接线板和转子状态的线索。<br>发送者本想干扰密码破译者，却反而为破译者提供了线索。顺便提一下，破解这一谜题的破译者名叫Mavis Lever，是一位女性。</p>
+<h2 id="第三章：对称密码"><a href="#第三章：对称密码" class="headerlink" title="第三章：对称密码"></a>第三章：对称密码</h2><h4 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h4><p>加密方式不算很明白，看了个大概<br>不过知道它可以被暴力破解</p>
+<h4 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h4><p>增强DES的强度</p>
+<h4 id="AES（Rijndael）"><a href="#AES（Rijndael）" class="headerlink" title="AES（Rijndael）"></a>AES（Rijndael）</h4><p>对称密码算法<br>逐字节替换&gt;向左平移&gt;矩阵运算&gt;XOR</p>
+<p>大家现在都用AES。。</p>
+<h4 id="小测验-2"><a href="#小测验-2" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>小于等于22的+3，大于等于23的-23<br>小测验2<br>错<br>小测验3<br><del>不道哇。。。我猜是E</del><br>小测验4<br><del>OXOXOO</del><br>OXXXOO</p>
+<h5 id="小测验3答案-1"><a href="#小测验3答案-1" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><p><img src="https://img.mjj.today/2023/01/28/d2c62fbe2646bdcc5e72451d8447153a.png" alt="d2c62fbe2646bdcc5e72451d8447153a.png"></p>
+<h5 id="小测验4第3问答案"><a href="#小测验4第3问答案" class="headerlink" title="小测验4第3问答案"></a>小测验4第3问答案</h5><p>如果密钥长度为56比特，那么用暴力破解找到正确密钥需要平均尝试约2^28次。（X）<br>平均尝试次数是密钥总数的大约一半。当密钥长度为56比特时，密钥总数为2^56个，它的一半是2^55（注意，不是指数56变成一半得28，而是减1得55）。<br>因此，当密钥长度为56比特时，平均尝试次数为2^55次，大约相当于3.6x10^16次。</p>
+<h2 id="第四章：分组密码的模式"><a href="#第四章：分组密码的模式" class="headerlink" title="第四章：分组密码的模式"></a>第四章：分组密码的模式</h2><blockquote>
+<p>密码算法可以分为<strong>分组密码</strong>和<strong>流密码</strong>两种。</p>
+</blockquote>
+<blockquote>
+<p>分组密码处理完一个分组 就结束了，因此不需要通过内部状态来记录加密的进度;<br>相对地，流密码是对一串数据流进行连续处理，因此需要保持内部状态。</p>
+</blockquote>
+<blockquote>
+<p>前面提到的算法中，只有一次性密码本属于流密码，而DES、三重DES、AES( Rijndael )等大多数对称密码算法都属于分组密码。</p>
+</blockquote>
+<h4 id="ECB"><a href="#ECB" class="headerlink" title="ECB"></a>ECB</h4><p>将明文分组直接加密</p>
+<h5 id="ECB的风险"><a href="#ECB的风险" class="headerlink" title="ECB的风险"></a>ECB的风险</h5><blockquote>
+<p>ECB模式中，每个明文分组都各自独立地进行加密和解密，但这其实是一个很大的弱点。<br>假如存在主动攻击者Mallory，他能够改变密文分组的顺序。当接收者对密文进行解密时，由于密文分组的顺序被改变了，因此相应的明文分组的顺序也会被改变。也就是说，攻击者Mallory无需破译密码就能够操纵明文。在这个场景中，攻击者Mallory不需要破译密码，也不需要知道分组密码算法，他只要知道哪个分组记录了什么样的数据(即电文的格式)就可以了。</p>
+</blockquote>
+<p>btw，我还以为Mallory是女名。。</p>
+<h4 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h4><blockquote>
+<p>首先将明文分组与前一个密文分组进行XOR运算，然后再进行加密</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/383d9d5b787251945de63be98b21e732.png" alt="383d9d5b787251945de63be98b21e732.png"></p>
+<blockquote>
+<p>ECB模式和CBC模式的区别：ECB模式只进行了加密，而CBC模式则在加密之前进行了一次XOR。</p>
+</blockquote>
+<h4 id="CTS"><a href="#CTS" class="headerlink" title="CTS"></a>CTS</h4><p>ECB和CTF混合使用</p>
+<h4 id="CFB"><a href="#CFB" class="headerlink" title="CFB"></a>CFB</h4><p><img src="https://img.mjj.today/2023/01/28/91a945dd607f42d856e1ffba256b6f09.png" alt="91a945dd607f42d856e1ffba256b6f09.png"></p>
+<blockquote>
+<p>在CFB模式中，明文数据可以被逐比特加密，因此我们可以将CFB模式看作是一种使用分组密码来实现流密码的方式。</p>
+</blockquote>
+<h4 id="OFB"><a href="#OFB" class="headerlink" title="OFB"></a>OFB</h4><p><img src="https://img.mjj.today/2023/01/28/14ebda9ae34cb830ad7c485a89721396.png" alt="14ebda9ae34cb830ad7c485a89721396.png"></p>
+<h4 id="CTR"><a href="#CTR" class="headerlink" title="CTR"></a>CTR</h4><blockquote>
+<p>CTR模式的全称是CounTeR模式(计数器模式)。CTR模式是一种通过将逐次累加的计数器进行加密来生成密钥流的流密码。</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/a55b5490b690e67ce60f1b1e85a73eda.png" alt="a55b5490b690e67ce60f1b1e85a73eda.png"></p>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p><img src="https://img.mjj.today/2023/01/28/f36d4213ed567f992f675b7da0f18a48.png" alt="f36d4213ed567f992f675b7da0f18a48.png"></p>
+<h4 id="小测验-3"><a href="#小测验-3" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>16<br>小测验2<br><del>把用户名称和口令错开。。</del><br>小测验3<br><del>能猜出初始化变量。。？</del><br>小测验4<br><del>不道哇。。</del><br>小测验5<br>等于通过XOR加密。。。。？<br>小测验6<br><del>XOXX</del></p>
+<h5 id="小测验2答案"><a href="#小测验2答案" class="headerlink" title="小测验2答案"></a>小测验2答案</h5><p>很多种方式，可以把口令用用户名称覆盖，这样子知道用户名就可以登陆了</p>
+<h5 id="小测验3答案-2"><a href="#小测验3答案-2" class="headerlink" title="小测验3答案"></a>小测验3答案</h5><blockquote>
+<p>在CBC模式中，我们假设永远使用相同的初始化向量。于是，当用同一密钥对同一明文进行加密时，所得到的密文一定是相同的。<br>例如，密码破译者间隔一周收到了两份相同的密文。于是，密码破译者无需破译密码，就可以判断出:这份密文和上周的密文一样，因此两份密文解密所得到的明文也是一样的。<br>如果在每次加密时都改变初始化向量的值，那么即便是用同一密钥对同一明文进行加密，也可以确保每次所得到的密文都不相同。</p>
+</blockquote>
+<h5 id="小测验4答案"><a href="#小测验4答案" class="headerlink" title="小测验4答案"></a>小测验4答案</h5><blockquote>
+<p>Alice的这个模式，实质上等同于ECB模式。</p>
+</blockquote>
+<h5 id="小测验6答案"><a href="#小测验6答案" class="headerlink" title="小测验6答案"></a>小测验6答案</h5><p>怎么能全错哇我要闹了我要闹了好崩溃。。。</p>
+<blockquote>
+<p>在ECB模式的加密中，内容相同的明文分组，一定会被转换为内容相同的密文分组。(O)</p>
+</blockquote>
+<blockquote>
+<p>在CBC模式的解密中，如果密文分组3损坏，则密文分组5是无法正确解密的。(X)<br>密文分组3损坏会导致密文分组3和4无法解密，但密文分组5依然能够正常解密。</p>
+</blockquote>
+<blockquote>
+<p>在CFB模式的加密中，不可以从明文的中间开始加密。(O)<br>正确。如果不是使用CFB模式，而是使用OFB模式或CTR模式的话，就可以从明文的中间开始加密。</p>
+</blockquote>
+<blockquote>
+<p>在OFB模式的解密中，分组密码算法本身所实际执行的是加密操作。(O)<br>正确。在CFB模式、OFB模式和CTR模式中，分组密码算法是用来生成密钥流的，因此，无论是加密还是解密，分组密码算法本身执行的都是相同的操作(加密操作)。</p>
+</blockquote>
+<h2 id="第五章：公钥密码"><a href="#第五章：公钥密码" class="headerlink" title="第五章：公钥密码"></a>第五章：公钥密码</h2><blockquote>
+<p>公钥密码( public-key cryptography )中，密钥分为加密密钥和解密密钥两种。发送者用加密密钥对消息进行加密，接收者用解密密钥对密文进行解密。要理解公钥密码，清楚地区分加密密钥和解密密钥是非常重要的。加密密钥是发送者加密时使用的，而解密密钥则是接收者解密时使用的。</p>
+</blockquote>
+<blockquote>
+<p>仔细思考一下加密密钥和解密密钥的区别，我们可以发现:<br>●发送者只需要加密密钥<br>●接收者只需要解密密钥<br>●解密密钥不可以被窃听者获取<br>●加密密钥被窃听者获取也没问题</p>
+</blockquote>
+<p><strong>公钥密码</strong>：又称<strong>非对称密码</strong><br><strong>加密密钥</strong>：一般为公开，又称<strong>公钥</strong><br><strong>解密密钥</strong>：绝对不能公开，又称<strong>私钥</strong></p>
+<blockquote>
+<p>公钥和私钥是一一 对应的， 一对公钥和私钥统称为密钥对( key pair )。由公钥进行加密的密文，必须使用与该公钥配对的私钥才能够解密。密钥对中的两个密钥之间具有非常密切的关系——数学上的关系——因此公钥 和私钥是不能分别单独生成的。<br>公钥密码的使用者需要生成一个包括公钥和私钥的密钥对，其中公钥会被发送给别人，而私钥则仅供自己使用。</p>
+</blockquote>
+<h4 id="mod运算"><a href="#mod运算" class="headerlink" title="mod运算"></a>mod运算</h4><blockquote>
+<p>A除以B求余数记作 <strong>A mod B</strong></p>
+</blockquote>
+<h4 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h4><p><img src="https://img.mjj.today/2023/01/28/d9f9829560a460ad3681aa0febebc11f.png" alt="d9f9829560a460ad3681aa0febebc11f.png"></p>
+<p>公钥：(E,N)</p>
+<blockquote>
+<p>E和N这两个数并不是密钥对(公钥和私钥的密钥对)。E和N两个数才组成了一个公钥，因此我们一.般会写成“公钥是(E, N)”或者“公钥是{E,N}”这样的形式，将E和N用括号括起来。</p>
+</blockquote>
+<p><img src="https://img.mjj.today/2023/01/28/d54ea3cbbccdf07c0be47bc1e1ef8aba.png" alt="d54ea3cbbccdf07c0be47bc1e1ef8aba.png"></p>
+<p>私钥：(D,N)</p>
+<p>N：两个质数(p,q)相乘<br>L：(p-1,q-1)的最小公倍数<br>E：1&lt;E&lt;L，E与L互质<br>D：1&lt;D&lt;L，E x D mod &#x3D; 1</p>
+<p><img src="https://img.mjj.today/2023/01/28/915301359b9b3bd856e356bb5119882f.png" alt="915301359b9b3bd856e356bb5119882f.png"></p>
+<hr>
+<p>好好笑这个例子。。放出来乐乐<br><img src="https://img.mjj.today/2023/01/28/f28ef45ddb5d49985638dfd9777c37bb.png" alt="f28ef45ddb5d49985638dfd9777c37bb.png"><br>Mallory在我这已经是是弯恋直求而不得拆散别人的坏女人了（恼<br>（我不管Mallory明明就是女名嘛</p>
+<hr>
+<h4 id="小测验-4"><a href="#小测验-4" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br><del>没必要吧。。Alice知道自己的私钥就好了</del><br>小测验2<br><del>自己也解不开了吧。。？</del><br>小测验3<br><del>9</del><br>小测验4<br><del>OOXXO</del></p>
+<h5 id="小测验错题答案"><a href="#小测验错题答案" class="headerlink" title="小测验错题答案"></a>小测验错题答案</h5><ol>
+<li>这是因为如果将Bob的密钥交给Alice，从此之后(即在本次通信结束之后) Alice就能够对用Bob的密钥加密的密文进行解密。也就是说，对于Bob来说，Alice 有可能成为一个窃听者。</li>
+<li>Alice的方法没有解决三重DES的密钥配送问题。<br>的确，将AES密钥通过三重DES加密后再发送的话，加密后的AES密钥就不怕被窃听。<br>但是，我们还是需要配送加密AES密钥时使用的那个密钥(三重DES的密钥)，否则接收者就无法解密AES密钥。<br>Alice的方法只是把问题转移了而已，并没有真正解决密钥配送问题。</li>
+<li><img src="https://img.mjj.today/2023/01/28/d30e249ddb83af37ba2f375aa912784a.png" alt="d30e249ddb83af37ba2f375aa912784a.png"></li>
+<li>OOXOO<br>(4)一般来说，对称密码的速度比公钥密码要快。</li>
+</ol>
+<h2 id="第六章：混合密码系统"><a href="#第六章：混合密码系统" class="headerlink" title="第六章：混合密码系统"></a>第六章：混合密码系统</h2><blockquote>
+<p>混合密码系统：<br>●用对称密码加密消息<br>●通过伪随机数生成器生成对称密码加密中使用的会话密钥<br>●用公钥密码加密会话密钥<br>●从混合密码系统外部赋予公钥密码加密时使用的密钥</p>
+</blockquote>
+<h4 id="小测验-5"><a href="#小测验-5" class="headerlink" title="小测验"></a>小测验</h4><p>小测验1<br>OXXO</p>
+<h1 id="第二部分：认证"><a href="#第二部分：认证" class="headerlink" title="第二部分：认证"></a>第二部分：认证</h1><h2 id="第七章：单向散列函数"><a href="#第七章：单向散列函数" class="headerlink" title="第七章：单向散列函数"></a>第七章：单向散列函数</h2><blockquote>
+<p><strong>单向散列函数</strong>(one-way hash function)&#x2F;<strong>消息摘要函数</strong>( message digest function )&#x2F;<strong>哈希函数</strong>&#x2F;<strong>杂凑函数</strong>有一个输入和一个输出；<br>其中输入称为<strong>消息</strong>(message)&#x2F;<strong>原像</strong>;<br>输出称为<strong>散列值</strong>(hash value)&#x2F;<strong>消息摘要</strong>&#x2F;<strong>指纹</strong>。</p>
+</blockquote>
+<blockquote>
+<p>单向散列函数可以根据消息的内容计算出散列值，而散列值就可以被用来检查消息的完整性。</p>
+</blockquote>
+<blockquote>
+<p>散列值的长度和消息的长度无关。</p>
+</blockquote>
+<blockquote>
+<p>如果单向散列函数计算出的散列值没有发生变化，那么消息很容易就会被篡改，这个单向散列函数也就无法被用于完整性的检查。两个不同的消息产生同一个散列值的情况称为<strong>碰撞</strong>(collision)。如果要将单向散列函数用于完整性的检查，则需要确保在事实上不可能被人为地发现碰撞。</p>
+</blockquote>
+<blockquote>
+<p>难以发现碰撞的性质称为<strong>抗碰撞性</strong>(collision resistance )。密码技术中所使用的单向散列函数，都需要具备抗碰撞性。</p>
+</blockquote>
+<p>单项散列函数需具备：<br><strong>弱抗碰撞性</strong>：要找到和该条消息具有相同散列值的另外一条消息是非常困难的；<br><strong>强抗碰撞性</strong>：要找到散列值相同的两条不同的消息是非常困难的；<br><strong>单向性</strong>：:无法通过散列值反算出消息的性质。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+              <a href="/tags/crypto/" rel="tag"><i class="fa fa-tag"></i> crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/27/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="prev" title="ROIS2023冬令营第三周学习记录">
+      <i class="fa fa-chevron-left"></i> ROIS2023冬令营第三周学习记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/02/15/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%89%E5%91%A8%E8%87%B3%E7%AC%AC%E4%BA%94%E5%91%A8WriteUp/" rel="next" title="ROIS冬令营第三周至第五周WriteUp">
+      ROIS冬令营第三周至第五周WriteUp <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=478507889&auto=1&height=66"></iframe>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%AF%86%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">第一部分：密码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="nav-number">1.1.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81%E4%B8%8E%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">对称密码与公钥密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E5%86%99%E6%9C%AF%E4%B8%8E%E5%AF%86%E7%A0%81"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">隐写术与密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B8%B8%E8%AF%86"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">密码与信息安全常识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">小测验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">1.2.</span> <span class="nav-text">第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%81%BA%E6%92%92%E5%AF%86%E7%A0%81"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">恺撒密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%9B%BF%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">简单替换密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enigma-%E9%80%9A%E4%BF%A1%E5%AF%86%E7%A0%81%E7%9A%84%E5%8A%A0%E5%AF%86"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">Enigma(通信密码的加密)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enigma-%E9%80%9A%E4%BF%A1%E7%94%B5%E6%96%87%E7%9A%84%E5%8A%A0%E5%AF%86"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">Enigma (通信电文的加密)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C-1"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">小测验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C3%E7%AD%94%E6%A1%88"><span class="nav-number">1.2.0.5.1.</span> <span class="nav-text">小测验3答案</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">第三章：对称密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DES"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">DES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E9%87%8DDES"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">三重DES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AES%EF%BC%88Rijndael%EF%BC%89"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">AES（Rijndael）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C-2"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">小测验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C3%E7%AD%94%E6%A1%88-1"><span class="nav-number">1.3.0.4.1.</span> <span class="nav-text">小测验3答案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C4%E7%AC%AC3%E9%97%AE%E7%AD%94%E6%A1%88"><span class="nav-number">1.3.0.4.2.</span> <span class="nav-text">小测验4第3问答案</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E7%9A%84%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">第四章：分组密码的模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ECB"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">ECB</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ECB%E7%9A%84%E9%A3%8E%E9%99%A9"><span class="nav-number">1.4.0.1.1.</span> <span class="nav-text">ECB的风险</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBC"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">CBC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CTS"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">CTS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CFB"><span class="nav-number">1.4.0.4.</span> <span class="nav-text">CFB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OFB"><span class="nav-number">1.4.0.5.</span> <span class="nav-text">OFB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CTR"><span class="nav-number">1.4.0.6.</span> <span class="nav-text">CTR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-number">1.4.0.7.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C-3"><span class="nav-number">1.4.0.8.</span> <span class="nav-text">小测验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C2%E7%AD%94%E6%A1%88"><span class="nav-number">1.4.0.8.1.</span> <span class="nav-text">小测验2答案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C3%E7%AD%94%E6%A1%88-2"><span class="nav-number">1.4.0.8.2.</span> <span class="nav-text">小测验3答案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C4%E7%AD%94%E6%A1%88"><span class="nav-number">1.4.0.8.3.</span> <span class="nav-text">小测验4答案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C6%E7%AD%94%E6%A1%88"><span class="nav-number">1.4.0.8.4.</span> <span class="nav-text">小测验6答案</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81"><span class="nav-number">1.5.</span> <span class="nav-text">第五章：公钥密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mod%E8%BF%90%E7%AE%97"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">mod运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RSA"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">RSA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C-4"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">小测验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C%E9%94%99%E9%A2%98%E7%AD%94%E6%A1%88"><span class="nav-number">1.5.0.3.1.</span> <span class="nav-text">小测验错题答案</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E6%B7%B7%E5%90%88%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.6.</span> <span class="nav-text">第六章：混合密码系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E6%B5%8B%E9%AA%8C-5"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">小测验</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E8%AE%A4%E8%AF%81"><span class="nav-number">2.</span> <span class="nav-text">第二部分：认证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">第七章：单向散列函数</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="林涂"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">林涂</p>
+  <div class="site-description" itemprop="description">学习ing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LinTurrr" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LinTurrr" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林涂</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'YVmWHQrHLOAW7ewgX1jprtQl-gzGzoHsz',
+      appKey     : 'dY6y287UlOydRGZnN74I8XyY',
+      placeholder: "输入你的评论\\n昵称为必填项目",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '3' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

