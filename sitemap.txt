@@ -1,3 +1,4 @@
+http://example.com/links/index.html
 http://example.com/2023/07/27/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week3/
 http://example.com/2023/08/02/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week4/
 http://example.com/2023/08/03/LITCTF%E9%83%A8%E5%88%86wp/
@@ -8,7 +9,6 @@ http://example.com/2023/03/02/CTF-After-Dark-Winter-2023%E9%83%A8%E5%88%86wp/
 http://example.com/2023/05/13/%E7%A6%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B%E9%83%A8%E5%88%86wp/
 http://example.com/2023/07/12/2023%E6%9A%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95week1/
 http://example.com/2023/07/27/imaginaryctf%E9%83%A8%E5%88%86wp%EF%BC%88%E5%8F%AA%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E3%80%82%E3%80%82/
-http://example.com/links/index.html
 http://example.com/2023/01/25/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8Write-Up/
 http://example.com/2023/01/14/ROIS%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%B8%80%E5%91%A8Write-Up/
 http://example.com/2023/01/27/ROIS2023%E5%86%AC%E4%BB%A4%E8%90%A5%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/
